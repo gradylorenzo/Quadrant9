@@ -427,10 +427,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea43ef59296aad42b6d98e06f2a85e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WantedApparentPosition:
+    x: 0
+    y: 0
+    z: 0
   CurrentApparentPosition:
     x: 0
     y: 0
     z: 0
+  PresetApparentPositions:
+  - x: 0
+    y: 0
+    z: 0
+  - x: 0
+    y: 0
+    z: 0
+  preset: 1
 --- !u!4 &510710746
 Transform:
   m_ObjectHideFlags: 0
