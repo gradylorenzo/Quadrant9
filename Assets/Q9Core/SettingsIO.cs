@@ -97,7 +97,7 @@ namespace Q9Core
                 finally
                 {
                     //If successful, commit the loaded variables into the global variables
-                    Volume = loadVolumes;
+                    currentVolumes = loadVolumes;
                 }
             }
             else
@@ -106,7 +106,7 @@ namespace Q9Core
             }
         }
 
-        public void WriteSettings(float s, float w, float a, float m, float u, float v)
+        public static void WriteSettings(float s, float w, float a, float m, float u, float v)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load("Settings.xml");
@@ -122,7 +122,7 @@ namespace Q9Core
             ReadSettings();
         }
 
-        public void WriteDefaultSettings()
+        public static void WriteDefaultSettings()
         {
             //Write default settings
             XmlTextWriter xWriter = new XmlTextWriter("Settings.xml", Encoding.UTF8);

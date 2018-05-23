@@ -9,6 +9,6 @@ public class ScaleSpaceController : MonoBehaviour {
 
 	private void Update()
 	{
-        this.transform.position = (Vector3.zero - ScaleSpace.apparentPosition) / scale;
+        this.transform.position = (Vector3.zero - DoubleVector3.ToVector3(ScaleSpace.apparentPosition)) / scale;
 	}
 }

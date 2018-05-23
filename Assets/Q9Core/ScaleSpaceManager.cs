@@ -77,6 +77,23 @@ namespace Q9Core
             return a + newPos / magnitude * c;
         }
 
+        //FromSingleV3
+        public static DoubleVector3 FromVector3 (Vector3 v)
+        {
+            return new DoubleVector3(v.x, v.y, v.z);
+        }
+
+        //ToSingleV3
+        public static Vector3 ToVector3 (DoubleVector3 v)
+        {
+            float x = Convert.ToSingle(v.x);
+            float y = Convert.ToSingle(v.y);
+            float z = Convert.ToSingle(v.z);
+
+            return new Vector3(x, y, z);
+        }
+
+        
         #endregion
 
         #region Operators
@@ -150,16 +167,22 @@ namespace Q9Core
         #endregion
     }
 
+    [Serializable]
+    public struct ScaleLevel
+    {
+        public string name;
+        public int scale;
+    }
+
     public static class ScaleSpace
     {
         private static DoubleVector3 _apparentPosition;
         
-        public static Vector3 apparentPosition
+        public static DoubleVector3 apparentPosition
         {
             get
             {
-                Vector3 v3 = new Vector3(Convert.ToSingle(_apparentPosition.x), Convert.ToSingle(_apparentPosition.y), Convert.ToSingle(_apparentPosition.z));
-                return v3;
+                return _apparentPosition;
             }
         }
 
@@ -179,6 +202,24 @@ namespace Q9Core
 
     public class ScaleSpaceManager : MonoBehaviour
     {
+        public DoubleVector3 wantedPosition;
+        public DoubleVector3 currentPosition;
+        public ScaleLevel[] Scales;
 
+        public Dictionary<string, int> Scale = new Dictionary<string, int>();
+        private void Start()
+        {
+            foreach(ScaleLevel s in Scales)
+            {
+                Scale.Add(s.name, s.scale);
+            }
+
+            SaveIO.CreateNewSave("Nyxton", false);
+        }
+
+        private void Update()
+        {
+        
+        }
     }
 }

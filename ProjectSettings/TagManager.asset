@@ -6,6 +6,8 @@ TagManager:
   tags:
   - RegularSpace
   - ScaleSpace
+  - SS0
+  - SS1
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - ScaleSpace
-  - RegularSpace
+  - SS0
+  - SS1
   - 
   - 
   - 

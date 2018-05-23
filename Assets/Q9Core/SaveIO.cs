@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Q9Core
 {
-    public class SaveIO
+    public static class SaveIO
     {
         public class saveData
         {
@@ -23,9 +23,9 @@ namespace Q9Core
             }
         }
 
-        public saveData CurrentSaveData;
+        public static saveData CurrentSaveData;
 
-        public Dictionary<string, string> SavesList()
+        public static Dictionary<string, string> SavesList()
         {
             XmlDocument xDoc = new XmlDocument();
 
@@ -76,7 +76,7 @@ namespace Q9Core
             }
         }
 
-        public void CreateNewSave(string name, bool loadAfterCreating)
+        public static void CreateNewSave(string name, bool loadAfterCreating)
         {
             if (!Directory.Exists("Saves/" + name))
             {
@@ -85,8 +85,10 @@ namespace Q9Core
                 xWriter.Formatting = Formatting.Indented;
 
                 xWriter.WriteStartElement("Save");
+                xWriter.WriteStartElement("Profile");
                 xWriter.WriteElementString("Name", name);
                 xWriter.WriteElementString("Credits", "10000");
+                xWriter.WriteEndElement();//Profile
                 xWriter.WriteEndElement();//Save
                 xWriter.Close();
 
@@ -97,7 +99,7 @@ namespace Q9Core
             }
         }
 
-        public void LoadSave(string name)
+        public static void LoadSave(string name)
         {
             XmlDocument xDoc = new XmlDocument();
             string path = "Saves/" + name;
@@ -123,7 +125,7 @@ namespace Q9Core
             }
         }
 
-        public void DeleteSave(string name)
+        public static void DeleteSave(string name)
         {
             throw new System.NotImplementedException();
         }
