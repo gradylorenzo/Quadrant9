@@ -8,6 +8,9 @@ TagManager:
   - ScaleSpace
   - SS0
   - SS1
+  - ScaleSpaceManager
+  - SystemManager
+  - PlayerShip
   layers:
   - Default
   - TransparentFX

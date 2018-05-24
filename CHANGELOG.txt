@@ -1,0 +1,28 @@
+5.23.2018
+
++CHANGELOG.txt
++ShipAttributes (ShipControl, ShipLocking, ShipOffense, ShipDefense, ShipCapacitor) to Q9Core
++ShipState to Q9Core
++Ship class. Does not directly respond to input, being built to be compatible with both player and AI ships.
++Translate(V3) and Translate(DV3) added to Q9Core.ScaleSpace
++Warp() added to Q9Core.ScaleSpace
+>LocationState.idle => LocationState.inactive
+>LocationState.running => LocationState.active
+
+
+##############################################################################################################
+
+5.22.2018
+
++Tartarus Model
++Textures for nearby planet
++Experimental Post Processing
++Location Trigger and Manager
++DoubleVector3 FromVector3 and ToVector3
+methods
+
+~Location Manager loads prefab for
+area when player approaches
+~Location Manager will reset location
+if player has not returned within
+five minutes

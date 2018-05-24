@@ -83,6 +83,12 @@ namespace Q9Core
             return new DoubleVector3(v.x, v.y, v.z);
         }
 
+        //Distance
+        public static double Distance (DoubleVector3 a, DoubleVector3 b)
+        {
+            return Math.Sqrt(((b.x - a.x) * (b.x - a.x)) + ((b.y - a.y) * (b.y - a.y)) + ((b.z - a.z) * (b.z - a.z)));
+        }
+
         //ToSingleV3
         public static Vector3 ToVector3 (DoubleVector3 v)
         {
@@ -191,12 +197,23 @@ namespace Q9Core
             _apparentPosition = new DoubleVector3(pos.x, pos.y, pos.z);
         }
 
-        public static void TransformApparentPosition(DoubleVector3 pos)
+        public static void Translate(DoubleVector3 pos)
+        {
+            SetApparentPosition(apparentPosition + pos);
+        }
+
+        public static void Translate(Vector3 pos)
         {
             DoubleVector3 v = new DoubleVector3();
-            v.x = _apparentPosition.x + pos.x;
-            v.y = _apparentPosition.y + pos.y;
-            v.z = _apparentPosition.z + pos.z;
+            v.x = apparentPosition.x + pos.x;
+            v.y = apparentPosition.y + pos.y;
+            v.z = apparentPosition.z + pos.z;
+            SetApparentPosition(v);
+        }
+
+        public static void Warp(DoubleVector3 d, float s)
+        {
+            SetApparentPosition(DoubleVector3.MoveTowards(apparentPosition, d, s * 149597870700));
         }
     }
 
