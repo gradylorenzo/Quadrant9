@@ -18,12 +18,14 @@ namespace Q9Core
     {
         public GameObject SSO;
         public GameObject SS1;
-        public Location[] Locations;
+        public List<Location> Locations;
     }
 
+    [ExecuteInEditMode]
     public class SystemManager : MonoBehaviour
     {
         public StarSystem System;
+        public int gizmoRadius = 5;
 
         public void Start()
         {
@@ -35,8 +37,15 @@ namespace Q9Core
             foreach(Location lt in System.Locations)
             {
                 GameObject go = Resources.Load("LocationTriggerPrefabs/" + lt.PrefabResource) as GameObject;
-                GameObject cp = Instantiate(go, DoubleVector3.ToVector3(lt.position), go.transform.rotation);
+                GameObject cp = Instantiate(go, DoubleVector3.ToVector3(lt.position / 1000), go.transform.rotation);
                 cp.transform.parent = System.SSO.transform;
+            }
+        }
+        public void OnDrawGizmos()
+        {
+            foreach(Location L in System.Locations)
+            {
+                Gizmos.DrawSphere(DoubleVector3.ToVector3(L.position - (ScaleSpace.apparentPosition / 1000)), gizmoRadius);
             }
         }
     }

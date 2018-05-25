@@ -53,7 +53,7 @@ namespace Q9Core
             }
         }
 
-        public static Volume currentVolumes;
+        public static Volume currentVolume = new Volume();
 
         public static bool settingsOK = false;
 
@@ -97,7 +97,7 @@ namespace Q9Core
                 finally
                 {
                     //If successful, commit the loaded variables into the global variables
-                    currentVolumes = loadVolumes;
+                    currentVolume = loadVolumes;
                 }
             }
             else

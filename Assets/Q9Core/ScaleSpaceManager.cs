@@ -209,6 +209,7 @@ namespace Q9Core
             v.y = apparentPosition.y + pos.y;
             v.z = apparentPosition.z + pos.z;
             SetApparentPosition(v);
+
         }
 
         public static void Warp(DoubleVector3 d, float s)
@@ -236,7 +237,7 @@ namespace Q9Core
 
         private void Update()
         {
-        
+            //print(ScaleSpace.apparentPosition.x.ToString("{0.00}") + "  |  " + ScaleSpace.apparentPosition.y.ToString("{0.00}") + "  |  " + ScaleSpace.apparentPosition.z.ToString("{0.00}"));
         }
     }
 }

@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 48f8ea21c7113d1438cd766f97dd4881
+labels:
+- Sky
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}

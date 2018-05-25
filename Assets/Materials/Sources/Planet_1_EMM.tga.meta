@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 0a2ddadd3ccc8de4d816d8f819c42910
+labels:
+- Prop
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}

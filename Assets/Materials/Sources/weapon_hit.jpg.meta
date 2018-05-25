@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: b5e133f05cad02942a760f05c663a78f
+labels:
+- Effect
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}

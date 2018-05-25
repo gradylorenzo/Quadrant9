@@ -10,7 +10,7 @@ namespace Q9Core {
         {
             if(other.tag == "Player")
             {
-                GetComponent<LocationManager>().OnPlayerEnter();
+
             }
         }
 
@@ -18,8 +18,12 @@ namespace Q9Core {
         {
             if(other.tag == "Player")
             {
-                GetComponent<LocationManager>().OnPlayerExit();
+
             }
+        }
+
+        public void Update()
+        {
         }
     }
 }

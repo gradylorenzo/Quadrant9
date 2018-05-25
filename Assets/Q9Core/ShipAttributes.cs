@@ -10,9 +10,11 @@ namespace Q9Core
     {
         //Control
         public float maxWarpSpeed = 1f; //astronomical units (AU) per second
+        public float currentWarpSpeed = 1f; //current speed the ship is warping
         public float maxBurnSpeed = 1f; //meters per second
         public float maxTurnSpeed = 1f; //Turning speed of the ship
         public float acceleration = 1f; //How quickly the ship accelerates
+
     }
 
     [Serializable]
