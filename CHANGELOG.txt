@@ -1,3 +1,31 @@
+5.28.2018
++1 Fixed buggy ScaleSpace.Warp from far distances, see ~1
++2 OverviewObject, RegisterOverviewObject, and OverviewGUI added.
++3 Planet 2 added
+
+~1 Objects now move in ScaleSpace individually rather than moving with parent GO
+~2 Changelog notation,
+	+ : added
+	- : removed
+	~ : changed
+	> : to do
+	! : known issue
+
+TODO:
+>1 Add proper overview formatting using UGUI
+>2 Add location features such as structures, AI, things to do
+>3 Improve warp deceleration curve
+>4 Station interior view
+
+##############################################################################################################
+
+5.27.2018
++Improved warp acceleration curve. Deceleration is still sudden.
+
+!ScaleSpace.Warp is buggy at Point 3
+
+##############################################################################################################
+
 5.24.2018
 +Ship now rotates to face destination
 +Ships warps smoothly based on curves
@@ -19,8 +47,8 @@
 +Ship class. Does not directly respond to input, being built to be compatible with both player and AI ships.
 +Translate(V3) and Translate(DV3) added to Q9Core.ScaleSpace
 +Warp() added to Q9Core.ScaleSpace
->LocationState.idle => LocationState.inactive
->LocationState.running => LocationState.active
+~LocationState.idle => LocationState.inactive
+~LocationState.running => LocationState.active
 
 
 ##############################################################################################################

@@ -14,7 +14,8 @@ namespace Q9Core
         public float maxBurnSpeed = 1f; //meters per second
         public float maxTurnSpeed = 1f; //Turning speed of the ship
         public float acceleration = 1f; //How quickly the ship accelerates
-
+        public float mass = 1f;
+        public float inertiaModifier = 1f;
     }
 
     [Serializable]

@@ -4,13 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - RegularSpace
-  - ScaleSpace
   - SS0
   - SS1
-  - ScaleSpaceManager
-  - SystemManager
   - PlayerShip
+  - SS0Parent
+  - SS1Parent
+  - Overview
+  - Manager
   layers:
   - Default
   - TransparentFX

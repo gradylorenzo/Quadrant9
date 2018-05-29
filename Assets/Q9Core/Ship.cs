@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Q9Core;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Ship : MonoBehaviour {
 
+    #region variables
     public bool isPlayerShip = false;
     public ShipAttributes Attributes;
     public ShipState State;
@@ -17,7 +19,7 @@ public class Ship : MonoBehaviour {
     private float WantedThrottle = 0;
     private float CurrentThrottle = 0;
 
-    public AnimationCurve WarpOutCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+    public AnimationCurve WarpCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
     public AnimationCurve WarpInCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
     private float WarpStartTime;
     private float currentWarpLimiter = 1;
@@ -25,7 +27,9 @@ public class Ship : MonoBehaviour {
     private float wantedWarpSpeed = 1;
 
     public float WarpSpeed;
+    #endregion
 
+    #region Public Methods
     //Public method for aligning to a point
     public void Align(DoubleVector3 pos, bool warp)
     {
@@ -45,6 +49,7 @@ public class Ship : MonoBehaviour {
                 AlignRotation = Quaternion.LookRotation(DoubleVector3.ToVector3(d) - transform.position);
             }
             WantedRotation = AlignRotation;
+            SetThrottle(1);
 
             State = ShipState.aligning;
         }
@@ -62,6 +67,12 @@ public class Ship : MonoBehaviour {
     public void SetThrottle(float t)
     {
         WantedThrottle = Mathf.Clamp01(t);
+    }
+    #endregion
+
+    private float WarpSpeedAtTime(float time)
+    {
+        return (Attributes.Control.maxWarpSpeed * (1 - Mathf.Exp((-time * Mathf.Pow(10, 6))/(Attributes.Control.inertiaModifier * Attributes.Control.mass))));
     }
 
     public void Start()
@@ -98,18 +109,18 @@ public class Ship : MonoBehaviour {
 
         if (State == ShipState.warping)
         {
-            print(Vector3.Distance(DoubleVector3.ToVector3(ScaleSpace.apparentPosition), DoubleVector3.ToVector3(WarpDestination)) / 1000000000);
-            currentWarpLimiter = WarpOutCurve.Evaluate(Mathf.Clamp01(Vector3.Distance(DoubleVector3.ToVector3(ScaleSpace.apparentPosition), DoubleVector3.ToVector3(WarpDestination)) / 1000000000));
-            currentWarpSpeed = Mathf.Clamp(WarpOutCurve.Evaluate((Time.time - WarpStartTime) / 20), 0, currentWarpLimiter);
+            currentWarpLimiter = 1;
+            currentWarpSpeed = Mathf.Clamp(WarpCurve.Evaluate((Time.time - WarpStartTime) / 10), 0, currentWarpLimiter);
 
-            WarpSpeed = Attributes.Control.maxWarpSpeed * currentWarpSpeed;
+            WarpSpeed = currentWarpSpeed;
 
             ScaleSpace.Warp(WarpDestination, WarpSpeed);
 
-            if (DoubleVector3.Distance(ScaleSpace.apparentPosition, WarpDestination) / 1000000000 <= .0005f)
+            if (DoubleVector3.Distance(ScaleSpace.apparentPosition, WarpDestination) <= 0.00000001f)
             {
                 State = ShipState.idle;
                 SetThrottle(0);
+                print("warp complete");
             }
         }
     }
