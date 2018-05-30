@@ -1,3 +1,22 @@
+5.29.2018
++1 PixelOperator font
++2 Overview and Selected Object panels
++3 /UI folder for all UI-related items
++4 Station view scene
++5 GUIManager Static Class for managing all UI-related functions
+
+-1 SSLocationPreRuntime removed, functionality consolodated to SSLocation
+	Object does not destroy on start, instead rescales itself to SS0
+
+~1 OverviewObject renamed to OverviewObjectData
+	All objects with source OverviewObjectData need to have OverviewObjectData.generateID() invoked to generate new Guid
+
+>1 Create library of overview icons and thumbnails for lookup by overview panel and in-space icons
+
+!1 RegisterOverviewObject creates duplicate OverviewObjects, not positioned correctly, but data is passed correctly
+
+##############################################################################################################
+
 5.28.2018
 +1 Fixed buggy ScaleSpace.Warp from far distances, see ~1
 +2 OverviewObject, RegisterOverviewObject, and OverviewGUI added.

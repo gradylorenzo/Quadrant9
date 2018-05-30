@@ -79,6 +79,8 @@ public class Ship : MonoBehaviour {
     {
         WantedRotation = transform.rotation;
         CurrentRotation = transform.rotation;
+
+        GUIManager.playerShip = this;
     }
 
     public void FixedUpdate()
@@ -110,7 +112,7 @@ public class Ship : MonoBehaviour {
         if (State == ShipState.warping)
         {
             currentWarpLimiter = 1;
-            currentWarpSpeed = Mathf.Clamp(WarpCurve.Evaluate((Time.time - WarpStartTime) / 10), 0, currentWarpLimiter);
+            currentWarpSpeed = Mathf.Clamp(WarpCurve.Evaluate((Time.time - WarpStartTime) / 20), 0, currentWarpLimiter);
 
             WarpSpeed = currentWarpSpeed;
 
