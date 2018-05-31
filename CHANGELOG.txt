@@ -1,3 +1,18 @@
+5.30.2018
++1 Category icons for frigate, destroyer, cruiser, battleship, dreadnought, carrier, and supercarrier
++2 Libraries.cs on GO "Manager" for setting up icon, thumbnail, and alliance text libraries
++3 Tartarus and WIP thumbnail images
++4 Unfriendly overview objects flash red
+
+~1 Moved OverviewObjectData, Location, and StarSystem to CommonData.cs, remains in namespace Q9Core
+
+5.29.2018!1 Duplicate OverviewObjects fixed, positioning fixed
+
+!1 SSLocation gameobjects do not scale their positions properly.
+
+
+##############################################################################################################
+
 5.29.2018
 +1 PixelOperator font
 +2 Overview and Selected Object panels

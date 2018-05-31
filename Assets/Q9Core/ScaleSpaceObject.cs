@@ -6,8 +6,6 @@ public class ScaleSpaceObject : MonoBehaviour {
 
 	public float scale = 1;
     public DoubleVector3 initialPosition;
-    
-
 
     private void Start()
     {

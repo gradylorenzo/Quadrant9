@@ -53,24 +53,43 @@ namespace Q9Core
         public enum alliance
         {
             Null,
-            Friendly,
-            Unfriendly,
-            Neutral
+            Neutral,
+            YLTGR,
+            Unfriendly
         }
 
         public string guid;
         public string name;
-        public Sprite thumbnail;
+        public bool isTargetable;
         public objectCategory Category;
         public objectType Type;
         public alliance Alliance;
 
-        public Vector3 position;
-        public float scale;
+        public DoubleVector3 position;
+        //Set to 0 if object is visible system-wide
+        public float range;
 
-        public void generateID ()
+        public void initialize (DoubleVector3 pos)
         {
+            position = pos;
             guid = Guid.NewGuid().ToString();
         }
     }
+
+    [Serializable]
+    public struct Location
+    {
+        public string name;
+        public DoubleVector3 position;
+        public string PrefabResource;
+    }
+
+    [Serializable]
+    public struct StarSystem
+    {
+        public GameObject SSO;
+        public GameObject SS1;
+        public List<Location> Locations;
+    }
+
 }

@@ -38,11 +38,11 @@ public class OverviewPanel : MonoBehaviour {
         //Clear current overview objects
         foreach(GameObject go in ObjectList)
         {
-            ObjectList.Remove(go);
             Destroy(go);
         }
+        ObjectList.Clear();
 
-        int i = -57;
+        float i = 387.5f;
         //Create new overview objects
         foreach(OverviewObjectData d in DataList)
         {
@@ -51,8 +51,9 @@ public class OverviewPanel : MonoBehaviour {
             newObject = Instantiate(OverviewObjectPrefab, transform.position, transform.rotation);
             newObject.GetComponent<OverviewObject>().Data = d;
             newObject.transform.parent = this.transform;
-            newObject.GetComponent<RectTransform>().position = transform.position - newPos;
-            i += -23;
+            newObject.GetComponent<RectTransform>().localPosition = newPos;
+            ObjectList.Add(newObject);
+            i += -22.2f;
         }
     }
 }

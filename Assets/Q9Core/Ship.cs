@@ -8,34 +8,34 @@ using Q9Core;
 public class Ship : MonoBehaviour {
 
     #region variables
-    public bool isPlayerShip = false;
-    public ShipAttributes Attributes;
-    public ShipState State;
+    public bool                         isPlayerShip = false;
+    public ShipAttributes               Attributes;
+    public ShipState                    State;
 
-    private bool WantToWarp = false;
-    private Quaternion WantedRotation = new Quaternion();
-    private Quaternion CurrentRotation = new Quaternion();
-    private DoubleVector3 WarpDestination = new DoubleVector3();
-    private float WantedThrottle = 0;
-    private float CurrentThrottle = 0;
+    private bool                        WantToWarp = false;
+    private Quaternion                  WantedRotation = new Quaternion();
+    private Quaternion                  CurrentRotation = new Quaternion();
+    private DoubleVector3               WarpDestination = new DoubleVector3();
+    private float                       WantedThrottle = 0;
+    private float                       CurrentThrottle = 0;
 
-    public AnimationCurve WarpCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
-    public AnimationCurve WarpInCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
-    private float WarpStartTime;
-    private float currentWarpLimiter = 1;
-    private float currentWarpSpeed = 0;
-    private float wantedWarpSpeed = 1;
+    public AnimationCurve               WarpCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+    public AnimationCurve               WarpInCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
+    private float                       WarpStartTime;
+    private float                       currentWarpLimiter = 1;
+    private float                       currentWarpSpeed = 0;
+    private float                       wantedWarpSpeed = 1;
 
     public float WarpSpeed;
     #endregion
 
     #region Public Methods
     //Public method for aligning to a point
-    public void Align(DoubleVector3 pos, bool warp)
+    public void Align(DoubleVector3 pos, bool warpAfterAlignment)
     {
         if (State != ShipState.warping)
         {
-            WantToWarp = warp;
+            WantToWarp = warpAfterAlignment;
             WarpDestination = pos;
 
             DoubleVector3 d = new DoubleVector3(pos.x - 0, pos.y - 0, pos.z - 0);
@@ -75,7 +75,7 @@ public class Ship : MonoBehaviour {
         return (Attributes.Control.maxWarpSpeed * (1 - Mathf.Exp((-time * Mathf.Pow(10, 6))/(Attributes.Control.inertiaModifier * Attributes.Control.mass))));
     }
 
-    public void Start()
+    public void Awake()
     {
         WantedRotation = transform.rotation;
         CurrentRotation = transform.rotation;

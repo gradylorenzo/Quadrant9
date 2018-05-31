@@ -5,26 +5,42 @@ using Q9Core;
 
 public class SSLocation : MonoBehaviour {
 
-    public float scale = 1e+08f;
-    public Location Loc;
-    private SystemManager SysManager;
-    public GameObject LocationPrefab;
+    public float scale = 100000000;
+    public RegisterOverviewObject Register;
 
-    void Awake ()
+    void Start ()
     {
-        SetLocation();	
-	}
+        SetLocation();
+        Register.Initialize(DoubleVector3.FromVector3(transform.position));
+        gameObject.AddComponent<Rigidbody>();
+        gameObject.AddComponent<SphereCollider>();
+        GetComponent<SphereCollider>().radius = Register.Data.range;
+        GetComponent<SphereCollider>().isTrigger = true;
+        Register.Add();
+    }
 
     private void SetLocation()
     {
-        SysManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SystemManager>();
+        transform.position = DoubleVector3.ToVector3(DoubleVector3.FromVector3(transform.position) * scale);
 
-        Loc.position = DoubleVector3.FromVector3(transform.position) * scale;
-
-        transform.position = DoubleVector3.ToVector3(Loc.position);
-
-        this.GetComponent<ScaleSpaceObject>().scale = 1000;
+        //this.GetComponent<ScaleSpaceObject>().scale = 1000;
         transform.parent = GameObject.FindGameObjectWithTag("SS0Parent").transform;
         this.gameObject.layer = transform.parent.gameObject.layer;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "PlayerShip")
+        {
+            print("Player Entered");
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "PlayerShip")
+        {
+            print("Player Entered");
+        }
     }
 }

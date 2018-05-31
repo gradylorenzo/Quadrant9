@@ -8,10 +8,13 @@ namespace Q9Core
 {
     public static class GUIManager
     {
-
         public static GameObject SelectedItemPanel;
         public static GameObject OverviewPanel;
         public static Ship playerShip;
+
+        public static Sprite[] IconLibrary;
+        public static Sprite[] ThumbnailLibrary;
+        public static string[] AllianceLibrary;
 
         //Call the SelectedItemPanel to show data for the currently selected object
         public static void SetSelectedItem(OverviewObjectData o)
