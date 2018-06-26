@@ -7,8 +7,10 @@ using Q9Core.CommonData;
 public class ShipManager : MonoBehaviour {
 
     public Q9Ship defaultShipData;
-    public Attributes maxAttributes;
+    public Attributes baseAttributes;
+    public Attributes modifiedAttributes;
     public Attributes currentAttributes;
+
     private GameObject shipModel;
 
     private void Start()
@@ -29,7 +31,8 @@ public class ShipManager : MonoBehaviour {
         newShip = Instantiate(s._model, transform.position, transform.rotation);
         newShip.transform.SetParent(gameObject.transform);
         shipModel = newShip;
-        maxAttributes = s._attributes;
-        currentAttributes = maxAttributes;
+        baseAttributes = s._attributes;
+        currentAttributes = baseAttributes;
+        print("Ship Loaded");
     }
 }

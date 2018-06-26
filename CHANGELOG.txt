@@ -1,3 +1,25 @@
+6.26.2018
+-Majority of base code, everything except for what told the world how to behave.
+-Ship.cs.
+
++ShipManager.cs.
++Q9Core.CommonData.
++Q9Object:ScriptableObject. This will be the root of all items, ships, modules, etc. that can be shown
+	or manipulated in the inventory.
++Q9Ship Scriptable Objects. ShipManager uses one of these as the default ship and currently spawns it on Start().
+	A public method is also available to respawn as a given Q9Ship at any time.
++Status ring with shield, integrity, capacitor, and speed meters. Currently non-functional.
++Hotbar buttons. Currently non-functional.
+
+>Fixed blurry text in the overview.
+
+TODO:
++Fitting attributes, interface, stations to limit where refitting can occur.
++Q9Modules
++Updated profile saving to include current ship and fitting
+
+##############################################################################################################
+
 5.30.2018
 +1 Category icons for frigate, destroyer, cruiser, battleship, dreadnought, carrier, and supercarrier
 +2 Libraries.cs on GO "Manager" for setting up icon, thumbnail, and alliance text libraries

@@ -5,7 +5,20 @@ using Q9Core;
 
 namespace Q9Core.CommonData
 {
-    #region Attributes
+    #region Ship Attributes
+    [System.Serializable]
+    public enum ShipSizes
+    {
+        CommandPod,
+        Corvette,
+        Destroyer,
+        Cruiser,
+        Battleship,
+        Carrier,
+        Dreadnought,
+        Supercarrier
+    }
+
     [System.Serializable]
     public struct ResistanceProfile
     {
@@ -40,9 +53,32 @@ namespace Q9Core.CommonData
     [System.Serializable]
     public struct Attributes
     {
+        public Alliances _alliance;
+        public ShipSizes _size;
         public Shields _shield;
         public Integrity _integrity;
         public Capacitor _capacitor;
+    }
+    #endregion
+
+    #region Standings
+    [System.Serializable]
+    public enum Alliances
+    {
+        Neutral,
+        ShadowSyndicate,
+        CrimsonUnion,
+        TimirgorIndustries,
+        Ascendancy,
+        OracleFederation,
+        PhoenixEmpire
+    }
+
+    [System.Serializable]
+    public struct Standing
+    {
+        public Alliances _alliance;
+        public float _standing;
     }
     #endregion
 }

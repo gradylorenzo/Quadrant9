@@ -9,35 +9,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4783b2d0cc6f9f94d854bad366447e76, type: 3}
-  m_Name: Embryo
+  m_Name: Tartarus
   m_EditorClassIdentifier: 
-  _name: Embryo
-  _id: 2
+  _name: Tartarus
+  _id: 3
   _quantity: 0
   _value: 0
-  _description: A capsule-shaped craft that acts as an escape pod in the event of
-    an emergency, housing for a ship's pilot, and the control center of an entire
-    ship. It contains basic maneuvering, navigation, life support, and warping capabilities.
-  _thumbnail: {fileID: 21300000, guid: 4de57e4ab1f432d4a909c8858aae5267, type: 3}
+  _description: Tartarus-Class Supercarrier
+  _thumbnail: {fileID: 21300000, guid: fc3294b1c4a5bf34c82c400ce09d4e55, type: 3}
   _attributes:
-    _alliance: 0
+    _alliance: 5
     _size: 0
     _shield:
-      _capacity: 10
-      _rechargeRate: 1
+      _capacity: 10000000
+      _rechargeRate: 1000
       _resistances:
         thermal: 0
         kinetic: 0
         electro: 0
         explosive: 0
     _integrity:
-      _capacity: 10
+      _capacity: 5000000
       _resistances:
         thermal: 0
         kinetic: 0
         electro: 0
         explosive: 0
     _capacitor:
-      _capacity: 10
-      _rechargeRate: 1
-  _model: {fileID: 1174444098197692, guid: 863dab44fafe33342b3087e388b32089, type: 2}
+      _capacity: 100000
+      _rechargeRate: 1000
+  _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}

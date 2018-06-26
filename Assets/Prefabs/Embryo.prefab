@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4799604890379650}
   - component: {fileID: 33875647521319598}
   - component: {fileID: 23197671841737298}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4644342940774102}
   - component: {fileID: 33344362211137366}
   - component: {fileID: 23075664610671940}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4165499210765596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Embryo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4095448068135246}
   - component: {fileID: 33403780703113670}
   - component: {fileID: 23095670853222372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4382484608551448}
   - component: {fileID: 33643563334924016}
   - component: {fileID: 23936456754180502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4267579251503518}
   - component: {fileID: 33764959974438582}
   - component: {fileID: 23075359551068840}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4989018426856384}
   - component: {fileID: 33911172551790386}
   - component: {fileID: 23815752971585650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 4086642514854636}
   - component: {fileID: 33323882315402318}
   - component: {fileID: 23996793689108160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ Transform:
   m_GameObject: {fileID: 1174444098197692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 4095448068135246}
   - {fileID: 4382484608551448}
