@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Embryo
+  m_EditorClassIdentifier: Assembly-CSharp::Q9Ship
+  _name: Embryo
+  _quantity: 0
+  _value: 0
+  _description: 
+  _thumbnail: {fileID: 21300000, guid: 18e726963d91c90429559b198b83a1fa, type: 3}
+  _attributes:
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        thermal: 0
+        kinetic: 0
+        electro: 0
+        explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        thermal: 0
+        kinetic: 0
+        electro: 0
+        explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+  _model: {fileID: 1174444098197692, guid: 863dab44fafe33342b3087e388b32089, type: 2}

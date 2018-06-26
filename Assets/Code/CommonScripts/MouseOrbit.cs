@@ -6,7 +6,10 @@ public class MouseOrbit : MonoBehaviour
 {
 
     public Transform target;
-    public float distance = 5.0f;
+    public float defaultDistance = 5.0f;
+    public float zoomSpeed = 0.1f;
+    private float wantedDistance = 5.0f;
+    private float currentDistance = 5.0f;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
     public float zSpeed = 20.0f;
@@ -41,6 +44,9 @@ public class MouseOrbit : MonoBehaviour
         {
             rigidbody.freezeRotation = true;
         }
+
+        currentDistance = defaultDistance;
+        wantedDistance = defaultDistance;
     }
 
 
@@ -80,11 +86,12 @@ public class MouseOrbit : MonoBehaviour
 
             Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * zSpeed, distanceMin, distanceMax);
+            wantedDistance = Mathf.Clamp(wantedDistance - Input.GetAxis("Mouse ScrollWheel") * zSpeed, distanceMin, distanceMax);
+
+            currentDistance = Mathf.Lerp(currentDistance, wantedDistance, zoomSpeed);
 
 
-
-            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+            Vector3 negDistance = new Vector3(0.0f, 0.0f, -currentDistance);
             Vector3 position = rotation * negDistance + target.position;
 
             transform.rotation = rotation;

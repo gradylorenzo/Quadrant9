@@ -1,0 +1,68 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class StatusRingController : MonoBehaviour {
+
+    public Image ShieldBar;
+    public Image IntegrityBar;
+    public Image CapacitorBar;
+    public Image SpeedBar;
+
+    public Text ShieldPercentage;
+    public Text IntegrityPercentage;
+    public Text CapacitorPercentage;
+    public Text SpeedRead;
+
+    private float shieldFill = 1;
+    private float integrityFill = 1;
+    private float capacitorFill = 1;
+    private float nextUpdate = 0;
+
+    #region public methods
+    public void Reset()
+    {
+        shieldFill = 1;
+        integrityFill = 1;
+        capacitorFill = 1;
+    }
+
+    public void SetShield(int maxShield, int currentShield)
+    {
+        shieldFill = (1 / (maxShield / currentShield));
+    }
+
+    public void SetIntegrity(int maxInt, int currentInt)
+    {
+        integrityFill = (1 / (maxInt / currentInt));
+    }
+
+    public void SetCapacitorFill(int maxCap, int currentCap)
+    {
+        capacitorFill = (1 / (maxCap / currentCap));
+    }
+    #endregion
+
+    private void Start()
+    {
+        Reset();
+    }
+
+    private void Update()
+    {
+        UpdateMeters();
+    }
+
+    private void UpdateMeters()
+    {
+        //Update Status Ring meters once per second. Timing may be managed later by UIManager through Set..() calls.
+        ShieldBar.fillAmount = Mathf.MoveTowards(ShieldBar.fillAmount, shieldFill * .75f, .01f);
+        IntegrityBar.fillAmount = Mathf.MoveTowards(IntegrityBar.fillAmount, integrityFill * .75f, .01f);
+        CapacitorBar.fillAmount = Mathf.MoveTowards(CapacitorBar.fillAmount, capacitorFill * .75f, .01f);
+
+        ShieldPercentage.text = (shieldFill * 100).ToString("###") + "%";
+        IntegrityPercentage.text = (integrityFill * 100).ToString("###") + "%";
+        CapacitorPercentage.text = (capacitorFill * 100).ToString("###") + "%";
+    }
+}

@@ -1,95 +1,48 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Q9Core;
 
-namespace Q9Core
+namespace Q9Core.CommonData
 {
-    [Serializable]
-    public class OverviewObjectData
+    #region Attributes
+    [System.Serializable]
+    public struct ResistanceProfile
     {
-        [Serializable]
-        public enum objectCategory
-        {
-            Null,
-            Frigate,
-            Destroyer,
-            Cruiser,
-            Battleship,
-            Carrier,
-            Dreadnought,
-            Supercarrier,
-            MiningShip,
-            Fighter,
-            Sentry,
-            Wreck,
-            Station,
-            Jumpgate,
-            Star,
-            Planet,
-            Moon,
-            AsteroidBelt,
-            Asteroid,
-            Wormhole,
-            Container,
-            Beacon,
-            JumpBeacon,
-        }
-
-        [Serializable]
-        public enum objectType
-        {
-            Null,
-            CommerceStation,
-            Tartarus,
-            Star,
-            Planet,
-            Moon
-        }
-
-        [Serializable]
-        public enum alliance
-        {
-            Null,
-            Neutral,
-            YLTGR,
-            Unfriendly
-        }
-
-        public string guid;
-        public string name;
-        public bool isTargetable;
-        public objectCategory Category;
-        public objectType Type;
-        public alliance Alliance;
-
-        public DoubleVector3 position;
-        //Set to 0 if object is visible system-wide
-        public float range;
-
-        public void initialize (DoubleVector3 pos)
-        {
-            position = pos;
-            guid = Guid.NewGuid().ToString();
-        }
+        public float thermal;
+        public float kinetic;
+        public float electro;
+        public float explosive;
     }
 
-    [Serializable]
-    public struct Location
+    [System.Serializable]
+    public struct Shields
     {
-        public string name;
-        public DoubleVector3 position;
-        public string PrefabResource;
+        public float _capacity;
+        public float _rechargeRate;
+        public ResistanceProfile _resistances;
     }
 
-    [Serializable]
-    public struct StarSystem
+    [System.Serializable]
+    public struct Integrity
     {
-        public GameObject SSO;
-        public GameObject SS1;
-        public List<Location> Locations;
+        public float _capacity;
+        public ResistanceProfile _resistances;
     }
 
+    [System.Serializable]
+    public struct Capacitor
+    {
+        public float _capacity;
+        public float _rechargeRate;
+    }
+
+    [System.Serializable]
+    public struct Attributes
+    {
+        public Shields _shield;
+        public Integrity _integrity;
+        public Capacitor _capacitor;
+    }
+    #endregion
 }

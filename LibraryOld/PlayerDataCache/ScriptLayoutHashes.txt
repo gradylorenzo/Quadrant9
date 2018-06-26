@@ -1,8 +1,8 @@
 WindowsStandalone
 PlayerPath?
-D:/Builds/Q9New/Q9New.exe
+D:/Builds/Q9/Q9.exe
 SceneListBegin?
-Assets/Scenes/scalespace_test.unity
+Assets/Scenes/scalespace.unity
 SceneListEnd?
 52c5ed8154903fc3741ec6c0ad77848f com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.DiffusionProfileSettings
 42d3f1628283c56b568e7ddfc535642f com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessLayer
@@ -139,12 +139,11 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-a842119dc79a6fc63a8c4a009c7f53d7 Assembly-CSharp.dll:.ScaleSpaceController
 0ed2b90f28f88860dc3bab78d514e173 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerToggle
 0705ebe095451623f52921701110149a com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.ChromaticAberration
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Q9Core.ScaleSpaceManager
 522253c4dcb658209726eabcb6a71946 com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.LinearFog
 c97e6316f26cba500916e43256b65d48 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerGroup
+b085deaa96e6ebcaef98a10f94e80238 Assembly-CSharp.dll:.Overview
 05524b8f659e7bfe5756d1335fec24ba com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.DebugUpdater
 804f46d6d236cefd1e4c78dce6b1d45a com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.ShaderWindSettings
 d1b8c4da5934cada56f589ef74da6e6c com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessResources
@@ -174,6 +173,7 @@ e359223545c3ca11afc8d89019beab11 com.unity.render-pipelines.core.Runtime.dll:Uni
 80ebe775f32b01a1afc8f73d03900856 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerColor
 fbd86be86a1e34f9d29b0794bf818e18 com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.ReflectionProxyVolumeComponent
 ccac0923937b6cb9c942927366d87ca2 com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.HDShadowSettings
+09a0f5b7e3c5001781aecdb2cf1437b9 Assembly-CSharp.dll:.OverviewRow
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 f02726adeff0a3ec5905565234b372da UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
@@ -195,11 +195,16 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 b13a5e08ca2e3afe846db1d60a588ec4 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerVector2
+25b1f55c7219f3fe9a688829cbb4b072 Assembly-CSharp.dll:Q9Core.PlayerShipLoader
+1ebba70c95135f41f78e4a35061977d6 Assembly-CSharp.dll:.AudioVolumeController
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 7ec6662cc21bf9df7d1c75e5fa38eec1 com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.ProceduralSky
 44c2ca8fea6526907b3812c927f3fde3 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerValue
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SunController
+e95cbdb18cb731c121f9ca210d138753 Assembly-CSharp.dll:.StatusRingController
+0b6b278884c947c63b95aaf04512b54f Assembly-CSharp.dll:.Ship
 44c2ca8fea6526907b3812c927f3fde3 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerUIntField
+809b8d88fabc7f73ff187822256cb8b4 Assembly-CSharp.dll:.SelectedItemPanel
 f3a7d6b7ba2834fa390d7aee0d4a2173 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessVolume
 ea000d95aa91419abffd57da10ada274 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerCanvas
 7c9beca088096c561ae26af0011308b8 com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.HDRISky
@@ -212,8 +217,9 @@ ffa7fcd9fc705df60e62e22994540772 com.unity.render-pipelines.core.Runtime.dll:Uni
 b2c466b9886d58c8ae74783098b0f24a com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.HDAdditionalLightData
 359c04ff85d238bf6df69294febb8bfc com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.FreeCamera
 84fc425df19f6802d3e9fa77ee46854c com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.HDAdditionalCameraData
+be7e14bdc98a3e5fd944dcec6c7f38e4 Assembly-CSharp.dll:.MouseOrbit
 a38c965d56b79e71ceb0bb922e53ab99 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerHBox
+706e0b7d86b52cc3c1e345b10876550d Assembly-CSharp.dll:.ScaleSpaceObject
 096a6923c50830991588ec9694cf2eab com.unity.render-pipelines.high-definition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.ReflectionSystemSceneDictionary
 04d65fe77e066506e98e473b918f4017 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerContainer
 44c2ca8fea6526907b3812c927f3fde3 com.unity.render-pipelines.core.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerIndirectFloatField
-406b486b57b4ea468784064da310b166 Assembly-CSharp.dll:.MouseOrbit

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/scalespace_test.unity
+- path: Assets/Scenes/scalespace.unity
   isLoaded: 1
   isActive: 1
