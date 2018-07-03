@@ -28,17 +28,17 @@ public class StatusRingController : MonoBehaviour {
         capacitorFill = 1;
     }
 
-    public void SetShield(int maxShield, int currentShield)
+    public void SetShield(float maxShield, float currentShield)
     {
         shieldFill = (1 / (maxShield / currentShield));
     }
 
-    public void SetIntegrity(int maxInt, int currentInt)
+    public void SetIntegrity(float maxInt, float currentInt)
     {
         integrityFill = (1 / (maxInt / currentInt));
     }
 
-    public void SetCapacitorFill(int maxCap, int currentCap)
+    public void SetCapacitorFill(float maxCap, float currentCap)
     {
         capacitorFill = (1 / (maxCap / currentCap));
     }

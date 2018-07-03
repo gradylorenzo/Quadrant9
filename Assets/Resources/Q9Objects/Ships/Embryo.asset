@@ -23,7 +23,7 @@ MonoBehaviour:
     _alliance: 0
     _size: 0
     _shield:
-      _capacity: 10
+      _capacity: 100
       _rechargeRate: 1
       _resistances:
         thermal: 0
@@ -38,6 +38,15 @@ MonoBehaviour:
         electro: 0
         explosive: 0
     _capacitor:
-      _capacity: 10
+      _capacity: 100
       _rechargeRate: 1
+    _fitting:
+      HighSlots: 0
+      MidSlots: 0
+      LowSlots: 0
+      RigSlots: 0
+      m_highSlots: []
+      m_midSlots: []
+      m_lowSlots: []
+      m_rigSlots: []
   _model: {fileID: 1174444098197692, guid: 863dab44fafe33342b3087e388b32089, type: 2}

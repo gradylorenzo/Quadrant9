@@ -51,6 +51,22 @@ namespace Q9Core.CommonData
     }
 
     [System.Serializable]
+    public struct Fitting
+    {
+        public Q9Module[] m_highSlots;
+        public Q9Module[] m_midSlots;
+        public Q9Module[] m_lowSlots;
+        public Q9Module[] m_rigSlots;
+    }
+
+    [System.Serializable]
+    public struct Cargo
+    {
+        public float _capacity; //Cargo bay capacity in cubic meters
+        public Q9Object[] _cargo;
+    }
+
+    [System.Serializable]
     public struct Attributes
     {
         public Alliances _alliance;
@@ -58,8 +74,12 @@ namespace Q9Core.CommonData
         public Shields _shield;
         public Integrity _integrity;
         public Capacitor _capacitor;
+        public Fitting _fitting;
+        public Cargo _cargo;
     }
     #endregion
+
+
 
     #region Standings
     [System.Serializable]
