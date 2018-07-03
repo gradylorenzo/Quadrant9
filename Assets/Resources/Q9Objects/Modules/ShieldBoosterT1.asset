@@ -18,10 +18,10 @@ MonoBehaviour:
   _volume: 0
   _description: When triggered, this device periodically consumes capacitor power
     to boost the ship's shields.
-  _thumbnail: {fileID: 21300000, guid: af5a27fe98403d043bb6fad55aa6a0a6, type: 3}
+  _thumbnail: {fileID: 21300000, guid: a2fa884d02b163542995094aea208bdd, type: 3}
   _isPassive: 0
   _cooldown: 5
-  _capacitorUse: 7500
+  _capacitorUse: 15000
   _size: 4
   _slot: 0
   _nextCycle: 0
@@ -30,4 +30,4 @@ MonoBehaviour:
   _queueDeactivation: 0
   _user: {fileID: 0}
   _target: {fileID: 0}
-  _boostAmount: 40000
+  _boostAmount: 2000000

@@ -7,17 +7,21 @@ using Q9Core.CommonData;
 
 public class ShipManager : MonoBehaviour {
 
+    public bool isPlayerShip;
     public Q9Ship defaultShipData;
     public Attributes baseAttributes;
     public Attributes modifiedAttributes;
     public Attributes currentAttributes;
 
-    private GameObject shipModel;
+    public GameObject shipModel;
     public GameObject target;
 
     private void Awake()
     {
-        Q9GameManager._playerShip = this;
+        if (isPlayerShip)
+        {
+            Q9GameManager._playerShip = this;
+        }
         LoadShip(defaultShipData);
     }
 
@@ -80,7 +84,6 @@ public class ShipManager : MonoBehaviour {
 
         currentAttributes = baseAttributes;
         CalculateModifiedAttributes();
-        print("Ship Loaded");
     }
 
     private void CalculateModifiedAttributes()
@@ -94,7 +97,6 @@ public class ShipManager : MonoBehaviour {
     public void RepairShield(float a)
     {
         currentAttributes._shield._capacity = Mathf.Clamp(currentAttributes._shield._capacity + a, 0, modifiedAttributes._shield._capacity);
-        print("repaired shield for " + a + " points");
     }
 
     public void RepairIntegrity(float a)
@@ -110,6 +112,7 @@ public class ShipManager : MonoBehaviour {
     public void ConsumeCapacitor(float a)
     {
         currentAttributes._capacitor._capacity -= a;
+        print("consumed " + a + " GJ");
     }
 #endregion
 

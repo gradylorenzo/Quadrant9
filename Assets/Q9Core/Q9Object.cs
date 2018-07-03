@@ -50,6 +50,8 @@ namespace Q9Core
                 _user = u;
                 _target = t;
                 _activated = true;
+                _nextCycle = 0;
+                _lastCycle = 0;
             }
             Debug.Log("Activated");
         }
@@ -68,24 +70,28 @@ namespace Q9Core
             {
                 if (_activated)
                 {
-                    if (Time.time > _nextCycle)
+                    if(Time.time > _lastCycle + _cooldown || _lastCycle == 0)
                     {
-                        if (!_queueDeactivation)
-                        {
-                            _lastCycle = _nextCycle;
-                            _nextCycle += _cooldown;
-                            doEffect();
-                        }
-                        else
+                        if (_queueDeactivation)
                         {
                             _activated = false;
                             _queueDeactivation = false;
                         }
+                        else
+                        {
+                            if (_user.GetComponent<ShipManager>().currentAttributes._capacitor._capacity > _capacitorUse)
+                            {
+                                _user.GetComponent<ShipManager>().ConsumeCapacitor(_capacitorUse);
+                                doEffect();
+                            }
+                            else
+                            {
+                                Q9GameManager._announcer.QueueClip_InsufficientPower();
+                                Deactivate();
+                            }
+                            _lastCycle = Time.time;
+                        }
                     }
-                }
-                else
-                {
-
                 }
             }
         }

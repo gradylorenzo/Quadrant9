@@ -1,3 +1,29 @@
+7.3.2018
++Q9Module : Q9Object
++Q9Item : Q9Object
++Q9Ship : Q9Object
+	Inventory will eventually be able to show and manipulate objects deriving from base Q9Object class.
+	
++Status Ring, includes shield, integrity, and capacitor displays and percentages
++Hotbar Buttons, 3 rows of 4 buttons each, used for activating different modules on the player's ship.
+	Takes either mouse clicks or button presses from F-Keys 1-12
++Q9Announcer, which takes simple commands and manages audio announcements with a queue system.
+	Tries to not spam the same announcement multiple times. Checks to make sure last index in _queue
+	is not the same clip as the one trying to be queued.
++ShieldBooster : Q9Module
++Shield 
++CommonData.Fitting
+	Q9Module Arrays for High, Medium, Low, and Rig slots.
++CommonData.Cargo
+	Q9Object array and overall capacity in cubic meters
+	
++Q9Object.volume for describing the size of an object in cubic meters.
++Temporary command pod model, "Embryo"
++Resources/Ships, Items, Modules
+
+
+##############################################################################################################
+
 6.26.2018
 -Majority of base code, everything except for what told the world how to behave.
 -Ship.cs.

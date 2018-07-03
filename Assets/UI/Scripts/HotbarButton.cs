@@ -8,7 +8,9 @@ using Q9Core.CommonData;
 
 public class HotbarButton : MonoBehaviour
 {
+    public KeyCode _key;
     public Image _timer;
+    public Image _icon;
     public Color ActiveColor;
     public Color DeactiveColor;
     public Q9Module.Slots _slots;
@@ -81,6 +83,11 @@ public class HotbarButton : MonoBehaviour
         {
             print("No Player Ship");
         }
+
+        if (_targetModule)
+        {
+            _icon.sprite = _targetModule._thumbnail;
+        }
     }
 
     public void Update()
@@ -89,7 +96,7 @@ public class HotbarButton : MonoBehaviour
         {    
             if (_targetModule._activated)
             {
-                _timer.fillAmount = (Time.time - _targetModule._lastCycle) / (_targetModule._nextCycle - _targetModule._lastCycle);
+                _timer.fillAmount = (1 - ((_targetModule._cooldown - (Time.time - _targetModule._lastCycle)) / _targetModule._cooldown));
                 //_timer.fillAmount = 0.75f;
                 if (_targetModule._queueDeactivation)
                 {
@@ -108,6 +115,11 @@ public class HotbarButton : MonoBehaviour
         else
         {
             _timer.fillAmount = 0;
+        }
+
+        if (Input.GetKeyDown(_key))
+        {
+            OnClick();
         }
     }
 }

@@ -23,7 +23,7 @@ MonoBehaviour:
     _size: 0
     _shield:
       _capacity: 10000000
-      _rechargeRate: 1000
+      _rechargeRate: 100000
       _resistances:
         thermal: 0
         kinetic: 0
@@ -41,6 +41,7 @@ MonoBehaviour:
       _rechargeRate: 500
     _fitting:
       m_highSlots:
+      - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
       - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
       - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
       m_midSlots: []
