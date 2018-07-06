@@ -6,17 +6,6 @@ using Q9Core.CommonData;
 
 namespace Q9Core
 {
-    [System.Serializable]
-    public struct PassiveBonuses
-    {
-        public Shields _shieldBonus;
-        public Integrity _integrityBonus;
-        public Capacitor _capacitorBonus;
-        public Offensive _offensiveBonus;
-        public ResistanceProfile _resistanceBonus;
-        public Cargo _cargoBonus;
-    }
-
     public class Q9Object : ScriptableObject
     {
         public string _name;
@@ -25,10 +14,10 @@ namespace Q9Core
         public int _value;
         public float _volume;
         public string _description;
+        public Tier _tier;
         public Sprite _thumbnail;
+        public Physical _physical;
     }
-
-
 
     public class Q9Module : Q9Object
     {
@@ -41,20 +30,58 @@ namespace Q9Core
             Rig
         }
 
-        public bool _isPassive;
-        public float _cooldown;
-        public float _capacitorUse;
-        public int _size;
+        [Header("Fitting Restrictions")]
+        public float _teraflops;
+        public float _terawatts;
         public Slots _slot;
 
-        public float _nextCycle = 0;
-        public float _lastCycle = 0;
-        public bool _activated;
-        public bool _queueDeactivation;
-        public GameObject _user;
-        public GameObject _target;
+        [Header ("Passive Module Attributes")]
+        public bool _isPassive;
+        public Bonuses _passiveBonuses;
 
-        public PassiveBonuses _bonuses;
+        [Header("Active Module Attributes")]
+        public float _primaryCooldown;
+        public float _secondaryCooldown;
+        public float _capacitorUse;
+
+        #region Properties
+        private bool _activated;
+        private bool _queueDeactivation;
+        public bool isActivated
+        {
+            get { return _activated; }
+        }
+        public bool isQueuedToDeactivate
+        {
+            get { return _queueDeactivation; }
+        }
+
+        private GameObject _User;
+        private GameObject _Target;
+        public GameObject _user
+        {
+            get { return _User; }
+            set { _User = value; }
+        }
+        public GameObject _target
+        {
+            get { return _Target; }
+            set { _Target = value; }
+        }
+
+        private float _nc = 0;
+        private float _lc = 0;
+        public float _nextCycle
+        {
+            get { return _nc; }
+        }
+        public float _lastCycle
+        {
+            get { return _lc; }
+        }
+
+        #endregion
+
 
         public void Activate(GameObject u, GameObject t)
         {
@@ -63,8 +90,8 @@ namespace Q9Core
                 _user = u;
                 _target = t;
                 _activated = true;
-                _nextCycle = 0;
-                _lastCycle = 0;
+                _nc = 0;
+                _lc = 0;
             }
         }
 
@@ -81,12 +108,13 @@ namespace Q9Core
             {
                 if (_activated)
                 {
-                    if(Time.time > _lastCycle + _cooldown || _lastCycle == 0)
+                    if(Time.time > _lc + _primaryCooldown || _lc == 0)
                     {
                         if (_queueDeactivation)
                         {
                             _activated = false;
                             _queueDeactivation = false;
+                            OnDeactivated();
                         }
                         else
                         {
@@ -100,7 +128,7 @@ namespace Q9Core
                                 Q9GameManager._announcer.QueueClip(Q9Announcer.VoicePrompts.InsufficientPower);
                                 Deactivate();
                             }
-                            _lastCycle = Time.time;
+                            _lc = Time.time;
                         }
                     }
                 }
@@ -108,6 +136,11 @@ namespace Q9Core
         }
 
         public virtual void doEffect()
+        {
+
+        }
+
+        public virtual void OnDeactivated()
         {
 
         }

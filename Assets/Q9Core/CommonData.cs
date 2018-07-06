@@ -7,6 +7,16 @@ namespace Q9Core.CommonData
 {
     #region Ship Attributes
     [System.Serializable]
+    public enum Tier
+    {
+        L1,
+        L2,
+        L3,
+        MIL,
+        HVT
+    }
+
+    [System.Serializable]
     public enum ShipSizes
     {
         CommandPod,
@@ -28,17 +38,28 @@ namespace Q9Core.CommonData
         explosive,
     }
 
-    
-
     [System.Serializable]
     public struct Weapon
     {
+        public Q9Charge.Type _chargeType;
         public DamageTypes _damageType;
-        public float _baseDamage;
-        public float _baseOptimal;
-        public float _baseRange;
-        public float _flightTime;
-        public float _baseTracking;
+        public float _damage;
+        public float _optimal;
+        public float _range;
+        public float _flightSpeed;
+        public float _tracking;
+
+        public static Weapon operator + (Weapon w1, Weapon w2)
+        {
+            Weapon w3 = new Weapon();
+            w3._damage = w1._damage + w2._damage;
+            w3._optimal = w1._optimal + w2._optimal;
+            w3._range = w1._range + w2._range;
+            w3._flightSpeed = w1._flightSpeed + w2._flightSpeed;
+            w3._tracking = w1._tracking + w2._tracking;
+
+            return w3;
+        }
     }
 
     [System.Serializable]
@@ -48,6 +69,13 @@ namespace Q9Core.CommonData
         public float _kinetic;
         public float _electro;
         public float _explosive;
+    }
+
+    [System.Serializable]
+    public struct Physical
+    {
+        public float _mass;
+        public float _signature;
     }
 
     [System.Serializable]
@@ -75,6 +103,8 @@ namespace Q9Core.CommonData
     [System.Serializable]
     public struct Fitting
     {
+        public float _teraflops; //hah :D
+        public float _terawatts;
         public Q9Module[] _highSlots;
         public Q9Module[] _midSlots;
         public Q9Module[] _lowSlots;
@@ -94,15 +124,102 @@ namespace Q9Core.CommonData
     public struct Cargo
     {
         public float _capacity; //Cargo bay capacity in cubic meters
-        public Q9Object[] _cargo;
+        public List<Q9Object> _cargo;
+
+        public bool Contains(Q9Object item)
+        {
+            foreach (Q9Object o in _cargo)
+            {
+                if(o._name == item._name && o._quantity >= item._quantity)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool Contains(Q9Object item, int i)
+        {
+            foreach (Q9Object o in _cargo)
+            {
+                if (o._name == item._name && o._quantity >= i)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void Remove(Q9Object item)
+        {
+            foreach (Q9Object o in _cargo)
+            {
+                if (o._name == item._name)
+                {
+                    if (o._quantity > item._quantity)
+                    {
+                        o._quantity -= item._quantity;
+                    }
+                    else if (o._quantity == item._quantity)
+                    {
+                        _cargo.Remove(o);
+                    }
+                    else
+                    {
+                        //Notify the player that the given item was not available in this quantity
+                    }
+                }
+                else
+                {
+                    //Notify the player that the given item was not found in the cargo
+                }
+            }
+        }
+
+        public void Remove(Q9Object item, int i)
+        {
+            foreach (Q9Object o in _cargo)
+            {
+                if (o._name == item._name)
+                {
+                    if (o._quantity > i)
+                    {
+                        o._quantity -= i;
+                    }
+                    else if (o._quantity == i)
+                    {
+                        _cargo.Remove(o);
+                    }
+                    else
+                    {
+                        //Notify the player that the given item was not available in this quantity
+                    }
+                }
+                else
+                {
+                    //Notify the player that the given item was not found in the cargo
+                }
+            }
+        }
     }
 
-    
+    [System.Serializable]
+    public struct Bonuses
+    {
+        public Shields _shield;
+        public Integrity _integrity;
+        public Capacitor _capacitor;
+        public Offensive _offensive;
+        public Cargo _cargo;
+    }
+
     [System.Serializable]
     public struct Attributes
     {
+        public Tier _tier;
         public Alliances _alliance;
         public ShipSizes _size;
+        public Physical _physical;
         public Shields _shield;
         public Integrity _integrity;
         public Capacitor _capacitor;
@@ -112,9 +229,14 @@ namespace Q9Core.CommonData
     }
     #endregion
 
+    #region Profile
+    [System.Serializable]
+    public struct Identity
+    {
+        public string _name;
+        public int _credits;
+    }
 
-
-    #region Standings
     [System.Serializable]
     public enum Alliances
     {
@@ -134,7 +256,13 @@ namespace Q9Core.CommonData
         public float _standing;
     }
 
-    
+    [System.Serializable]
+    public class PlayerProfile
+    {
+        public Identity _identity;
+        public Alliances _alliance;
+        public Standing[] _standings;
+    }
 
     #endregion
 }

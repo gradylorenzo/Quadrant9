@@ -1,3 +1,18 @@
+7.6.2018
++1 CommonData.Bonuses
++2 Q9Module._passiveBonuses : CommonData.Bonuses
++3 ShipManager.CalculateModifiedAttributes being written
+	Probably not going to be in a finished state for a long time.
+	Functions pretty well, no obvious bugs
++4 More code for the functionality of ship weapons, etc. Q9Charges : Q9Object, Q9Weapon : Q9Module
++5 Cargo.Contains, Cargo.Remove, will write Cargo.Add tomorrow.
++6 Q9PassiveModule : Q9Module
+
+TODO: Start writing targetting, review ShipManager for use in PlayerShip and NPC cases. Build primitive NPC for testing
+Weapons. Finish writing and testing Q9Weapon. Write minor notification system for errors and warnings.
+
+##############################################################################################################
+
 7.4.2018
 Happy July 4th, everyone. Not a lot going on, added classes that will be used by weapon modules.
 
@@ -30,8 +45,7 @@ Modules may need to be changed so they derive from Q9HighSlotModule : Q9Module s
 	is not the same clip as the one trying to be queued. Instructions on creating similar voices are at the
 	end of this entry
 	
-+7 ShieldBooster : Q9Module
-+8 Shield 
++7 ShieldBooster : Q9Module 
 +9 CommonData.Fitting
 	Q9Module Arrays for High, Medium, Low, and Rig slots.
 +10 CommonData.Cargo

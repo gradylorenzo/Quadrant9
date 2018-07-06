@@ -4,9 +4,8 @@ using UnityEngine;
 using Q9Core;
 using Q9Core.CommonData;
 
-[CreateAssetMenu(fileName = "New ShieldBooster", menuName = "ShieldBooster")]
+[CreateAssetMenu(fileName = "New ShieldBooster", menuName = "Module/ShieldBooster")]
 public class Q9ShieldBooster : Q9Module {
-
     public float _boostAmount;
 
     public override void doEffect()

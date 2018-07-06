@@ -24,7 +24,7 @@ public class HotbarButton : MonoBehaviour
     {
         if (_targetModule)
         {
-            if (_targetModule._activated)
+            if (_targetModule.isActivated)
             {
                 _targetModule.Deactivate();
             }
@@ -103,11 +103,10 @@ public class HotbarButton : MonoBehaviour
     {
         if(_timer && _targetModule)
         {    
-            if (_targetModule._activated)
+            if (_targetModule.isActivated)
             {
-                _timer.fillAmount = (1 - ((_targetModule._cooldown - (Time.time - _targetModule._lastCycle)) / _targetModule._cooldown));
-                //_timer.fillAmount = 0.75f;
-                if (_targetModule._queueDeactivation)
+                _timer.fillAmount = (1 - ((_targetModule._primaryCooldown - (Time.time - _targetModule._lastCycle)) / _targetModule._primaryCooldown));
+                if (_targetModule.isQueuedToDeactivate)
                 {
                     _timer.color = DeactiveColor;
                 }

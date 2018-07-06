@@ -96,15 +96,11 @@ public class ShipManager : MonoBehaviour {
         }
 
         currentAttributes = baseAttributes;
-        CalculateModifiedAttributes();
+        modifiedAttributes = baseAttributes;
+        CalculateModifiedAttributes(true);
     }
 
-    private void CalculateModifiedAttributes()
-    {
-        //This method will later calculate the modified attributes of the ships considering all passive modules and, eventually, skills.
-        //For now, it just mirrors the base stats.
-        modifiedAttributes = baseAttributes;
-    }
+    
 
     #region repair methods
     public void RepairShield(float a)
@@ -137,10 +133,10 @@ public class ShipManager : MonoBehaviour {
     {
         #region Standard ship loops. Passive Capacitor/Shield recharge. Integrity does not passively recharge.
         if (currentAttributes._shield._capacity < modifiedAttributes._shield._capacity)
-        RepairShield(modifiedAttributes._shield._rechargeRate * Time.deltaTime);
+        RepairShield(currentAttributes._shield._rechargeRate * Time.deltaTime);
 
         if(currentAttributes._capacitor._capacity < modifiedAttributes._capacitor._capacity)
-        RechargeCapacitor(modifiedAttributes._capacitor._rechargeRate * Time.deltaTime);
+        RechargeCapacitor(currentAttributes._capacitor._rechargeRate * Time.deltaTime);
 
         foreach(Q9Module m in currentAttributes._fitting._highSlots)
         {
@@ -161,5 +157,264 @@ public class ShipManager : MonoBehaviour {
         }
 
 #endregion
+    }
+
+    private void CalculateModifiedAttributes(bool ResetCurrentAttributesAfterRecalculate)
+    {
+        //Mirror base stats
+        modifiedAttributes = baseAttributes;
+        //Go through modules, determine if they are passive, and if they are, modify the ModifiedAttributes accordingly
+        //Go through High Slot modules
+        foreach (Q9Module m in modifiedAttributes._fitting._highSlots)
+        {
+            //Is the slot filled?
+            if (m != null)
+            {
+                //Calculate new physical attributes, regardless of module passivity
+                modifiedAttributes._physical._mass += m._physical._mass;
+                modifiedAttributes._physical._signature += m._physical._signature;
+
+                //Is the module in the slot passive? Active module bonuses will be ignored.
+                if (m._isPassive)
+                {
+                    //Calculate shield modifications
+                    //Calculate new shield capacity and base recharge rate
+                    modifiedAttributes._shield._capacity += m._passiveBonuses._shield._capacity;
+                    modifiedAttributes._shield._rechargeRate += m._passiveBonuses._shield._rechargeRate;
+
+                    //Calculate new resistance profile for shields
+                    float s_raw_therm_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._thermal));
+                    float s_raw_kin_resist = modifiedAttributes._shield._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._kinetic));
+                    float s_raw_elect_resist = modifiedAttributes._shield._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._electro));
+                    float s_raw_explo_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._shield._resistances._thermal = Mathf.Clamp(s_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._kinetic = Mathf.Clamp(s_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._electro = Mathf.Clamp(s_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._explosive = Mathf.Clamp(s_raw_explo_resist, 0, .90f);
+
+                    //Calculate integrity modifications
+                    //Calculate new resistance profile for integrity
+                    modifiedAttributes._integrity._capacity += m._passiveBonuses._integrity._capacity;
+
+                    //Calculate new resistance profile for integrity
+                    float i_raw_therm_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._thermal));
+                    float i_raw_kin_resist = modifiedAttributes._integrity._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._kinetic));
+                    float i_raw_elect_resist = modifiedAttributes._integrity._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._electro));
+                    float i_raw_explo_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._integrity._resistances._thermal = Mathf.Clamp(i_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._kinetic = Mathf.Clamp(i_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._electro = Mathf.Clamp(i_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._explosive = Mathf.Clamp(i_raw_explo_resist, 0, .90f);
+
+                    //Calculate capacitor modifications
+                    modifiedAttributes._capacitor._capacity += m._passiveBonuses._capacitor._capacity;
+                    modifiedAttributes._capacitor._rechargeRate += m._passiveBonuses._capacitor._capacity;
+
+                    //Calculate offensive modifications
+                    modifiedAttributes._offensive._laser += m._passiveBonuses._offensive._laser;
+                    modifiedAttributes._offensive._projectile += m._passiveBonuses._offensive._projectile;
+                    modifiedAttributes._offensive._railgun += m._passiveBonuses._offensive._railgun;
+                    modifiedAttributes._offensive._missile += m._passiveBonuses._offensive._missile;
+
+                    //Calculate cargo capacity modifications
+                    modifiedAttributes._cargo._capacity += m._passiveBonuses._cargo._capacity;
+                }
+            }
+        }
+
+        //Go through Mid Slot modules
+        foreach (Q9Module m in modifiedAttributes._fitting._midSlots)
+        {
+            //Is the slot filled?
+            if (m != null)
+            {
+                //Is the module in the slot passive? Active module bonuses will be ignored.
+                if (m._isPassive)
+                {
+                    //Calculate new physical attributes
+                    modifiedAttributes._physical._mass += m._physical._mass;
+                    modifiedAttributes._physical._signature += m._physical._signature;
+
+                    //Calculate shield modifications
+                    //Calculate new shield capacity and base recharge rate
+                    modifiedAttributes._shield._capacity += m._passiveBonuses._shield._capacity;
+                    modifiedAttributes._shield._rechargeRate += m._passiveBonuses._shield._rechargeRate;
+
+                    //Calculate new resistance profile for shields
+                    float s_raw_therm_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._thermal));
+                    float s_raw_kin_resist = modifiedAttributes._shield._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._kinetic));
+                    float s_raw_elect_resist = modifiedAttributes._shield._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._electro));
+                    float s_raw_explo_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._shield._resistances._thermal = Mathf.Clamp(s_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._kinetic = Mathf.Clamp(s_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._electro = Mathf.Clamp(s_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._explosive = Mathf.Clamp(s_raw_explo_resist, 0, .90f);
+
+                    //Calculate integrity modifications
+                    //Calculate new resistance profile for integrity
+                    modifiedAttributes._integrity._capacity += m._passiveBonuses._integrity._capacity;
+
+                    //Calculate new resistance profile for integrity
+                    float i_raw_therm_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._thermal));
+                    float i_raw_kin_resist = modifiedAttributes._integrity._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._kinetic));
+                    float i_raw_elect_resist = modifiedAttributes._integrity._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._electro));
+                    float i_raw_explo_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._integrity._resistances._thermal = Mathf.Clamp(i_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._kinetic = Mathf.Clamp(i_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._electro = Mathf.Clamp(i_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._explosive = Mathf.Clamp(i_raw_explo_resist, 0, .90f);
+
+                    //Calculate capacitor modifications
+                    modifiedAttributes._capacitor._capacity += m._passiveBonuses._capacitor._capacity;
+                    modifiedAttributes._capacitor._rechargeRate += m._passiveBonuses._capacitor._capacity;
+
+                    //Calculate offensive modifications
+                    modifiedAttributes._offensive._laser += m._passiveBonuses._offensive._laser;
+                    modifiedAttributes._offensive._projectile += m._passiveBonuses._offensive._projectile;
+                    modifiedAttributes._offensive._railgun += m._passiveBonuses._offensive._railgun;
+                    modifiedAttributes._offensive._missile += m._passiveBonuses._offensive._missile;
+
+                    //Calculate cargo capacity modifications
+                    modifiedAttributes._cargo._capacity += m._passiveBonuses._cargo._capacity;
+                }
+            }
+        }
+
+        //Go through Low Slot modules
+        foreach (Q9Module m in modifiedAttributes._fitting._lowSlots)
+        {
+            //Is the slot filled?
+            if (m != null)
+            {
+                //Is the module in the slot passive? Active module bonuses will be ignored.
+                if (m._isPassive)
+                {
+                    //Calculate new physical attributes
+                    modifiedAttributes._physical._mass += m._physical._mass;
+                    modifiedAttributes._physical._signature += m._physical._signature;
+
+                    //Calculate shield modifications
+                    //Calculate new shield capacity and base recharge rate
+                    modifiedAttributes._shield._capacity += m._passiveBonuses._shield._capacity;
+                    modifiedAttributes._shield._rechargeRate += m._passiveBonuses._shield._rechargeRate;
+
+                    //Calculate new resistance profile for shields
+                    float s_raw_therm_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._thermal));
+                    float s_raw_kin_resist = modifiedAttributes._shield._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._kinetic));
+                    float s_raw_elect_resist = modifiedAttributes._shield._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._electro));
+                    float s_raw_explo_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._shield._resistances._thermal = Mathf.Clamp(s_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._kinetic = Mathf.Clamp(s_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._electro = Mathf.Clamp(s_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._explosive = Mathf.Clamp(s_raw_explo_resist, 0, .90f);
+
+                    //Calculate integrity modifications
+                    //Calculate new resistance profile for integrity
+                    modifiedAttributes._integrity._capacity += m._passiveBonuses._integrity._capacity;
+
+                    //Calculate new resistance profile for integrity
+                    float i_raw_therm_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._thermal));
+                    float i_raw_kin_resist = modifiedAttributes._integrity._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._kinetic));
+                    float i_raw_elect_resist = modifiedAttributes._integrity._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._electro));
+                    float i_raw_explo_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._integrity._resistances._thermal = Mathf.Clamp(i_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._kinetic = Mathf.Clamp(i_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._electro = Mathf.Clamp(i_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._explosive = Mathf.Clamp(i_raw_explo_resist, 0, .90f);
+
+                    //Calculate capacitor modifications
+                    modifiedAttributes._capacitor._capacity += m._passiveBonuses._capacitor._capacity;
+                    modifiedAttributes._capacitor._rechargeRate += m._passiveBonuses._capacitor._capacity;
+
+                    //Calculate offensive modifications
+                    modifiedAttributes._offensive._laser += m._passiveBonuses._offensive._laser;
+                    modifiedAttributes._offensive._projectile += m._passiveBonuses._offensive._projectile;
+                    modifiedAttributes._offensive._railgun += m._passiveBonuses._offensive._railgun;
+                    modifiedAttributes._offensive._missile += m._passiveBonuses._offensive._missile;
+
+                    //Calculate cargo capacity modifications
+                    modifiedAttributes._cargo._capacity += m._passiveBonuses._cargo._capacity;
+                }
+            }
+        }
+
+        //Go through Rig Slot modules
+        foreach (Q9Module m in modifiedAttributes._fitting._lowSlots)
+        {
+            //Is the slot filled?
+            if (m != null)
+            {
+                //Is the module in the slot passive? Active module bonuses will be ignored.
+                if (m._isPassive)
+                {
+                    //Calculate new physical attributes
+                    modifiedAttributes._physical._mass += m._physical._mass;
+                    modifiedAttributes._physical._signature += m._physical._signature;
+
+                    //Calculate shield modifications
+                    //Calculate new shield capacity and base recharge rate
+                    modifiedAttributes._shield._capacity += m._passiveBonuses._shield._capacity;
+                    modifiedAttributes._shield._rechargeRate += m._passiveBonuses._shield._rechargeRate;
+
+                    //Calculate new resistance profile for shields
+                    float s_raw_therm_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._thermal));
+                    float s_raw_kin_resist = modifiedAttributes._shield._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._kinetic));
+                    float s_raw_elect_resist = modifiedAttributes._shield._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._electro));
+                    float s_raw_explo_resist = modifiedAttributes._shield._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._shield._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._shield._resistances._thermal = Mathf.Clamp(s_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._kinetic = Mathf.Clamp(s_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._electro = Mathf.Clamp(s_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._shield._resistances._explosive = Mathf.Clamp(s_raw_explo_resist, 0, .90f);
+
+                    //Calculate integrity modifications
+                    //Calculate new resistance profile for integrity
+                    modifiedAttributes._integrity._capacity += m._passiveBonuses._integrity._capacity;
+
+                    //Calculate new resistance profile for integrity
+                    float i_raw_therm_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._thermal));
+                    float i_raw_kin_resist = modifiedAttributes._integrity._resistances._kinetic + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._kinetic));
+                    float i_raw_elect_resist = modifiedAttributes._integrity._resistances._electro + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._electro));
+                    float i_raw_explo_resist = modifiedAttributes._integrity._resistances._thermal + (Mathf.Clamp01(m._passiveBonuses._integrity._resistances._explosive));
+
+                    //Resistances limited to 90%
+                    modifiedAttributes._integrity._resistances._thermal = Mathf.Clamp(i_raw_therm_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._kinetic = Mathf.Clamp(i_raw_kin_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._electro = Mathf.Clamp(i_raw_elect_resist, 0, .90f);
+                    modifiedAttributes._integrity._resistances._explosive = Mathf.Clamp(i_raw_explo_resist, 0, .90f);
+
+                    //Calculate capacitor modifications
+                    modifiedAttributes._capacitor._capacity += m._passiveBonuses._capacitor._capacity;
+                    modifiedAttributes._capacitor._rechargeRate += m._passiveBonuses._capacitor._capacity;
+
+                    //Calculate offensive modifications
+                    modifiedAttributes._offensive._laser += m._passiveBonuses._offensive._laser;
+                    modifiedAttributes._offensive._projectile += m._passiveBonuses._offensive._projectile;
+                    modifiedAttributes._offensive._railgun += m._passiveBonuses._offensive._railgun;
+                    modifiedAttributes._offensive._missile += m._passiveBonuses._offensive._missile;
+
+                    //Calculate cargo capacity modifications
+                    modifiedAttributes._cargo._capacity += m._passiveBonuses._cargo._capacity;
+                }
+            }
+        }
+
+        if (ResetCurrentAttributesAfterRecalculate)
+        {
+            currentAttributes = modifiedAttributes;
+        }
     }
 }
