@@ -6,6 +6,17 @@ using Q9Core.CommonData;
 
 namespace Q9Core
 {
+    [System.Serializable]
+    public struct PassiveBonuses
+    {
+        public Shields _shieldBonus;
+        public Integrity _integrityBonus;
+        public Capacitor _capacitorBonus;
+        public Offensive _offensiveBonus;
+        public ResistanceProfile _resistanceBonus;
+        public Cargo _cargoBonus;
+    }
+
     public class Q9Object : ScriptableObject
     {
         public string _name;
@@ -17,7 +28,7 @@ namespace Q9Core
         public Sprite _thumbnail;
     }
 
-    
+
 
     public class Q9Module : Q9Object
     {
@@ -43,6 +54,8 @@ namespace Q9Core
         public GameObject _user;
         public GameObject _target;
 
+        public PassiveBonuses _bonuses;
+
         public void Activate(GameObject u, GameObject t)
         {
             if (!_isPassive)
@@ -53,7 +66,6 @@ namespace Q9Core
                 _nextCycle = 0;
                 _lastCycle = 0;
             }
-            Debug.Log("Activated");
         }
 
         public void Deactivate()
@@ -61,7 +73,6 @@ namespace Q9Core
             _user = null;
             _target = null;
             _queueDeactivation = true;
-            Debug.Log("Deactivating..");
         }
 
         public void ModuleUpdate()
@@ -86,7 +97,7 @@ namespace Q9Core
                             }
                             else
                             {
-                                Q9GameManager._announcer.QueueClip_InsufficientPower();
+                                Q9GameManager._announcer.QueueClip(Q9Announcer.VoicePrompts.InsufficientPower);
                                 Deactivate();
                             }
                             _lastCycle = Time.time;

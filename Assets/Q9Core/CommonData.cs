@@ -20,12 +20,34 @@ namespace Q9Core.CommonData
     }
 
     [System.Serializable]
+    public enum DamageTypes
+    {
+        thermal,
+        kinetic,
+        electro,
+        explosive,
+    }
+
+    
+
+    [System.Serializable]
+    public struct Weapon
+    {
+        public DamageTypes _damageType;
+        public float _baseDamage;
+        public float _baseOptimal;
+        public float _baseRange;
+        public float _flightTime;
+        public float _baseTracking;
+    }
+
+    [System.Serializable]
     public struct ResistanceProfile
     {
-        public float thermal;
-        public float kinetic;
-        public float electro;
-        public float explosive;
+        public float _thermal;
+        public float _kinetic;
+        public float _electro;
+        public float _explosive;
     }
 
     [System.Serializable]
@@ -53,10 +75,19 @@ namespace Q9Core.CommonData
     [System.Serializable]
     public struct Fitting
     {
-        public Q9Module[] m_highSlots;
-        public Q9Module[] m_midSlots;
-        public Q9Module[] m_lowSlots;
-        public Q9Module[] m_rigSlots;
+        public Q9Module[] _highSlots;
+        public Q9Module[] _midSlots;
+        public Q9Module[] _lowSlots;
+        public Q9Module[] _rigSlots;
+    }
+
+    [System.Serializable]
+    public struct Offensive
+    {
+        public Weapon _laser;
+        public Weapon _projectile;
+        public Weapon _railgun;
+        public Weapon _missile;
     }
 
     [System.Serializable]
@@ -66,6 +97,7 @@ namespace Q9Core.CommonData
         public Q9Object[] _cargo;
     }
 
+    
     [System.Serializable]
     public struct Attributes
     {
@@ -75,6 +107,7 @@ namespace Q9Core.CommonData
         public Integrity _integrity;
         public Capacitor _capacitor;
         public Fitting _fitting;
+        public Offensive _offensive;
         public Cargo _cargo;
     }
     #endregion
@@ -100,5 +133,8 @@ namespace Q9Core.CommonData
         public Alliances _alliance;
         public float _standing;
     }
+
+    
+
     #endregion
 }

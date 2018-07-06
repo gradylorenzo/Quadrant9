@@ -42,10 +42,13 @@ public class HotbarButton : MonoBehaviour
             switch (_slots)
             {
                 case Q9Module.Slots.High:
-                    if(_playerShip.currentAttributes._fitting.m_highSlots.Length > _mod)
+                    if(_playerShip.currentAttributes._fitting._highSlots.Length > _mod)
                     {
-                        _targetModule = _playerShip.currentAttributes._fitting.m_highSlots[_mod];
-                        gameObject.SetActive(true);
+                        if (_playerShip.currentAttributes._fitting._highSlots[_mod] != null)
+                        {
+                            _targetModule = _playerShip.currentAttributes._fitting._highSlots[_mod];
+                            gameObject.SetActive(true);
+                        }
                     }
                     else
                     {
@@ -53,10 +56,13 @@ public class HotbarButton : MonoBehaviour
                     }
                     break;
                 case Q9Module.Slots.Mid:
-                    if (_playerShip.currentAttributes._fitting.m_midSlots.Length > _mod)
+                    if (_playerShip.currentAttributes._fitting._midSlots.Length > _mod)
                     {
-                        _targetModule = _playerShip.currentAttributes._fitting.m_midSlots[_mod];
-                        gameObject.SetActive(true);
+                        if (_playerShip.currentAttributes._fitting._midSlots[_mod] != null)
+                        {
+                            _targetModule = _playerShip.currentAttributes._fitting._midSlots[_mod];
+                            gameObject.SetActive(true);
+                        }
                     }
                     else
                     {
@@ -64,10 +70,13 @@ public class HotbarButton : MonoBehaviour
                     }
                     break;
                 case Q9Module.Slots.Low:
-                    if (_playerShip.currentAttributes._fitting.m_lowSlots.Length > _mod)
+                    if (_playerShip.currentAttributes._fitting._lowSlots.Length > _mod)
                     {
-                        _targetModule = _playerShip.currentAttributes._fitting.m_lowSlots[_mod];
-                        gameObject.SetActive(true);
+                        if (_playerShip.currentAttributes._fitting._lowSlots[_mod] != null)
+                        {
+                            _targetModule = _playerShip.currentAttributes._fitting._lowSlots[_mod];
+                            gameObject.SetActive(true);
+                        }
                     }
                     else
                     {

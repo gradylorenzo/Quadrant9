@@ -40,44 +40,57 @@ public class ShipManager : MonoBehaviour {
         baseAttributes = s._attributes;
         //Copy Fitting
         //Copy High Slots
-        baseAttributes._fitting.m_highSlots = new Q9Module[s._attributes._fitting.m_highSlots.Length];
-        for(int i = 0; i < baseAttributes._fitting.m_highSlots.Length; i++)
+        baseAttributes._fitting._highSlots = new Q9Module[s._attributes._fitting._highSlots.Length];
+        for(int i = 0; i < baseAttributes._fitting._highSlots.Length; i++)
         {
-            baseAttributes._fitting.m_highSlots[i] = Instantiate(s._attributes._fitting.m_highSlots[i]);
+            if (s._attributes._fitting._highSlots[i] != null)
+            {
+                baseAttributes._fitting._highSlots[i] = Instantiate(s._attributes._fitting._highSlots[i]);
+            }
         }
-        foreach (Q9Module m in currentAttributes._fitting.m_highSlots)
+        foreach (Q9Module m in currentAttributes._fitting._highSlots)
         {
             m._user = gameObject;
         }
 
         //Copy Mid Slots
-        baseAttributes._fitting.m_midSlots = new Q9Module[s._attributes._fitting.m_midSlots.Length];
-        for (int i = 0; i < baseAttributes._fitting.m_midSlots.Length; i++)
+        baseAttributes._fitting._midSlots = new Q9Module[s._attributes._fitting._midSlots.Length];
+        for (int i = 0; i < baseAttributes._fitting._midSlots.Length; i++)
         {
-            baseAttributes._fitting.m_midSlots[i] = Instantiate(s._attributes._fitting.m_midSlots[i]);
+            if (s._attributes._fitting._midSlots[i] != null)
+            {
+                baseAttributes._fitting._midSlots[i] = Instantiate(s._attributes._fitting._midSlots[i]);
+
+            }
         }
-        foreach (Q9Module m in currentAttributes._fitting.m_midSlots)
+        foreach (Q9Module m in currentAttributes._fitting._midSlots)
         {
             m._user = gameObject;
         }
         //Copy Low Slots
-        baseAttributes._fitting.m_lowSlots = new Q9Module[s._attributes._fitting.m_lowSlots.Length];
-        for (int i = 0; i < baseAttributes._fitting.m_lowSlots.Length; i++)
+        baseAttributes._fitting._lowSlots = new Q9Module[s._attributes._fitting._lowSlots.Length];
+        for (int i = 0; i < baseAttributes._fitting._lowSlots.Length; i++)
         {
-            baseAttributes._fitting.m_lowSlots[i] = Instantiate(s._attributes._fitting.m_lowSlots[i]);
+            if (s._attributes._fitting._lowSlots[i] != null)
+            {
+                baseAttributes._fitting._lowSlots[i] = Instantiate(s._attributes._fitting._lowSlots[i]);
+            }
         }
-        foreach (Q9Module m in currentAttributes._fitting.m_lowSlots)
+        foreach (Q9Module m in currentAttributes._fitting._lowSlots)
         {
             m._user = gameObject;
         }
 
         //Copy Rig Slots
-        baseAttributes._fitting.m_rigSlots = new Q9Module[s._attributes._fitting.m_rigSlots.Length];
-        for (int i = 0; i < baseAttributes._fitting.m_rigSlots.Length; i++)
+        baseAttributes._fitting._rigSlots = new Q9Module[s._attributes._fitting._rigSlots.Length];
+        for (int i = 0; i < baseAttributes._fitting._rigSlots.Length; i++)
         {
-            baseAttributes._fitting.m_rigSlots[i] = Instantiate(s._attributes._fitting.m_rigSlots[i]);
+            if (s._attributes._fitting._rigSlots[i] != null)
+            {
+                baseAttributes._fitting._rigSlots[i] = Instantiate(s._attributes._fitting._rigSlots[i]);
+            }
         }
-        foreach (Q9Module m in currentAttributes._fitting.m_rigSlots)
+        foreach (Q9Module m in currentAttributes._fitting._rigSlots)
         {
             m._user = gameObject;
         }
@@ -112,7 +125,11 @@ public class ShipManager : MonoBehaviour {
     public void ConsumeCapacitor(float a)
     {
         currentAttributes._capacitor._capacity -= a;
-        print("consumed " + a + " GJ");
+    }
+
+    public void TakeDamage(float a)
+    {
+
     }
 #endregion
 
@@ -125,19 +142,22 @@ public class ShipManager : MonoBehaviour {
         if(currentAttributes._capacitor._capacity < modifiedAttributes._capacitor._capacity)
         RechargeCapacitor(modifiedAttributes._capacitor._rechargeRate * Time.deltaTime);
 
-        foreach(Q9Module m in currentAttributes._fitting.m_highSlots)
+        foreach(Q9Module m in currentAttributes._fitting._highSlots)
         {
-            m.ModuleUpdate();
+            if(m != null)
+                m.ModuleUpdate();
         }
 
-        foreach (Q9Module m in currentAttributes._fitting.m_midSlots)
+        foreach (Q9Module m in currentAttributes._fitting._midSlots)
         {
-            m.ModuleUpdate();
+            if (m != null)
+                m.ModuleUpdate();
         }
 
-        foreach (Q9Module m in currentAttributes._fitting.m_lowSlots)
+        foreach (Q9Module m in currentAttributes._fitting._lowSlots)
         {
-            m.ModuleUpdate();
+            if (m != null)
+                m.ModuleUpdate();
         }
 
 #endregion
