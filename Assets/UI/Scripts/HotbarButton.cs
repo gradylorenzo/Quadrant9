@@ -8,7 +8,9 @@ using Q9Core.CommonData;
 
 public class HotbarButton : MonoBehaviour
 {
+    public KeyCode _key;
     public Image _timer;
+    public Image _icon;
     public Color ActiveColor;
     public Color DeactiveColor;
     public Q9Module.Slots _slots;
@@ -22,7 +24,7 @@ public class HotbarButton : MonoBehaviour
     {
         if (_targetModule)
         {
-            if (_targetModule._activated)
+            if (_targetModule.isActivated)
             {
                 _targetModule.Deactivate();
             }
@@ -40,10 +42,13 @@ public class HotbarButton : MonoBehaviour
             switch (_slots)
             {
                 case Q9Module.Slots.High:
-                    if(_playerShip.currentAttributes._fitting.m_highSlots.Length > _mod)
+                    if(_playerShip.currentAttributes._fitting._highSlots.Length > _mod)
                     {
-                        _targetModule = _playerShip.currentAttributes._fitting.m_highSlots[_mod];
-                        gameObject.SetActive(true);
+                        if (_playerShip.currentAttributes._fitting._highSlots[_mod] != null)
+                        {
+                            _targetModule = _playerShip.currentAttributes._fitting._highSlots[_mod];
+                            gameObject.SetActive(true);
+                        }
                     }
                     else
                     {
@@ -51,10 +56,13 @@ public class HotbarButton : MonoBehaviour
                     }
                     break;
                 case Q9Module.Slots.Mid:
-                    if (_playerShip.currentAttributes._fitting.m_midSlots.Length > _mod)
+                    if (_playerShip.currentAttributes._fitting._midSlots.Length > _mod)
                     {
-                        _targetModule = _playerShip.currentAttributes._fitting.m_midSlots[_mod];
-                        gameObject.SetActive(true);
+                        if (_playerShip.currentAttributes._fitting._midSlots[_mod] != null)
+                        {
+                            _targetModule = _playerShip.currentAttributes._fitting._midSlots[_mod];
+                            gameObject.SetActive(true);
+                        }
                     }
                     else
                     {
@@ -62,10 +70,13 @@ public class HotbarButton : MonoBehaviour
                     }
                     break;
                 case Q9Module.Slots.Low:
-                    if (_playerShip.currentAttributes._fitting.m_lowSlots.Length > _mod)
+                    if (_playerShip.currentAttributes._fitting._lowSlots.Length > _mod)
                     {
-                        _targetModule = _playerShip.currentAttributes._fitting.m_lowSlots[_mod];
-                        gameObject.SetActive(true);
+                        if (_playerShip.currentAttributes._fitting._lowSlots[_mod] != null)
+                        {
+                            _targetModule = _playerShip.currentAttributes._fitting._lowSlots[_mod];
+                            gameObject.SetActive(true);
+                        }
                     }
                     else
                     {
@@ -81,17 +92,21 @@ public class HotbarButton : MonoBehaviour
         {
             print("No Player Ship");
         }
+
+        if (_targetModule)
+        {
+            _icon.sprite = _targetModule._thumbnail;
+        }
     }
 
     public void Update()
     {
         if(_timer && _targetModule)
         {    
-            if (_targetModule._activated)
+            if (_targetModule.isActivated)
             {
-                _timer.fillAmount = (Time.time - _targetModule._lastCycle) / (_targetModule._nextCycle - _targetModule._lastCycle);
-                //_timer.fillAmount = 0.75f;
-                if (_targetModule._queueDeactivation)
+                _timer.fillAmount = (1 - ((_targetModule._primaryCooldown - (Time.time - _targetModule._lastCycle)) / _targetModule._primaryCooldown));
+                if (_targetModule.isQueuedToDeactivate)
                 {
                     _timer.color = DeactiveColor;
                 }
@@ -108,6 +123,11 @@ public class HotbarButton : MonoBehaviour
         else
         {
             _timer.fillAmount = 0;
+        }
+
+        if (Input.GetKeyDown(_key))
+        {
+            OnClick();
         }
     }
 }

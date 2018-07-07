@@ -14,10 +14,10 @@ namespace Q9Core
         public int _value;
         public float _volume;
         public string _description;
+        public Tier _tier;
         public Sprite _thumbnail;
+        public Physical _physical;
     }
-
-    
 
     public class Q9Module : Q9Object
     {
@@ -30,18 +30,58 @@ namespace Q9Core
             Rig
         }
 
-        public bool _isPassive;
-        public float _cooldown;
-        public float _capacitorUse;
-        public int _size;
+        [Header("Fitting Restrictions")]
+        public float _teraflops;
+        public float _terawatts;
         public Slots _slot;
 
-        public float _nextCycle = 0;
-        public float _lastCycle = 0;
-        public bool _activated;
-        public bool _queueDeactivation;
-        public GameObject _user;
-        public GameObject _target;
+        [Header ("Passive Module Attributes")]
+        public bool _isPassive;
+        public Bonuses _passiveBonuses;
+
+        [Header("Active Module Attributes")]
+        public float _primaryCooldown;
+        public float _secondaryCooldown;
+        public float _capacitorUse;
+
+        #region Properties
+        private bool _activated;
+        private bool _queueDeactivation;
+        public bool isActivated
+        {
+            get { return _activated; }
+        }
+        public bool isQueuedToDeactivate
+        {
+            get { return _queueDeactivation; }
+        }
+
+        private GameObject _User;
+        private GameObject _Target;
+        public GameObject _user
+        {
+            get { return _User; }
+            set { _User = value; }
+        }
+        public GameObject _target
+        {
+            get { return _Target; }
+            set { _Target = value; }
+        }
+
+        private float _nc = 0;
+        private float _lc = 0;
+        public float _nextCycle
+        {
+            get { return _nc; }
+        }
+        public float _lastCycle
+        {
+            get { return _lc; }
+        }
+
+        #endregion
+
 
         public void Activate(GameObject u, GameObject t)
         {
@@ -50,8 +90,9 @@ namespace Q9Core
                 _user = u;
                 _target = t;
                 _activated = true;
+                _nc = 0;
+                _lc = 0;
             }
-            Debug.Log("Activated");
         }
 
         public void Deactivate()
@@ -59,7 +100,6 @@ namespace Q9Core
             _user = null;
             _target = null;
             _queueDeactivation = true;
-            Debug.Log("Deactivating..");
         }
 
         public void ModuleUpdate()
@@ -68,29 +108,39 @@ namespace Q9Core
             {
                 if (_activated)
                 {
-                    if (Time.time > _nextCycle)
+                    if(Time.time > _lc + _primaryCooldown || _lc == 0)
                     {
-                        if (!_queueDeactivation)
-                        {
-                            _lastCycle = _nextCycle;
-                            _nextCycle += _cooldown;
-                            doEffect();
-                        }
-                        else
+                        if (_queueDeactivation)
                         {
                             _activated = false;
                             _queueDeactivation = false;
+                            OnDeactivated();
+                        }
+                        else
+                        {
+                            if (_user.GetComponent<ShipManager>().currentAttributes._capacitor._capacity > _capacitorUse)
+                            {
+                                _user.GetComponent<ShipManager>().ConsumeCapacitor(_capacitorUse);
+                                doEffect();
+                            }
+                            else
+                            {
+                                Q9GameManager._announcer.QueueClip(Q9Announcer.VoicePrompts.InsufficientPower);
+                                Deactivate();
+                            }
+                            _lc = Time.time;
                         }
                     }
-                }
-                else
-                {
-
                 }
             }
         }
 
         public virtual void doEffect()
+        {
+
+        }
+
+        public virtual void OnDeactivated()
         {
 
         }

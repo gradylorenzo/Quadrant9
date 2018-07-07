@@ -8,53 +8,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4783b2d0cc6f9f94d854bad366447e76, type: 3}
-  m_Name: Embryo
+  m_Script: {fileID: 11500000, guid: 7a8bb327a42534a4d86d8e533812bb6b, type: 3}
+  m_Name: ShieldExtenderI
   m_EditorClassIdentifier: 
-  _name: Embryo
-  _id: 2
+  _name: Shield Extender I
+  _id: 0
   _quantity: 0
   _value: 0
   _volume: 0
-  _description: A capsule-shaped craft that acts as an escape pod in the event of
-    an emergency, housing for a ship's pilot, and the control center of an entire
-    ship. It contains basic maneuvering, navigation, life support, and warping capabilities.
+  _description: 
   _tier: 0
-  _thumbnail: {fileID: 21300000, guid: 4de57e4ab1f432d4a909c8858aae5267, type: 3}
+  _thumbnail: {fileID: 0}
   _physical:
     _mass: 0
     _signature: 0
-  _attributes:
-    _alliance: 0
-    _size: 0
-    _physical:
-      _mass: 0
-      _signature: 0
+  _teraflops: 0
+  _terawatts: 0
+  _slot: 1
+  _isPassive: 0
+  _passiveBonuses:
     _shield:
-      _capacity: 100
-      _rechargeRate: 1
+      _capacity: 1200
+      _rechargeRate: 0
       _resistances:
         _thermal: 0
         _kinetic: 0
         _electro: 0
         _explosive: 0
     _integrity:
-      _capacity: 10
+      _capacity: 0
       _resistances:
         _thermal: 0
         _kinetic: 0
         _electro: 0
         _explosive: 0
     _capacitor:
-      _capacity: 100
-      _rechargeRate: 1
-    _fitting:
-      _teraflops: 0
-      _terawatts: 0
-      _highSlots: []
-      _midSlots: []
-      _lowSlots: []
-      _rigSlots: []
+      _capacity: 0
+      _rechargeRate: 0
     _offensive:
       _laser:
         _damageType: 0
@@ -87,4 +77,5 @@ MonoBehaviour:
     _cargo:
       _capacity: 0
       _cargo: []
-  _model: {fileID: 1174444098197692, guid: 863dab44fafe33342b3087e388b32089, type: 2}
+  _cooldown: 0
+  _capacitorUse: 0

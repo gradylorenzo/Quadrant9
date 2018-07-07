@@ -17,35 +17,86 @@ MonoBehaviour:
   _value: 0
   _volume: 0
   _description: Tartarus-Class Supercarrier
+  _tier: 0
   _thumbnail: {fileID: 21300000, guid: fc3294b1c4a5bf34c82c400ce09d4e55, type: 3}
+  _physical:
+    _mass: 100
+    _signature: 0
   _attributes:
     _alliance: 5
-    _size: 0
+    _size: 7
+    _physical:
+      _mass: 0
+      _signature: 0
     _shield:
       _capacity: 10000000
-      _rechargeRate: 1000
+      _rechargeRate: 100000
       _resistances:
-        thermal: 0
-        kinetic: 0
-        electro: 0
-        explosive: 0
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
     _integrity:
       _capacity: 5000000
       _resistances:
-        thermal: 0
-        kinetic: 0
-        electro: 0
-        explosive: 0
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
     _capacitor:
       _capacity: 100000
       _rechargeRate: 500
     _fitting:
-      m_highSlots:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots:
       - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
       - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
-      m_midSlots: []
-      m_lowSlots: []
-      m_rigSlots: []
+      - {fileID: 0}
+      - {fileID: 0}
+      _midSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      _lowSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      _rigSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    _offensive:
+      _laser:
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
     _cargo:
       _capacity: 4
       _cargo: []
