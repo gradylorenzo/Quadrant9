@@ -1,3 +1,12 @@
+7.7.2018
++1 CommonData.TargetInfo
++2 ShipManager.TargetInfo[] _lockedTargets
++3 public ShipManager.LockTarget()
++4 Locked Targets Panel. These are always around, just hidden if the index in ShipManager._lockedTargets it is assigned to watch is invalid.
+	The spinner on these elements are only shown if the active target is the same as the _lockedTargets index it is watching.
+
+##############################################################################################################
+
 7.6.2018
 +1 CommonData.Bonuses
 +2 Q9Module._passiveBonuses : CommonData.Bonuses

@@ -30,7 +30,7 @@ public class HotbarButton : MonoBehaviour
             }
             else
             {
-                _targetModule.Activate(_playerShip.gameObject, _playerShip.target);
+                _targetModule.Activate(_playerShip.gameObject, _playerShip._activeTarget);
             }
         }
     }
@@ -105,7 +105,7 @@ public class HotbarButton : MonoBehaviour
         {    
             if (_targetModule.isActivated)
             {
-                _timer.fillAmount = (1 - ((_targetModule._primaryCooldown - (Time.time - _targetModule._lastCycle)) / _targetModule._primaryCooldown));
+                _timer.fillAmount = (1 - ((_targetModule._cooldown - (Time.time - _targetModule._lastCycle)) / _targetModule._cooldown));
                 if (_targetModule.isQueuedToDeactivate)
                 {
                     _timer.color = DeactiveColor;

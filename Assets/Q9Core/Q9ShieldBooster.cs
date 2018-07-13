@@ -10,7 +10,6 @@ public class Q9ShieldBooster : Q9Module {
 
     public override void doEffect()
     {
-        base.doEffect();
         if (_user)
         {
             if (_user.GetComponent<ShipManager>())

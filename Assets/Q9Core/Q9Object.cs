@@ -40,8 +40,7 @@ namespace Q9Core
         public Bonuses _passiveBonuses;
 
         [Header("Active Module Attributes")]
-        public float _primaryCooldown;
-        public float _secondaryCooldown;
+        public float _cooldown;
         public float _capacitorUse;
 
         #region Properties
@@ -93,6 +92,10 @@ namespace Q9Core
                 _nc = 0;
                 _lc = 0;
             }
+            if(_cooldown == 0)
+            {
+                Debug.LogWarning("Warning: Module '" + _name + "' _cooldown is set to 0");
+            }
         }
 
         public void Deactivate()
@@ -108,7 +111,7 @@ namespace Q9Core
             {
                 if (_activated)
                 {
-                    if(Time.time > _lc + _primaryCooldown || _lc == 0)
+                    if(Time.time > _lc + _cooldown || _lc == 0)
                     {
                         if (_queueDeactivation)
                         {
@@ -125,7 +128,14 @@ namespace Q9Core
                             }
                             else
                             {
-                                Q9GameManager._announcer.QueueClip(Q9Announcer.VoicePrompts.InsufficientPower);
+                                if (Q9GameManager._announcer != null)
+                                {
+                                    Q9GameManager._announcer.QueueClip(Q9Announcer.VoicePrompts.InsufficientPower);
+                                }
+                                else
+                                {
+                                    Debug.Log("No Announcer Assigned!");
+                                }
                                 Deactivate();
                             }
                             _lc = Time.time;

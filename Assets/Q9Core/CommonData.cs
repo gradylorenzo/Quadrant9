@@ -7,6 +7,20 @@ namespace Q9Core.CommonData
 {
     #region Ship Attributes
     [System.Serializable]
+    public struct TargetInfo
+    {
+        public bool _lockComplete;
+        public float _lockStart;
+        public float _lockTime;
+        public GameObject _target;
+
+        public void CompleteLock()
+        {
+            _lockComplete = true;
+        }
+    }
+
+    [System.Serializable]
     public enum Tier
     {
         L1,

@@ -7,20 +7,24 @@ using Q9Core.CommonData;
 
 public class ShipManager : MonoBehaviour {
 
+    [Header("Attributes")]
     public bool isPlayerShip;
     public Q9Ship defaultShipData;
     public Attributes baseAttributes;
     public Attributes modifiedAttributes;
     public Attributes currentAttributes;
 
-    public GameObject shipModel;
-    public GameObject target;
+    public string guid = Guid.NewGuid().ToString();
+    private GameObject shipModel;
+    public GameObject _activeTarget;
+    public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
     private void Awake()
     {
         if (isPlayerShip)
         {
             Q9GameManager._playerShip = this;
+            print("Player Ship Assigned!");
         }
         LoadShip(defaultShipData);
     }
@@ -100,8 +104,6 @@ public class ShipManager : MonoBehaviour {
         CalculateModifiedAttributes(true);
     }
 
-    
-
     #region repair methods
     public void RepairShield(float a)
     {
@@ -127,7 +129,68 @@ public class ShipManager : MonoBehaviour {
     {
 
     }
-#endregion
+    #endregion
+    #region combat methods
+    public void LockTarget(GameObject t)
+    {
+        //Check to make sure the locked target limit hasn't been reached
+        if(_lockedTargets.Count < 5)
+        {
+            bool exists = false;
+            foreach (TargetInfo ti in _lockedTargets)
+            {
+                if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+                {
+                    exists = true;
+                }
+            }
+
+            if (exists)
+            {
+                TargetInfo newLT = new TargetInfo();
+                newLT._lockComplete = false;
+                newLT._lockStart = Time.time;
+                //Replace this number later with the output of the lock time algorithm.
+                newLT._lockTime = 0;
+                newLT._target = t;
+                _lockedTargets.Add(newLT);
+
+                if (_activeTarget == null)
+                {
+                    _activeTarget = newLT._target;
+                }
+            }
+        }
+    }
+
+    public void UnlockTarget(GameObject t)
+    {
+        foreach(TargetInfo ti in _lockedTargets)
+        {
+            if(ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            {
+                if (ti._lockComplete)
+                {
+                    _lockedTargets.Remove(ti);
+                }
+            }
+        }
+    }
+
+    public void SelectTarget(GameObject t)
+    {
+        foreach (TargetInfo ti in _lockedTargets)
+        {
+            if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            {
+                if (ti._lockComplete)
+                {
+                    _activeTarget = ti._target;
+                }
+            }
+        }
+    }
+    #endregion
 
     public void FixedUpdate()
     {
@@ -156,7 +219,17 @@ public class ShipManager : MonoBehaviour {
                 m.ModuleUpdate();
         }
 
-#endregion
+        foreach (TargetInfo ti in _lockedTargets)
+        {
+            if (!ti._lockComplete)
+            {
+                if (Time.time > ti._lockStart + ti._lockTime)
+                {
+                    ti.CompleteLock();
+                }
+            }
+        }
+        #endregion
     }
 
     private void CalculateModifiedAttributes(bool ResetCurrentAttributesAfterRecalculate)
