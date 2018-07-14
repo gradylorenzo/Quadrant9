@@ -16,7 +16,11 @@ namespace Q9Core.CommonData
 
         public void CompleteLock()
         {
-            _lockComplete = true;
+            if (!_lockComplete)
+            {
+                Debug.Log("Target Locked");
+                _lockComplete = true;
+            }
         }
     }
 
@@ -28,19 +32,6 @@ namespace Q9Core.CommonData
         L3,
         MIL,
         HVT
-    }
-
-    [System.Serializable]
-    public enum ShipSizes
-    {
-        CommandPod,
-        Corvette,
-        Destroyer,
-        Cruiser,
-        Battleship,
-        Carrier,
-        Dreadnought,
-        Supercarrier
     }
 
     [System.Serializable]
@@ -90,6 +81,7 @@ namespace Q9Core.CommonData
     {
         public float _mass;
         public float _signature;
+        public float _minimumCameraDistance;
     }
 
     [System.Serializable]
@@ -232,7 +224,7 @@ namespace Q9Core.CommonData
     {
         public Tier _tier;
         public Alliances _alliance;
-        public ShipSizes _size;
+        public EntityTypes _type;
         public Physical _physical;
         public Shields _shield;
         public Integrity _integrity;
@@ -278,5 +270,21 @@ namespace Q9Core.CommonData
         public Standing[] _standings;
     }
 
+    [System.Serializable]
+    public enum EntityTypes
+    {
+        Station,
+        Wreck,
+        Asteroid,
+        Stargate,
+        CommandPod,
+        Corvette,
+        Destroyer,
+        Cruiser,
+        Battleship,
+        Dreadnought,
+        Carrier,
+        Supercarrier
+    }
     #endregion
 }

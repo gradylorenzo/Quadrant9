@@ -24,7 +24,8 @@ public class Q9Announcer : MonoBehaviour {
         ShipIntegrityFailing = 5,
         TheCapacitorIsEmpty = 6,
         WarpingToJumpgate = 7,
-        WelcomeBackCommander = 8
+        WelcomeBackCommander = 8,
+        LockLimitReached = 9
     }
 
     public AudioClip[] _clips;
@@ -35,11 +36,28 @@ public class Q9Announcer : MonoBehaviour {
     private void Awake()
     {
         Q9GameManager._announcer = this;
-        print("Announcer Assigned!");
         asource = GetComponent<AudioSource>();
     }
 
-    public void QueueClip (VoicePrompts p)
+    public void Start()
+    {
+        EventManager.OnModuleInsufficientPower  += INSUFFICIENT_POWER;
+        EventManager.OnLockLimitReached         += LOCK_LIMIT_REACHED;
+    }
+
+    #region clip queues
+    public void LOCK_LIMIT_REACHED()
+    {
+        QueueClip(VoicePrompts.LockLimitReached);
+    }
+
+    public void INSUFFICIENT_POWER()
+    {
+        QueueClip(VoicePrompts.InsufficientPower);
+    }
+    #endregion
+
+    private void QueueClip (VoicePrompts p)
     {
         int i = (int)p;
         if (_queue.Count > 0)

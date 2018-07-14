@@ -5,6 +5,8 @@ using UnityEngine;
 using Q9Core;
 using Q9Core.CommonData;
 
+[RequireComponent(typeof(ShipMotionController))]
+[RequireComponent(typeof(Q9Entity))]
 public class ShipManager : MonoBehaviour {
 
     [Header("Attributes")]
@@ -14,20 +16,26 @@ public class ShipManager : MonoBehaviour {
     public Attributes modifiedAttributes;
     public Attributes currentAttributes;
 
-    public string guid = Guid.NewGuid().ToString();
+    public string guid;
     private GameObject shipModel;
     public GameObject _activeTarget;
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
     private void Awake()
     {
+        guid = Guid.NewGuid().ToString();
         if (isPlayerShip)
         {
             Q9GameManager._playerShip = this;
-            print("Player Ship Assigned!");
         }
         LoadShip(defaultShipData);
     }
+
+    private void Start()
+    {
+        EventManager.OnShipTargeted += OnShipTargeted;
+    }
+
 
     public void LoadShip(Q9Ship s)
     {
@@ -102,136 +110,19 @@ public class ShipManager : MonoBehaviour {
         currentAttributes = baseAttributes;
         modifiedAttributes = baseAttributes;
         CalculateModifiedAttributes(true);
+
+        //Q9Entity
+        GetComponent<Q9Entity>()._overview._name = s._name;
+        GetComponent<Q9Entity>()._overview._alliance = s._attributes._alliance;
+        GetComponent<Q9Entity>()._overview._type = s._attributes._type;
+        GetComponent<Q9Entity>()._overview._thumbnail = s._thumbnail;
+        GetComponent<Q9Entity>()._overview._icon = s._icon;
+        GetComponent<Q9Entity>()._id = guid;
+        GetComponent<Q9Entity>()._isTargetable = !isPlayerShip;
+        GetComponent<Q9Entity>()._isDockable = false;
+        GetComponent<Q9Entity>()._isMinable = false;
+        GetComponent<Q9Entity>()._isAlwaysVisibleInOverview = false;
     }
-
-    #region repair methods
-    public void RepairShield(float a)
-    {
-        currentAttributes._shield._capacity = Mathf.Clamp(currentAttributes._shield._capacity + a, 0, modifiedAttributes._shield._capacity);
-    }
-
-    public void RepairIntegrity(float a)
-    {
-        currentAttributes._integrity._capacity = Mathf.Clamp(currentAttributes._integrity._capacity + a, 0, modifiedAttributes._integrity._capacity);
-    }
-
-    public void RechargeCapacitor(float a)
-    {
-        currentAttributes._capacitor._capacity = Mathf.Clamp(currentAttributes._capacitor._capacity + a, 0, modifiedAttributes._capacitor._capacity);
-    }
-
-    public void ConsumeCapacitor(float a)
-    {
-        currentAttributes._capacitor._capacity -= a;
-    }
-
-    public void TakeDamage(float a)
-    {
-
-    }
-    #endregion
-    #region combat methods
-    public void LockTarget(GameObject t)
-    {
-        //Check to make sure the locked target limit hasn't been reached
-        if(_lockedTargets.Count < 5)
-        {
-            bool exists = false;
-            foreach (TargetInfo ti in _lockedTargets)
-            {
-                if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
-                {
-                    exists = true;
-                }
-            }
-
-            if (exists)
-            {
-                TargetInfo newLT = new TargetInfo();
-                newLT._lockComplete = false;
-                newLT._lockStart = Time.time;
-                //Replace this number later with the output of the lock time algorithm.
-                newLT._lockTime = 0;
-                newLT._target = t;
-                _lockedTargets.Add(newLT);
-
-                if (_activeTarget == null)
-                {
-                    _activeTarget = newLT._target;
-                }
-            }
-        }
-    }
-
-    public void UnlockTarget(GameObject t)
-    {
-        foreach(TargetInfo ti in _lockedTargets)
-        {
-            if(ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
-            {
-                if (ti._lockComplete)
-                {
-                    _lockedTargets.Remove(ti);
-                }
-            }
-        }
-    }
-
-    public void SelectTarget(GameObject t)
-    {
-        foreach (TargetInfo ti in _lockedTargets)
-        {
-            if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
-            {
-                if (ti._lockComplete)
-                {
-                    _activeTarget = ti._target;
-                }
-            }
-        }
-    }
-    #endregion
-
-    public void FixedUpdate()
-    {
-        #region Standard ship loops. Passive Capacitor/Shield recharge. Integrity does not passively recharge.
-        if (currentAttributes._shield._capacity < modifiedAttributes._shield._capacity)
-        RepairShield(currentAttributes._shield._rechargeRate * Time.deltaTime);
-
-        if(currentAttributes._capacitor._capacity < modifiedAttributes._capacitor._capacity)
-        RechargeCapacitor(currentAttributes._capacitor._rechargeRate * Time.deltaTime);
-
-        foreach(Q9Module m in currentAttributes._fitting._highSlots)
-        {
-            if(m != null)
-                m.ModuleUpdate();
-        }
-
-        foreach (Q9Module m in currentAttributes._fitting._midSlots)
-        {
-            if (m != null)
-                m.ModuleUpdate();
-        }
-
-        foreach (Q9Module m in currentAttributes._fitting._lowSlots)
-        {
-            if (m != null)
-                m.ModuleUpdate();
-        }
-
-        foreach (TargetInfo ti in _lockedTargets)
-        {
-            if (!ti._lockComplete)
-            {
-                if (Time.time > ti._lockStart + ti._lockTime)
-                {
-                    ti.CompleteLock();
-                }
-            }
-        }
-        #endregion
-    }
-
     private void CalculateModifiedAttributes(bool ResetCurrentAttributesAfterRecalculate)
     {
         //Mirror base stats
@@ -488,6 +379,163 @@ public class ShipManager : MonoBehaviour {
         if (ResetCurrentAttributesAfterRecalculate)
         {
             currentAttributes = modifiedAttributes;
+        }
+    }
+
+    #region repair methods
+    public void RepairShield(float a)
+    {
+        currentAttributes._shield._capacity = Mathf.Clamp(currentAttributes._shield._capacity + a, 0, modifiedAttributes._shield._capacity);
+    }
+
+    public void RepairIntegrity(float a)
+    {
+        currentAttributes._integrity._capacity = Mathf.Clamp(currentAttributes._integrity._capacity + a, 0, modifiedAttributes._integrity._capacity);
+    }
+
+    public void RechargeCapacitor(float a)
+    {
+        currentAttributes._capacitor._capacity = Mathf.Clamp(currentAttributes._capacitor._capacity + a, 0, modifiedAttributes._capacitor._capacity);
+    }
+
+    public void ConsumeCapacitor(float a)
+    {
+        currentAttributes._capacitor._capacity -= a;
+    }
+
+    public void TakeDamage(float a)
+    {
+
+    }
+    #endregion
+    #region combat methods
+    public void OnShipTargeted(GameObject go)
+    {
+        if (isPlayerShip)
+        {
+            if (go != this.gameObject)
+            {
+                LockTarget(go);
+            }
+        }
+    }
+
+    public void LockTarget(GameObject t)
+    {
+        bool exists = false;
+        foreach (TargetInfo ti in _lockedTargets)
+        {
+            if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            {
+                exists = true;
+            }
+        }
+
+        if (!exists)
+        {
+            if (_lockedTargets.Count < 5)
+            {
+                TargetInfo newLT = new TargetInfo();
+                newLT._lockComplete = false;
+                newLT._lockStart = Time.time;
+                newLT._lockTime = 5; //Replace this number later with the output of the lock time algorithm.
+                newLT._target = t;
+                _lockedTargets.Add(newLT);
+            }
+            else
+            {
+                EventManager.OnLockLimitReached();
+            }
+        }
+        else
+        {
+            SelectTarget(t);
+        }
+    }
+
+    public void UnlockTarget(GameObject t)
+    {
+        foreach(TargetInfo ti in _lockedTargets)
+        {
+            if(ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            {
+                if (ti._lockComplete)
+                {
+                    _lockedTargets.Remove(ti);
+                }
+            }
+        }
+    }
+
+    public void SelectTarget(GameObject t)
+    {
+        foreach (TargetInfo ti in _lockedTargets)
+        {
+            if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            {
+                if (ti._lockComplete)
+                {
+                    _activeTarget = ti._target;
+                }
+            }
+        }
+    }
+    #endregion
+
+    public void FixedUpdate()
+    {
+        #region Standard ship loops. Passive Capacitor/Shield recharge. Integrity does not passively recharge.
+        if (currentAttributes._shield._capacity < modifiedAttributes._shield._capacity)
+        RepairShield(currentAttributes._shield._rechargeRate * Time.deltaTime);
+
+        if(currentAttributes._capacitor._capacity < modifiedAttributes._capacitor._capacity)
+        RechargeCapacitor(currentAttributes._capacitor._rechargeRate * Time.deltaTime);
+
+        foreach(Q9Module m in currentAttributes._fitting._highSlots)
+        {
+            if(m != null)
+                m.ModuleUpdate();
+        }
+
+        foreach (Q9Module m in currentAttributes._fitting._midSlots)
+        {
+            if (m != null)
+                m.ModuleUpdate();
+        }
+
+        foreach (Q9Module m in currentAttributes._fitting._lowSlots)
+        {
+            if (m != null)
+                m.ModuleUpdate();
+        }
+        #endregion
+
+        //This loop determines if a target lock should be finished based on when is started.
+        for (int i = 0; i < _lockedTargets.Count; i++)
+        {
+            if (!_lockedTargets[i]._lockComplete)
+            {
+                if(Time.time > _lockedTargets[i]._lockStart + _lockedTargets[i]._lockTime)
+                {
+                    TargetInfo newTI = new TargetInfo();
+                    newTI._lockComplete = true;
+                    newTI._target = _lockedTargets[i]._target;
+                    _lockedTargets[i] = newTI;
+                    if(_activeTarget == null)
+                    {
+                        SelectTarget(_lockedTargets[i]._target);
+                    }
+                    EventManager.OnTargetLockComplete();
+                }
+            }
+        }
+    }
+
+    public void OnMouseUpAsButton()
+    {
+        if (GetComponent<Q9Entity>()._isTargetable)
+        {
+            EventManager.OnShipTargeted(gameObject);
         }
     }
 }

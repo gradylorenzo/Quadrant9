@@ -9,6 +9,7 @@ public class LockedTargetBoxController : MonoBehaviour
 {
     public bool isVisible;
     public int LockedTargetSlot;
+    public Image Thumbnail;
     public Image ShieldBar;
     public Image IntegrityBar;
     public Image ActiveTargetSpinner;
@@ -16,6 +17,15 @@ public class LockedTargetBoxController : MonoBehaviour
 
     private ShipManager _playerShip;
     private GameObject _target;
+
+    public void OnClick()
+    {
+        print("Clicked");
+        if(LockedTargetSlot < _playerShip._lockedTargets.Count)
+        {
+            EventManager.OnShipTargeted(_playerShip._lockedTargets[LockedTargetSlot]._target);
+        }
+    }
 
     private void Update()
     {
@@ -31,18 +41,22 @@ public class LockedTargetBoxController : MonoBehaviour
         {
             if (LockedTargetSlot < _playerShip._lockedTargets.Count)
             {
-                isVisible = true;
-                //Active Target Spinner
-                if (_playerShip._activeTarget == _playerShip._lockedTargets[LockedTargetSlot]._target)
+                if (_playerShip._lockedTargets[LockedTargetSlot]._lockComplete)
                 {
-                    ActiveTargetSpinner.enabled = true;
-                }
-                else
-                {
-                    ActiveTargetSpinner.enabled = false;
-                }
+                    isVisible = true;
+                    //Active Target Spinner
+                    if (_playerShip._activeTarget == _playerShip._lockedTargets[LockedTargetSlot]._target)
+                    {
+                        ActiveTargetSpinner.enabled = true;
+                    }
+                    else
+                    {
+                        ActiveTargetSpinner.enabled = false;
+                    }
+                    Thumbnail.sprite = _playerShip._lockedTargets[LockedTargetSlot]._target.GetComponent<Q9Entity>()._overview._thumbnail;
 
-                //Health bars
+                    //Health bars
+                }
             }
             else
             {
@@ -50,7 +64,6 @@ public class LockedTargetBoxController : MonoBehaviour
                 ActiveTargetSpinner.enabled = false;
             }
         }
-
         graphic.SetActive(isVisible);
     }
 }

@@ -7,6 +7,7 @@ using Q9Core.CommonData;
 
 public class Q9GUIManager : MonoBehaviour
 {
+    public GameObject[] _notifications;
     public StatusRingController _statusRing;
     public HotbarButton[] _hotbarButtons;
 
@@ -21,6 +22,19 @@ public class Q9GUIManager : MonoBehaviour
         {
             hbb.ResetTargetModule();
         }
+        EventManager.OnLockLimitReached += OnLockLimitReached;
+    }
+
+    public void OnLockLimitReached()
+    {
+        CreateNotification(0);
+    }
+
+    public void CreateNotification(int i)
+    {
+        GameObject newNotification = Instantiate(_notifications[i], _notifications[i].transform.position, _notifications[i].transform.rotation);
+        newNotification.transform.parent = this.transform;
+        newNotification.transform.position = new Vector3(Screen.width / 2, newNotification.transform.position.y, 0);
     }
 
     public void FixedUpdate()

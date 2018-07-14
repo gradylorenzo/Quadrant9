@@ -16,6 +16,7 @@ namespace Q9Core
         public string _description;
         public Tier _tier;
         public Sprite _thumbnail;
+        public Sprite _icon;
         public Physical _physical;
     }
 
@@ -128,14 +129,7 @@ namespace Q9Core
                             }
                             else
                             {
-                                if (Q9GameManager._announcer != null)
-                                {
-                                    Q9GameManager._announcer.QueueClip(Q9Announcer.VoicePrompts.InsufficientPower);
-                                }
-                                else
-                                {
-                                    Debug.Log("No Announcer Assigned!");
-                                }
+                                EventManager.OnModuleInsufficientPower();
                                 Deactivate();
                             }
                             _lc = Time.time;

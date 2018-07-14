@@ -8,15 +8,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Q9OverviewData {
 
-    [System.Serializable]
-    public enum EntityTypes
-    {
-        Station,
-        Wreck,
-        Asteroid,
-        Stargate
-    }
-
     public string _name;
     public Alliances _alliance;
     public EntityTypes _type;

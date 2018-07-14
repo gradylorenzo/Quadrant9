@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -21,15 +21,19 @@ MonoBehaviour:
     ship. It contains basic maneuvering, navigation, life support, and warping capabilities.
   _tier: 0
   _thumbnail: {fileID: 21300000, guid: 4de57e4ab1f432d4a909c8858aae5267, type: 3}
+  _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   _physical:
     _mass: 0
     _signature: 0
+    _minimumCameraDistance: 0
   _attributes:
+    _tier: 0
     _alliance: 0
-    _size: 0
+    _type: 4
     _physical:
       _mass: 0
       _signature: 0
+      _minimumCameraDistance: 0
     _shield:
       _capacity: 100
       _rechargeRate: 1
@@ -57,6 +61,7 @@ MonoBehaviour:
       _rigSlots: []
     _offensive:
       _laser:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
@@ -64,6 +69,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
       _projectile:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
@@ -71,6 +77,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
       _railgun:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
@@ -78,6 +85,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
       _missile:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
