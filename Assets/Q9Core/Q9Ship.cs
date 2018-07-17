@@ -10,4 +10,5 @@ public class Q9Ship : Q9Object
     [Header("Ship Attributes")]
     public Attributes _attributes;
     public GameObject _model;
+    public float _minCameraDistance;
 }

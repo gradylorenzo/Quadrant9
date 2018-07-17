@@ -21,6 +21,8 @@ public class ShipManager : MonoBehaviour {
     public GameObject _activeTarget;
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
+    private Camera mainCamera;
+
     private void Awake()
     {
         guid = Guid.NewGuid().ToString();
@@ -28,14 +30,16 @@ public class ShipManager : MonoBehaviour {
         {
             Q9GameManager._playerShip = this;
         }
+        mainCamera = Camera.main;
         LoadShip(defaultShipData);
     }
 
     private void Start()
     {
         EventManager.OnShipTargeted += OnShipTargeted;
+        EventManager.OnShipSelected += OnShipSelected;
+        EventManager.OnShipDamaged += TakeDamage;
     }
-
 
     public void LoadShip(Q9Ship s)
     {
@@ -45,6 +49,10 @@ public class ShipManager : MonoBehaviour {
             shipModel = null;
         }
 
+        if (mainCamera)
+        {
+            mainCamera.GetComponent<MouseOrbit>().distanceMin = s._minCameraDistance;
+        }
         GameObject newShip;
         newShip = Instantiate(s._model, transform.position, transform.rotation);
         newShip.transform.SetParent(gameObject.transform);
@@ -408,7 +416,7 @@ public class ShipManager : MonoBehaviour {
 
     }
     #endregion
-    #region combat methods
+    #region target management methods
     public void OnShipTargeted(GameObject go)
     {
         if (isPlayerShip)
@@ -416,6 +424,17 @@ public class ShipManager : MonoBehaviour {
             if (go != this.gameObject)
             {
                 LockTarget(go);
+            }
+        }
+    }
+
+    public void OnShipSelected(GameObject go)
+    {
+        if (isPlayerShip)
+        {
+            if (go != this.gameObject)
+            {
+                SelectTarget(go);
             }
         }
     }
@@ -457,11 +476,18 @@ public class ShipManager : MonoBehaviour {
     {
         foreach(TargetInfo ti in _lockedTargets)
         {
-            if(ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
             {
                 if (ti._lockComplete)
                 {
                     _lockedTargets.Remove(ti);
+                    if (_activeTarget == ti._target)
+                    {
+                        if (_lockedTargets.Count > 0)
+                        {
+                            _activeTarget = _lockedTargets[0]._target;
+                        }
+                    }
                 }
             }
         }
@@ -480,6 +506,91 @@ public class ShipManager : MonoBehaviour {
             }
         }
     }
+
+    public void ClearTargets()
+    {
+        _activeTarget = null;
+        _lockedTargets.Clear();
+    }
+    #endregion
+    #region damage methods
+    public void TakeDamage(GameObject go, float d, DamageTypes t)
+    {
+        if(go == gameObject)
+        {
+            float f;
+            switch (t)
+            {
+                case DamageTypes.thermal:
+                    f = d * (1 - (currentAttributes._shield._resistances._thermal));
+                    if(currentAttributes._shield._capacity > f)
+                    {
+                        DamageShields(f);
+                    }
+                    else
+                    {
+                        f = (f - currentAttributes._shield._capacity) * (1 - currentAttributes._integrity._resistances._thermal);
+                        DamageShields(currentAttributes._shield._capacity);
+                        DamageIntegrity(f);
+                    }
+                    break;
+                case DamageTypes.kinetic:
+                    f = d * (1 - (currentAttributes._shield._resistances._kinetic));
+                    if (currentAttributes._shield._capacity > f)
+                    {
+                        DamageShields(f);
+                    }
+                    else
+                    {
+                        f = (f - currentAttributes._shield._capacity) * (1 - currentAttributes._integrity._resistances._kinetic);
+                        DamageShields(currentAttributes._shield._capacity);
+                        DamageIntegrity(f);
+                    }
+                    break;
+                case DamageTypes.electro:
+                    f = d * (1 - (currentAttributes._shield._resistances._electro));
+                    if (currentAttributes._shield._capacity > f)
+                    {
+                        DamageShields(f);
+                    }
+                    else
+                    {
+                        f = (f - currentAttributes._shield._capacity) * (1 - currentAttributes._integrity._resistances._electro);
+                        DamageShields(currentAttributes._shield._capacity);
+                        DamageIntegrity(f);
+                    }
+                    break;
+                case DamageTypes.explosive:
+                    f = d * (1 - (currentAttributes._shield._resistances._explosive));
+                    if (currentAttributes._shield._capacity > f)
+                    {
+                        DamageShields(f);
+                    }
+                    else
+                    {
+                        f = (f - currentAttributes._shield._capacity) * (1 - currentAttributes._integrity._resistances._explosive);
+                        DamageShields(currentAttributes._shield._capacity);
+                        DamageIntegrity(f);
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void DamageIntegrity(float d)
+    {
+        currentAttributes._integrity._capacity -= d;
+        if(currentAttributes._integrity._capacity <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void DamageShields(float d)
+    {
+        currentAttributes._shield._capacity -= d;
+    }
+
     #endregion
 
     public void FixedUpdate()
@@ -515,13 +626,13 @@ public class ShipManager : MonoBehaviour {
         {
             if (!_lockedTargets[i]._lockComplete)
             {
-                if(Time.time > _lockedTargets[i]._lockStart + _lockedTargets[i]._lockTime)
+                if (Time.time > _lockedTargets[i]._lockStart + _lockedTargets[i]._lockTime)
                 {
                     TargetInfo newTI = new TargetInfo();
                     newTI._lockComplete = true;
                     newTI._target = _lockedTargets[i]._target;
                     _lockedTargets[i] = newTI;
-                    if(_activeTarget == null)
+                    if (_activeTarget == null)
                     {
                         SelectTarget(_lockedTargets[i]._target);
                     }
@@ -529,13 +640,51 @@ public class ShipManager : MonoBehaviour {
                 }
             }
         }
+
+        if (isPlayerShip)
+        {
+            DoLockingCheck();
+        }
+    }
+
+    private void DoLockingCheck()
+    {
+        bool anythingLocking = false;
+        foreach(TargetInfo ti in _lockedTargets)
+        {
+            if (!ti._lockComplete)
+                anythingLocking = true;
+        }
+
+        EventManager.isPlayerLocking = anythingLocking;
+        print("Locking Checked : "+ anythingLocking);
+    }
+
+    private void Die()
+    {
+        EventManager.onShipDestroyed(isPlayerShip, gameObject);
+        EventManager.OnShipTargeted -= OnShipTargeted;
+        EventManager.OnShipSelected -= OnShipSelected;
+        EventManager.OnShipDamaged -= TakeDamage;
+        if (!isPlayerShip)
+        {
+            Q9GameManager._playerShip.UnlockTarget(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public void OnMouseUpAsButton()
     {
         if (GetComponent<Q9Entity>()._isTargetable)
         {
-            EventManager.OnShipTargeted(gameObject);
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                EventManager.OnShipTargeted(gameObject);
+            }
+            else
+            {
+                EventManager.OnShipSelected(gameObject);
+            }
         }
     }
 }

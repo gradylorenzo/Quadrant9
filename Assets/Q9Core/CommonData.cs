@@ -81,7 +81,6 @@ namespace Q9Core.CommonData
     {
         public float _mass;
         public float _signature;
-        public float _minimumCameraDistance;
     }
 
     [System.Serializable]

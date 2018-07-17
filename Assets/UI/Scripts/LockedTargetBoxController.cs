@@ -20,7 +20,6 @@ public class LockedTargetBoxController : MonoBehaviour
 
     public void OnClick()
     {
-        print("Clicked");
         if(LockedTargetSlot < _playerShip._lockedTargets.Count)
         {
             EventManager.OnShipTargeted(_playerShip._lockedTargets[LockedTargetSlot]._target);
@@ -57,13 +56,24 @@ public class LockedTargetBoxController : MonoBehaviour
 
                     //Health bars
                 }
+                _target = _playerShip._lockedTargets[LockedTargetSlot]._target;
             }
             else
             {
                 isVisible = false;
                 ActiveTargetSpinner.enabled = false;
+                _target = null;
             }
         }
         graphic.SetActive(isVisible);
+
+        //Meter updates
+        if (_target != null)
+        {
+            float shieldFill = (1 / (_target.GetComponent<ShipManager>().modifiedAttributes._shield._capacity / _target.GetComponent<ShipManager>().currentAttributes._shield._capacity));
+            float integrityFill = (1 / (_target.GetComponent<ShipManager>().modifiedAttributes._integrity._capacity / _target.GetComponent<ShipManager>().currentAttributes._integrity._capacity));
+            ShieldBar.fillAmount = shieldFill * .75f;
+            IntegrityBar.fillAmount = integrityFill * .75f;
+        }
     }
 }

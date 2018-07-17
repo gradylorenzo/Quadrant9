@@ -15,14 +15,12 @@ public class Q9Weapon : Q9Module
     {
         if (_user)
         {
-            if (_target && _target != _user)
+            if (_target)
             {
-                if (_user.GetComponent<ShipManager>())
+                if (_user.GetComponent<ShipManager>() && _target != _user)
                 {
-                    if (_user.GetComponent<ShipManager>().currentAttributes._cargo.Contains(_charges, 1))
-                    {
-                        _user.GetComponent<ShipManager>().currentAttributes._cargo.Remove(_charges, 1);
-                    }
+                    _target.GetComponent<ShipManager>().TakeDamage(_target, _attributes._damage, _attributes._damageType);
+                    Debug.Log("Target Hit");
                 }
             }
             else

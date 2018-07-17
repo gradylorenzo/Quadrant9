@@ -23,7 +23,6 @@ MonoBehaviour:
   _physical:
     _mass: 100
     _signature: 0
-    _minimumCameraDistance: 0
   _attributes:
     _tier: 0
     _alliance: 5
@@ -31,7 +30,6 @@ MonoBehaviour:
     _physical:
       _mass: 0
       _signature: 0
-      _minimumCameraDistance: 0
     _shield:
       _capacity: 10000000
       _rechargeRate: 100000
@@ -56,7 +54,7 @@ MonoBehaviour:
       _highSlots:
       - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
       - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
-      - {fileID: 0}
+      - {fileID: 11400000, guid: 91a8f6d44bf74e14a8b84d8d3498241c, type: 2}
       - {fileID: 0}
       _midSlots:
       - {fileID: 0}
@@ -109,3 +107,4 @@ MonoBehaviour:
       _capacity: 4
       _cargo: []
   _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}
+  _minCameraDistance: 1.5

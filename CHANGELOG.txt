@@ -1,3 +1,16 @@
+7.16.2018
+
++1 Moved different UI systems into separate canvases for batch optimizations.
++2 Targeting reticles. Contains timer for lock progress and spinner to indicate active target.
++3 Q9Ship._minCameraDistance to prevent clipping into the model on a per-ship basis.
++4 LockedTarget Buttons now display target health.
++5 Locking SFX, handled by a second audio source under the UISounds object.
++6 TestWeapon
+
+!1 Known issue with an invalid operation, too tired to track it down.
+
+##############################################################################################################
+
 7.13.2018
 Friday the 13th, please don't fuck my code over..
 

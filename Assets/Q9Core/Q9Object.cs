@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Q9Core;
 using Q9Core.CommonData;
+using System;
 
 namespace Q9Core
 {
@@ -80,6 +81,8 @@ namespace Q9Core
             get { return _lc; }
         }
 
+        private bool initialized = false;
+
         #endregion
 
 
@@ -108,6 +111,10 @@ namespace Q9Core
 
         public void ModuleUpdate()
         {
+            if (!initialized)
+            {
+                Start();
+            }
             if (!_isPassive)
             {
                 if (_activated)
@@ -124,8 +131,16 @@ namespace Q9Core
                         {
                             if (_user.GetComponent<ShipManager>().currentAttributes._capacitor._capacity > _capacitorUse)
                             {
-                                _user.GetComponent<ShipManager>().ConsumeCapacitor(_capacitorUse);
-                                doEffect();
+
+                                if (_target != null)
+                                {
+                                    doEffect();
+                                    _user.GetComponent<ShipManager>().ConsumeCapacitor(_capacitorUse);
+                                }
+                                else
+                                {
+                                    Deactivate();
+                                }
                             }
                             else
                             {
@@ -136,6 +151,20 @@ namespace Q9Core
                         }
                     }
                 }
+            }
+        }
+
+        private void Start()
+        {
+            initialized = true;
+            EventManager.onShipDestroyed += CheckIfTargetDestroyed;
+        }
+
+        private void CheckIfTargetDestroyed(bool wasPlayerShip, GameObject go)
+        {
+            if(go = _target)
+            {
+                _target = null;
             }
         }
 

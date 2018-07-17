@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3099c90e584e6247a8eb9915b1c16e9, type: 3}
+  m_Name: TestCharge
+  m_EditorClassIdentifier: 
+  _name: 
+  _id: 0
+  _quantity: 1
+  _value: 0
+  _volume: 0
+  _description: 
+  _tier: 0
+  _thumbnail: {fileID: 0}
+  _icon: {fileID: 0}
+  _physical:
+    _mass: 0
+    _signature: 0
+  _type: 1
+  _damageType: 0
+  _bonus:
+    _laser:
+      _chargeType: 0
+      _damageType: 0
+      _damage: 0
+      _optimal: 0
+      _range: 0
+      _flightSpeed: 0
+      _tracking: 0
+    _projectile:
+      _chargeType: 0
+      _damageType: 0
+      _damage: 0
+      _optimal: 0
+      _range: 0
+      _flightSpeed: 0
+      _tracking: 0
+    _railgun:
+      _chargeType: 0
+      _damageType: 0
+      _damage: 0
+      _optimal: 0
+      _range: 0
+      _flightSpeed: 0
+      _tracking: 0
+    _missile:
+      _chargeType: 0
+      _damageType: 0
+      _damage: 0
+      _optimal: 0
+      _range: 0
+      _flightSpeed: 0
+      _tracking: 0

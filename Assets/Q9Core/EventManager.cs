@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Q9Core;
+using Q9Core.CommonData;
 
 public static class EventManager
 {
+    public static bool isPlayerLocking = false;
+
     public delegate void _onTargetLocking();
     public static _onTargetLocking OnTargetLocking;
 
@@ -20,5 +24,11 @@ public static class EventManager
     public static _onLockLimitReached OnLockLimitReached;
 
     public delegate void _onShipDestroyed(bool wasPlayerShip, GameObject go);
-    public static _onShipDestroyed onNPCShipDestroyed;
+    public static _onShipDestroyed onShipDestroyed;
+
+    public delegate void _onShipSelected(GameObject go);
+    public static _onShipSelected OnShipSelected;
+
+    public delegate void _onShipDamaged(GameObject go, float damage, DamageTypes type);
+    public static _onShipDamaged OnShipDamaged;
 }
