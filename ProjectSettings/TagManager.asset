@@ -11,6 +11,8 @@ TagManager:
   - SS1Parent
   - Overview
   - Manager
+  - DeadModel
+  - DyingModel
   layers:
   - Default
   - TransparentFX

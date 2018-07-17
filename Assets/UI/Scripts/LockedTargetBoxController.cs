@@ -22,7 +22,7 @@ public class LockedTargetBoxController : MonoBehaviour
     {
         if(LockedTargetSlot < _playerShip._lockedTargets.Count)
         {
-            EventManager.OnShipTargeted(_playerShip._lockedTargets[LockedTargetSlot]._target);
+            EventManager.OnShipLocked(_playerShip._lockedTargets[LockedTargetSlot]._target);
         }
     }
 

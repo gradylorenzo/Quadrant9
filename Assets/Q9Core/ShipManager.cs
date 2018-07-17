@@ -18,6 +18,7 @@ public class ShipManager : MonoBehaviour {
 
     public string guid;
     private GameObject shipModel;
+    private GameObject ExplosionPrefab;
     public GameObject _activeTarget;
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
@@ -36,9 +37,10 @@ public class ShipManager : MonoBehaviour {
 
     private void Start()
     {
-        EventManager.OnShipTargeted += OnShipTargeted;
+        EventManager.OnShipLocked += OnShipLocked;
         EventManager.OnShipSelected += OnShipSelected;
         EventManager.OnShipDamaged += TakeDamage;
+        EventManager.OnShipUnlocked += OnShipUnlocked;
     }
 
     public void LoadShip(Q9Ship s)
@@ -48,6 +50,9 @@ public class ShipManager : MonoBehaviour {
             Destroy(shipModel);
             shipModel = null;
         }
+
+        if(s._explosionPrefab != null)
+        ExplosionPrefab = s._explosionPrefab;
 
         if (mainCamera)
         {
@@ -417,7 +422,7 @@ public class ShipManager : MonoBehaviour {
     }
     #endregion
     #region target management methods
-    public void OnShipTargeted(GameObject go)
+    public void OnShipLocked(GameObject go)
     {
         if (isPlayerShip)
         {
@@ -426,6 +431,12 @@ public class ShipManager : MonoBehaviour {
                 LockTarget(go);
             }
         }
+    }
+
+    public void OnShipUnlocked(GameObject go)
+    {
+        if(isPlayerShip)
+        UnlockTarget(go);
     }
 
     public void OnShipSelected(GameObject go)
@@ -474,23 +485,36 @@ public class ShipManager : MonoBehaviour {
 
     public void UnlockTarget(GameObject t)
     {
+        int i = 0;
+        bool found = false;
         foreach(TargetInfo ti in _lockedTargets)
         {
-            if (ti._target.GetComponent<ShipManager>().guid == t.GetComponent<ShipManager>().guid)
+            if(ti._target == t)
             {
                 if (ti._lockComplete)
                 {
-                    _lockedTargets.Remove(ti);
-                    if (_activeTarget == ti._target)
-                    {
-                        if (_lockedTargets.Count > 0)
-                        {
-                            _activeTarget = _lockedTargets[0]._target;
-                        }
-                    }
+                    i = _lockedTargets.IndexOf(ti);
+                    found = true;
                 }
             }
         }
+
+        if (found)
+        {
+            _lockedTargets.RemoveAt(i);
+            if(_activeTarget == t)
+            {
+                if(_lockedTargets.Count > 0)
+                {
+                    _activeTarget = _lockedTargets[0]._target;
+                }
+                else
+                {
+                    _activeTarget = null;
+                }
+            }
+        }
+        print("Unlocked");
     }
 
     public void SelectTarget(GameObject t)
@@ -657,19 +681,27 @@ public class ShipManager : MonoBehaviour {
         }
 
         EventManager.isPlayerLocking = anythingLocking;
-        print("Locking Checked : "+ anythingLocking);
     }
 
     private void Die()
     {
         EventManager.onShipDestroyed(isPlayerShip, gameObject);
-        EventManager.OnShipTargeted -= OnShipTargeted;
+        EventManager.OnShipLocked -= OnShipLocked;
         EventManager.OnShipSelected -= OnShipSelected;
         EventManager.OnShipDamaged -= TakeDamage;
         if (!isPlayerShip)
         {
             Q9GameManager._playerShip.UnlockTarget(gameObject);
+            print("NPC Died");
             Destroy(gameObject);
+        }
+        else
+        {
+
+        }
+        if (ExplosionPrefab)
+        {
+            Instantiate(ExplosionPrefab, transform.position, transform.rotation);
         }
     }
 
@@ -679,7 +711,11 @@ public class ShipManager : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.LeftControl))
             {
-                EventManager.OnShipTargeted(gameObject);
+                EventManager.OnShipLocked(gameObject);
+            }
+            else if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                EventManager.OnShipUnlocked(gameObject);
             }
             else
             {

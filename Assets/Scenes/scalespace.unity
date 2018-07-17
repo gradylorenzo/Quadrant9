@@ -3065,7 +3065,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 160401369}
-  m_LocalRotation: {x: -0.16827376, y: 0.43214503, z: -0.082436085, w: -0.8821218}
+  m_LocalRotation: {x: 0.36145243, y: 0.3844889, z: -0.16686147, w: 0.83287317}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -9210,8 +9210,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521168337}
-  m_LocalRotation: {x: -0.16827376, y: 0.43214503, z: -0.082436085, w: -0.8821218}
-  m_LocalPosition: {x: 3.6733272, y: 1.8406227, z: -2.8493462}
+  m_LocalRotation: {x: 0.36145243, y: 0.3844889, z: -0.16686147, w: 0.83287317}
+  m_LocalPosition: {x: -6.7578645, y: 9.495204, z: -5.759527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9239,7 +9239,7 @@ MonoBehaviour:
   distanceMin: 0.2
   distanceMax: 100
   firstMousePosition: {x: 0, y: 0}
-  unlockThreshold: 10
+  unlockThreshold: 20
   spinUnlocked: 0
   SSCameras:
   - {fileID: 160401369}
@@ -22801,7 +22801,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1237305424}
-  m_LocalRotation: {x: -0.16827376, y: 0.43214503, z: -0.082436085, w: -0.8821218}
+  m_LocalRotation: {x: 0.36145243, y: 0.3844889, z: -0.16686147, w: 0.83287317}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

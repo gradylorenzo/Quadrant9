@@ -11,4 +11,5 @@ public class Q9Ship : Q9Object
     public Attributes _attributes;
     public GameObject _model;
     public float _minCameraDistance;
+    public GameObject _explosionPrefab;
 }

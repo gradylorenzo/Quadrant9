@@ -14,8 +14,11 @@ public static class EventManager
     public delegate void _onTargetLockComplete();
     public static _onTargetLockComplete OnTargetLockComplete;
 
-    public delegate void _onShipMouseDown(GameObject go);
-    public static _onShipMouseDown OnShipTargeted;
+    public delegate void _onShipLocked(GameObject go);
+    public static _onShipLocked OnShipLocked;
+
+    public delegate void _onShipUnlocked(GameObject go);
+    public static _onShipUnlocked OnShipUnlocked;
 
     public delegate void _onModuleInsufficientPower();
     public static _onModuleInsufficientPower OnModuleInsufficientPower;
