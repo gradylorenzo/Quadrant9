@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b462a195c7b82a14a9a8b23dc45d60b3, type: 3}
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
-  _name: 
-  _id: 0
+  _name: Test Weapon 1
+  _id: TEST_WEAPON_1
   _quantity: 0
   _value: 0
   _volume: 0
   _description: 
-  _tier: 0
+  _tier: 1
   _thumbnail: {fileID: 21300000, guid: 77d5bfd7ef16bab469dfc8578a900aba, type: 3}
   _icon: {fileID: 21300000, guid: 77d5bfd7ef16bab469dfc8578a900aba, type: 3}
   _physical:

@@ -27,11 +27,20 @@ public static class EventManager
     public static _onLockLimitReached OnLockLimitReached;
 
     public delegate void _onShipDestroyed(bool wasPlayerShip, GameObject go);
-    public static _onShipDestroyed onShipDestroyed;
+    public static _onShipDestroyed OnShipDestroyed;
 
     public delegate void _onShipSelected(GameObject go);
     public static _onShipSelected OnShipSelected;
 
     public delegate void _onShipDamaged(GameObject go, float damage, DamageTypes type);
     public static _onShipDamaged OnShipDamaged;
+
+    public delegate void _onGameInitialize();
+    public static _onGameInitialize OnGameInternalDataInitialize;
+
+    public delegate void _onGameInitializationComplete(Q9Ship PlayerShipData);
+    public static _onGameInitializationComplete OnGameInitializationComplete;
+
+    public delegate void _onGameIsReady();
+    public static _onGameIsReady OnGameIsReady;
 }

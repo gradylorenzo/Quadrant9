@@ -31,20 +31,20 @@ public class ReticleController : MonoBehaviour {
 
     private void Update()
     {
-        if (Q9GameManager._playerShip != null)
+        if (GameManager._playerShip != null)
         {
             int t;
-            t = Q9GameManager._playerShip._lockedTargets.Count;
+            t = GameManager._playerShip._lockedTargets.Count;
 
             if (LockedTargetSlot < t)
             {
-                Target = Q9GameManager._playerShip._lockedTargets[LockedTargetSlot]._target;
-                _reticle._timer.enabled = !Q9GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockComplete;
-                if (!Q9GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockComplete)
+                Target = GameManager._playerShip._lockedTargets[LockedTargetSlot]._target;
+                _reticle._timer.enabled = !GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockComplete;
+                if (!GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockComplete)
                 {
                     float time, start;
-                    time = Q9GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockTime;
-                    start = Q9GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockStart;
+                    time = GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockTime;
+                    start = GameManager._playerShip._lockedTargets[LockedTargetSlot]._lockStart;
                     _reticle._timer.fillAmount = (1 - ((time - (Time.time - start)) / time));
                     _reticle._timer.enabled = true;
                 }
@@ -59,7 +59,7 @@ public class ReticleController : MonoBehaviour {
                 _reticle._markerDown.enabled = true;
                 _reticle._markerLeft.enabled = true;
                 _reticle._markerRight.enabled = true;
-                _reticle._spinner.enabled = (Target == Q9GameManager._playerShip._activeTarget);
+                _reticle._spinner.enabled = (Target == GameManager._playerShip._activeTarget);
             }
             else
             {

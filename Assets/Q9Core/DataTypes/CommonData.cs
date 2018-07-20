@@ -27,6 +27,7 @@ namespace Q9Core.CommonData
     [System.Serializable]
     public enum Tier
     {
+        L0,
         L1,
         L2,
         L3,
@@ -221,7 +222,6 @@ namespace Q9Core.CommonData
     [System.Serializable]
     public struct Attributes
     {
-        public Tier _tier;
         public Alliances _alliance;
         public EntityTypes _type;
         public Physical _physical;
@@ -233,40 +233,16 @@ namespace Q9Core.CommonData
         public Cargo _cargo;
     }
     #endregion
-
-    #region Profile
-    [System.Serializable]
-    public struct Identity
-    {
-        public string _name;
-        public int _credits;
-    }
-
     [System.Serializable]
     public enum Alliances
     {
-        Neutral,
-        ShadowSyndicate,
-        CrimsonUnion,
-        TimirgorIndustries,
-        Ascendancy,
-        OracleFederation,
-        PhoenixEmpire
-    }
-
-    [System.Serializable]
-    public struct Standing
-    {
-        public Alliances _alliance;
-        public float _standing;
-    }
-
-    [System.Serializable]
-    public class PlayerProfile
-    {
-        public Identity _identity;
-        public Alliances _alliance;
-        public Standing[] _standings;
+        Neutral = 0,
+        ShadowSyndicate = 1,
+        CrimsonUnion = 2,
+        TimirgorIndustries = 3,
+        Ascendancy = 4,
+        OracleFederation = 5,
+        PhoenixEmpire = 6
     }
 
     [System.Serializable]
@@ -285,5 +261,4 @@ namespace Q9Core.CommonData
         Carrier,
         Supercarrier
     }
-    #endregion
 }

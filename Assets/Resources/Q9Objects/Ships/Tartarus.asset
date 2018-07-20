@@ -12,20 +12,19 @@ MonoBehaviour:
   m_Name: Tartarus
   m_EditorClassIdentifier: 
   _name: Tartarus
-  _id: 3
+  _id: TARTARUS
   _quantity: 0
   _value: 0
   _volume: 0
   _description: Tartarus-Class Supercarrier
-  _tier: 0
+  _tier: 1
   _thumbnail: {fileID: 21300000, guid: fc3294b1c4a5bf34c82c400ce09d4e55, type: 3}
   _icon: {fileID: 21300000, guid: 474b689c830939e48a5afbdf1adef6a9, type: 3}
   _physical:
     _mass: 100
     _signature: 0
   _attributes:
-    _tier: 0
-    _alliance: 5
+    _alliance: 0
     _type: 11
     _physical:
       _mass: 0
@@ -52,9 +51,9 @@ MonoBehaviour:
       _teraflops: 0
       _terawatts: 0
       _highSlots:
-      - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
-      - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
-      - {fileID: 11400000, guid: 91a8f6d44bf74e14a8b84d8d3498241c, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
       - {fileID: 0}
       _midSlots:
       - {fileID: 0}
@@ -104,7 +103,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
     _cargo:
-      _capacity: 4
+      _capacity: 0
       _cargo: []
   _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}
   _minCameraDistance: 1.5

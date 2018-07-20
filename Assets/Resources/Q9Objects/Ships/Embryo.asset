@@ -12,28 +12,25 @@ MonoBehaviour:
   m_Name: Embryo
   m_EditorClassIdentifier: 
   _name: Embryo
-  _id: 2
+  _id: EMBRYO
   _quantity: 0
   _value: 0
   _volume: 0
   _description: A capsule-shaped craft that acts as an escape pod in the event of
     an emergency, housing for a ship's pilot, and the control center of an entire
     ship. It contains basic maneuvering, navigation, life support, and warping capabilities.
-  _tier: 0
+  _tier: 1
   _thumbnail: {fileID: 21300000, guid: 4de57e4ab1f432d4a909c8858aae5267, type: 3}
   _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   _physical:
     _mass: 0
     _signature: 0
-    _minimumCameraDistance: 0
   _attributes:
-    _tier: 0
     _alliance: 0
     _type: 4
     _physical:
       _mass: 0
       _signature: 0
-      _minimumCameraDistance: 0
     _shield:
       _capacity: 100
       _rechargeRate: 1
@@ -96,3 +93,5 @@ MonoBehaviour:
       _capacity: 0
       _cargo: []
   _model: {fileID: 1174444098197692, guid: 863dab44fafe33342b3087e388b32089, type: 2}
+  _minCameraDistance: 0
+  _explosionPrefab: {fileID: 0}

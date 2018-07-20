@@ -10,10 +10,10 @@ namespace Q9Core
     public class Q9Object : ScriptableObject
     {
         public string _name;
-        public int _id;
+        public string _id;
         public int _quantity;
         public int _value;
-        public float _volume;
+        public float _volume = 0.01f;
         public string _description;
         public Tier _tier;
         public Sprite _thumbnail;
@@ -157,7 +157,7 @@ namespace Q9Core
         private void Start()
         {
             initialized = true;
-            EventManager.onShipDestroyed += CheckIfTargetDestroyed;
+            EventManager.OnShipDestroyed += CheckIfTargetDestroyed;
         }
 
         private void CheckIfTargetDestroyed(bool wasPlayerShip, GameObject go)

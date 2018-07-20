@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Name: ShieldBoosterI
   m_EditorClassIdentifier: 
   _name: Shield Booster I
-  _id: 0
+  _id: SHIELD_BOOSTER_L1
   _quantity: 0
   _value: 0
   _volume: 0
   _description: When triggered, this device periodically consumes capacitor power
     to boost the ship's shields.
-  _tier: 0
+  _tier: 1
   _thumbnail: {fileID: 21300000, guid: a2fa884d02b163542995094aea208bdd, type: 3}
+  _icon: {fileID: 0}
   _physical:
     _mass: 100
     _signature: 0

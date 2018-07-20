@@ -23,24 +23,33 @@ public class ShipManager : MonoBehaviour {
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
     private Camera mainCamera;
+    private bool isReady = false;
 
     private void Awake()
     {
         guid = Guid.NewGuid().ToString();
         if (isPlayerShip)
         {
-            Q9GameManager._playerShip = this;
+            GameManager._playerShip = this;
         }
         mainCamera = Camera.main;
-        LoadShip(defaultShipData);
-    }
-
-    private void Start()
-    {
+        if (!isPlayerShip)
+        {
+            LoadShip(defaultShipData);
+        }
         EventManager.OnShipLocked += OnShipLocked;
         EventManager.OnShipSelected += OnShipSelected;
         EventManager.OnShipDamaged += TakeDamage;
         EventManager.OnShipUnlocked += OnShipUnlocked;
+        EventManager.OnGameInitializationComplete += OnGameInitializationComplete;
+    }
+
+    private void OnGameInitializationComplete(Q9Ship s)
+    {
+        if (isPlayerShip)
+        {
+            LoadShip(s);
+        }
     }
 
     public void LoadShip(Q9Ship s)
@@ -135,6 +144,11 @@ public class ShipManager : MonoBehaviour {
         GetComponent<Q9Entity>()._isDockable = false;
         GetComponent<Q9Entity>()._isMinable = false;
         GetComponent<Q9Entity>()._isAlwaysVisibleInOverview = false;
+        isReady = true;
+        if (isPlayerShip)
+        {
+            EventManager.OnGameIsReady();
+        }
     }
     private void CalculateModifiedAttributes(bool ResetCurrentAttributesAfterRecalculate)
     {
@@ -424,7 +438,7 @@ public class ShipManager : MonoBehaviour {
     #region target management methods
     public void OnShipLocked(GameObject go)
     {
-        if (isPlayerShip)
+        if (isPlayerShip && isReady)
         {
             if (go != this.gameObject)
             {
@@ -435,13 +449,13 @@ public class ShipManager : MonoBehaviour {
 
     public void OnShipUnlocked(GameObject go)
     {
-        if(isPlayerShip)
+        if(isPlayerShip && isReady)
         UnlockTarget(go);
     }
 
     public void OnShipSelected(GameObject go)
     {
-        if (isPlayerShip)
+        if (isPlayerShip && isReady)
         {
             if (go != this.gameObject)
             {
@@ -685,13 +699,13 @@ public class ShipManager : MonoBehaviour {
 
     private void Die()
     {
-        EventManager.onShipDestroyed(isPlayerShip, gameObject);
+        EventManager.OnShipDestroyed(isPlayerShip, gameObject);
         EventManager.OnShipLocked -= OnShipLocked;
         EventManager.OnShipSelected -= OnShipSelected;
         EventManager.OnShipDamaged -= TakeDamage;
         if (!isPlayerShip)
         {
-            Q9GameManager._playerShip.UnlockTarget(gameObject);
+            GameManager._playerShip.UnlockTarget(gameObject);
             print("NPC Died");
             Destroy(gameObject);
         }

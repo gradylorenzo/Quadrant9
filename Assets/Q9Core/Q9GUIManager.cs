@@ -17,7 +17,7 @@ public class Q9GUIManager : MonoBehaviour
 
     private void Start()
     {
-        Q9GameManager._guiManager = this;
+        GameManager._guiManager = this;
         foreach(HotbarButton hbb in _hotbarButtons)
         {
             hbb.ResetTargetModule();
@@ -61,9 +61,9 @@ public class Q9GUIManager : MonoBehaviour
             }
             else
             {
-                if (Q9GameManager._playerShip != null)
+                if (GameManager._playerShip != null)
                 {
-                    _playerShip = Q9GameManager._playerShip;
+                    _playerShip = GameManager._playerShip;
                 }
             }
             nextUpdate = Time.time + 1;
