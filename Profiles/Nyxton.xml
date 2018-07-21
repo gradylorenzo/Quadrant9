@@ -1,0 +1,45 @@
+﻿<PROFILE>
+  <NAME>Nyxton</NAME>
+  <SETTINGS>
+    <VOLUME>
+      <SFX>0.5</SFX>
+      <WORLD>0.5</WORLD>
+      <AMBIENCE>0.5</AMBIENCE>
+      <MUSIC>0.5</MUSIC>
+      <UI>0.5</UI>
+      <VOICE>0.5</VOICE>
+    </VOLUME>
+  </SETTINGS>
+  <SEED>af820026f5324244a079b1efc765391a</SEED>
+  <CREDITS>10000</CREDITS>
+  <CURRENTSHIP>db91badd-51d4-405c-9dce-d5cda870f2ea</CURRENTSHIP>
+  <SHIP guid="db91badd-51d4-405c-9dce-d5cda870f2ea">
+    <HULL>EMBRYO</HULL>
+    <NAME>Nyxton's Embryo</NAME>
+    <FITTING>
+      <HIGH>
+        <0>NULL</0>
+        <1>NULL</1>
+        <2>NULL</2>
+        <3>NULL</3>
+      </HIGH>
+      <MID>
+        <0>NULL</0>
+        <1>NULL</1>
+        <2>NULL</2>
+        <3>NULL</3>
+      </MID>
+      <LOW>
+        <0>NULL</0>
+        <1>NULL</1>
+        <2>NULL</2>
+        <3>NULL</3>
+      </LOW>
+      <RIG>
+        <0>NULL</0>
+        <1>NULL</1>
+        <2>NULL</2>
+      </RIG>
+    </FITTING>
+  </SHIP>
+</PROFILE>

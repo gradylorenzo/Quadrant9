@@ -24,24 +24,22 @@ namespace Q9Core.PlayerData
     public class PlayerProfile
     {
         public Identity _identity;
-        public Alliances _alliance;
-        public Standing[] _standings;
         public Q9Ship _currentShip;
+        public Q9Ship[] _allShips;
 
         public PlayerProfile()
         {
 
         }
 
-        public PlayerProfile (Identity _id, Alliances _all, Standing[] _stand, Q9Ship _q9s)
+        public PlayerProfile (Identity _id, Alliances _all, Standing[] _stand, Q9Ship _q9s, Q9Ship[] _allq9s)
         {
             _identity = _id;
-            _alliance = _all;
-            _standings = _stand;
+            //_alliance = _all;
+            //_standings = _stand;
             _currentShip = _q9s;
+            _allShips = _allq9s;
         }
     }
-
-
     #endregion
 }

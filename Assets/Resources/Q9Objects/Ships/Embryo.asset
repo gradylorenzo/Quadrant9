@@ -25,6 +25,7 @@ MonoBehaviour:
   _physical:
     _mass: 0
     _signature: 0
+  _guid: 51589b18-bd41-4da5-a32b-677d37f65a4a
   _attributes:
     _alliance: 0
     _type: 4
@@ -52,10 +53,25 @@ MonoBehaviour:
     _fitting:
       _teraflops: 0
       _terawatts: 0
-      _highSlots: []
-      _midSlots: []
-      _lowSlots: []
-      _rigSlots: []
+      _highSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      _midSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      _lowSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      _rigSlots:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
     _offensive:
       _laser:
         _chargeType: 0

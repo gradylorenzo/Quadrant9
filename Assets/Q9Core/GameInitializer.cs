@@ -11,12 +11,12 @@ public class GameInitializer : MonoBehaviour {
     public Q9Ship[] _shipLibrary;
     public Q9Module[] _moduleLibrary;
     public Q9Item[] _itemLibrary;
-    public PlayerProfile _prof;
 
     public void Awake()
     {
         EventManager.OnGameInternalDataInitialize += OnGameInternalDataInitialize;
-        SaveManager.WriteNewProfile(_prof);
+        EventManager.OnGameInternalDataInitialize();
+        SaveManager.WriteNewProfile("Nyxton");
     }
 
     private void OnGameInternalDataInitialize()
