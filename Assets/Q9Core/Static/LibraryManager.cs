@@ -9,9 +9,9 @@ using System;
 public static class LibraryManager
 {
     public static bool isInitialized = false;
-    public static Dictionary<string, Q9Ship> L_SHIPS = new Dictionary<string, Q9Ship>();
-    public static Dictionary<string, Q9Module> L_MODULES = new Dictionary<string, Q9Module>();
-    public static Dictionary<string, Q9Item> L_ITEMS = new Dictionary<string, Q9Item>();
+    private static Dictionary<string, Q9Ship> L_SHIPS = new Dictionary<string, Q9Ship>();
+    private static Dictionary<string, Q9Module> L_MODULES = new Dictionary<string, Q9Module>();
+    private static Dictionary<string, Q9Item> L_ITEMS = new Dictionary<string, Q9Item>();
 
     //use this class to initialize the libraries
     public static void Initialize(Q9Ship[] shipArr, Q9Module[] modArray, Q9Item[] itemArray)
@@ -20,6 +20,30 @@ public static class LibraryManager
         InitializeModuleLibrary(modArray);
         InitializeItemLibrary(itemArray);
         isInitialized = true;
+    }
+
+    public static Q9Ship GetShip(string s)
+    {
+        if (L_SHIPS.ContainsKey(s))
+        {
+            return ScriptableObject.Instantiate(L_SHIPS[s]);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public static Q9Module GetModule(string s)
+    {
+        if (L_MODULES.ContainsKey(s))
+        {
+            return ScriptableObject.Instantiate(L_MODULES[s]);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     #region individual initializer methods

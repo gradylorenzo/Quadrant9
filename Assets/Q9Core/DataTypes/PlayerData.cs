@@ -11,6 +11,7 @@ namespace Q9Core.PlayerData
     {
         public string _name;
         public int _credits;
+        public string _seed;
     }
 
     [System.Serializable]
@@ -24,21 +25,12 @@ namespace Q9Core.PlayerData
     public class PlayerProfile
     {
         public Identity _identity;
-        public Q9Ship _currentShip;
-        public Q9Ship[] _allShips;
+        public string _currentShip;
+        public Dictionary<string, Q9Ship> _allShips = new Dictionary<string, Q9Ship>();
 
         public PlayerProfile()
         {
 
-        }
-
-        public PlayerProfile (Identity _id, Alliances _all, Standing[] _stand, Q9Ship _q9s, Q9Ship[] _allq9s)
-        {
-            _identity = _id;
-            //_alliance = _all;
-            //_standings = _stand;
-            _currentShip = _q9s;
-            _allShips = _allq9s;
         }
     }
     #endregion

@@ -15,7 +15,7 @@ namespace Q9Core
 {
     public static class SaveManager
     {        
-        public static void OverwriteProfile()
+        public static void OverwriteProfile(PlayerProfile profile)
         {
             
         }
@@ -32,11 +32,12 @@ namespace Q9Core
                 PlayerProfile profile = new PlayerProfile();
                 profile._identity._name = _name;
                 profile._identity._credits = 10000;
-                profile._allShips = new Q9Ship[1];
-                profile._allShips[0] = UnityEngine.Object.Instantiate(LibraryManager.L_SHIPS["EMBRYO"]);
-                profile._allShips[0]._guid = Guid.NewGuid().ToString();
-                profile._currentShip = profile._allShips[0];
-                    
+                Q9Ship newShip = new Q9Ship();
+
+                newShip = LibraryManager.GetShip("EMBRYO");
+                newShip._guid = Guid.NewGuid().ToString();
+                profile._currentShip = newShip._guid;
+                profile._allShips.Add(newShip._guid, newShip);
 
                 XmlTextWriter xw = new XmlTextWriter("Profiles/" + _name + ".xml", Encoding.UTF8);
                 xw.Formatting = Formatting.Indented;
@@ -55,76 +56,87 @@ namespace Q9Core
                 xw.WriteEndElement();
                 xw.WriteElementString("SEED", Guid.NewGuid().ToString("N"));
                 xw.WriteElementString("CREDITS", profile._identity._credits.ToString());
-                xw.WriteElementString("CURRENTSHIP", profile._currentShip._guid);
-                foreach (Q9Ship s in profile._allShips)
+                xw.WriteElementString("CURRENTSHIP", profile._currentShip);
+                foreach (KeyValuePair<string, Q9Ship> s in profile._allShips)
                 {
                     xw.WriteStartElement("SHIP");
-                    xw.WriteAttributeString("guid", s._guid);
-                    xw.WriteElementString("HULL", s._id);
-                    xw.WriteElementString("NAME", profile._identity._name + "'s " + s._name);
+                    xw.WriteAttributeString("guid", s.Value._guid);
+                    xw.WriteElementString("HULL", s.Value._id);
+                    xw.WriteElementString("NAME", profile._identity._name + "'s " + s.Value._name);
                     xw.WriteStartElement("FITTING");
 
-                    xw.WriteStartElement("HIGH");
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (s._attributes._fitting._highSlots[i] != null)
+                        xw.WriteStartElement("HIGH");
+                        for (int i = 0; i < 4; i++)
                         {
-                            xw.WriteElementString(i.ToString(), s._attributes._fitting._highSlots[i]._id);
+                            if (s.Value._attributes._fitting._highSlots[i] != null)
+                            {
+                                xw.WriteElementString("s" + i.ToString(), s.Value._attributes._fitting._highSlots[i]._id);
+                            }
+                            else
+                            {
+                                xw.WriteElementString("s" + i.ToString(), "NULL");
+                            }
                         }
-                        else
+                        xw.WriteEndElement();
+
+                        xw.WriteStartElement("MID");
+                        for (int i = 0; i < 4; i++)
                         {
-                            xw.WriteElementString(i.ToString(), "NULL");
+                            if (s.Value._attributes._fitting._midSlots[i] != null)
+                            {
+                                xw.WriteElementString("s" + i.ToString(), s.Value._attributes._fitting._midSlots[i]._id);
+                            }
+                            else
+                            {
+                                xw.WriteElementString("s" + i.ToString(), "NULL");
+                            }
                         }
-                    }
+                        xw.WriteEndElement();
+
+                        xw.WriteStartElement("LOW");
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (s.Value._attributes._fitting._lowSlots[i] != null)
+                            {
+                                xw.WriteElementString("s" + i.ToString(), s.Value._attributes._fitting._lowSlots[i]._id);
+                            }
+                            else
+                            {
+                                xw.WriteElementString("s" + i.ToString(), "NULL");
+                            }
+                        }
+                        xw.WriteEndElement();
+
+                        xw.WriteStartElement("RIG");
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (s.Value._attributes._fitting._rigSlots[i] != null)
+                            {
+                                xw.WriteElementString("s" + i.ToString(), s.Value._attributes._fitting._rigSlots[i]._id);
+                            }
+                            else
+                            {
+                                xw.WriteElementString("s" + i.ToString(), "NULL");
+                            }
+                        }
+                        xw.WriteEndElement();
+
                     xw.WriteEndElement();
 
-                    xw.WriteStartElement("MID");
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (s._attributes._fitting._midSlots[i] != null)
-                        {
-                            xw.WriteElementString(i.ToString(), s._attributes._fitting._midSlots[i]._id);
-                        }
-                        else
-                        {
-                            xw.WriteElementString(i.ToString(), "NULL");
-                        }
-                    }
-                    xw.WriteEndElement();
+                    xw.WriteStartElement("CARGO");
 
-                    xw.WriteStartElement("LOW");
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (s._attributes._fitting._lowSlots[i] != null)
+                        if (s.Value._attributes._cargo._cargo.Count > 0)
                         {
-                            xw.WriteElementString(i.ToString(), s._attributes._fitting._lowSlots[i]._id);
+                            foreach (Q9Object o in s.Value._attributes._cargo._cargo)
+                            {
+                                xw.WriteElementString("OBJECT", o._id);
+                            }
                         }
-                        else
-                        {
-                            xw.WriteElementString(i.ToString(), "NULL");
-                        }
-                    }
-                    xw.WriteEndElement();
-
-                    xw.WriteStartElement("RIG");
-                    for (int i = 0; i < 3; i++)
-                    {
-                        if (s._attributes._fitting._rigSlots[i] != null)
-                        {
-                            xw.WriteElementString(i.ToString(), s._attributes._fitting._rigSlots[i]._id);
-                        }
-                        else
-                        {
-                            xw.WriteElementString(i.ToString(), "NULL");
-                        }
-                    }
-                    xw.WriteEndElement();
 
                     xw.WriteEndElement();
+
                     xw.WriteEndElement();
                 }
-
-                
 
                 xw.WriteEndElement();
 
@@ -147,17 +159,72 @@ namespace Q9Core
                         string path = "Profiles/" + id + ".xml";
                         PlayerProfile newProfile = new PlayerProfile();
                         XmlDocument reader = new XmlDocument();
+                        reader.Load("Profiles/" + id + ".xml");
+
                         try
                         {
-                            newProfile._identity._name = reader.SelectSingleNode("NAME").InnerText;
-                            newProfile._identity._credits = Convert.ToInt32(reader.SelectSingleNode("CREDITS").InnerText);
+                            newProfile._identity._name = reader.SelectSingleNode("PROFILE/NAME").InnerText;
+                            newProfile._identity._credits = Convert.ToInt32(reader.SelectSingleNode("PROFILE/CREDITS").InnerText);
+                            newProfile._identity._seed = reader.SelectSingleNode("PROFILE/SEED").InnerText;
+                            newProfile._currentShip = reader.SelectSingleNode("PROFILE/CURRENTSHIP").InnerText;
+
+                            XmlNodeList nl = reader.SelectNodes("PROFILE/SHIP");
+
+                            Debug.Log(nl.Count);
+
+                            foreach(XmlNode node in nl)
+                            {
+                                Q9Ship newShip = new Q9Ship();
+                                newShip = LibraryManager.GetShip(node.SelectSingleNode("HULL").InnerText);
+                                newShip._guid = node.Attributes["guid"].Value;
+                                newShip._name = node.SelectSingleNode("NAME").InnerText;
+
+                                Fitting newFitting = new Fitting();
+                                newFitting._highSlots = new Q9Module[4];
+                                newFitting._midSlots = new Q9Module[4];
+                                newFitting._lowSlots = new Q9Module[4];
+                                newFitting._rigSlots = new Q9Module[3];
+
+                                //Load High Slots
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    newFitting._highSlots[i] =
+                                        LibraryManager.GetModule(node.SelectSingleNode("FITTING/HIGH/s" + i).InnerText);
+                                }
+                                //Load Mid Slots
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    newFitting._midSlots[i] =
+                                        LibraryManager.GetModule(node.SelectSingleNode("FITTING/HIGH/s" + i).InnerText);
+                                }
+                                //Load Low Slots
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    newFitting._lowSlots[i] =
+                                        LibraryManager.GetModule(node.SelectSingleNode("FITTING/HIGH/s" + i).InnerText);
+                                }
+                                //Load Rig Slots
+                                for (int i = 0; i < 3; i++)
+                                {
+                                    newFitting._rigSlots[i] =
+                                        LibraryManager.GetModule(node.SelectSingleNode("FITTING/HIGH/s" + i).InnerText);
+                                }
+
+                                newShip._attributes._fitting = newFitting;
+                                if (!newProfile._allShips.ContainsKey(newShip._guid))
+                                {
+                                    newProfile._allShips.Add(newShip._guid, newShip);
+                                }
+                            }
 
                         }
+                        #region exception handling
                         catch(Exception e)
                         {
                             Debug.LogError(e.Message);
                             return null;
                         }
+                        #endregion
                         finally
                         {
                             

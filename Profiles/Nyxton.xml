@@ -10,36 +10,67 @@
       <VOICE>0.5</VOICE>
     </VOLUME>
   </SETTINGS>
-  <SEED>af820026f5324244a079b1efc765391a</SEED>
+  <SEED>cdc7610302b14eea8d8104acc3d283c5</SEED>
   <CREDITS>10000</CREDITS>
-  <CURRENTSHIP>db91badd-51d4-405c-9dce-d5cda870f2ea</CURRENTSHIP>
-  <SHIP guid="db91badd-51d4-405c-9dce-d5cda870f2ea">
+  <CURRENTSHIP>c6295283-f175-4408-8d7b-635624ddee99</CURRENTSHIP>
+  <SHIP guid="c6295283-f175-4408-8d7b-635624ddee99">
     <HULL>EMBRYO</HULL>
     <NAME>Nyxton's Embryo</NAME>
     <FITTING>
       <HIGH>
-        <0>NULL</0>
-        <1>NULL</1>
-        <2>NULL</2>
-        <3>NULL</3>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
       </HIGH>
       <MID>
-        <0>NULL</0>
-        <1>NULL</1>
-        <2>NULL</2>
-        <3>NULL</3>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
       </MID>
       <LOW>
-        <0>NULL</0>
-        <1>NULL</1>
-        <2>NULL</2>
-        <3>NULL</3>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
       </LOW>
       <RIG>
-        <0>NULL</0>
-        <1>NULL</1>
-        <2>NULL</2>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
       </RIG>
     </FITTING>
+    <CARGO />
+  </SHIP>
+  <SHIP guid="da4074c3-8b77-448d-aa40-68fa9674077e">
+    <HULL>TARTARUS</HULL>
+    <NAME>Nyxton's Tartarus</NAME>
+    <FITTING>
+      <HIGH>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
+      </HIGH>
+      <MID>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
+      </MID>
+      <LOW>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
+      </LOW>
+      <RIG>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+      </RIG>
+    </FITTING>
+    <CARGO />
   </SHIP>
 </PROFILE>

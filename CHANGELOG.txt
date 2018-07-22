@@ -1,3 +1,10 @@
+7.20.2018
+
++1 LibraryManager. This holds dictionaries for Q9Object lookups, will probably implement dedicated lookup functions later.
++2 SaveManager. WriteNewSave is being wirrten out. Output goes to /Profiles/_.xml
+
+##############################################################################################################
+
 7.17.2018
 
 7.16.2018!1 "Known issue with an invalid operation, too tired to track it down."
