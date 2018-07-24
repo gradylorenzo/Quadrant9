@@ -1818,11 +1818,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipLibrary:
   - {fileID: 11400000, guid: 2f71f955db946804fbc3f86c6a109d97, type: 2}
+  - {fileID: 11400000, guid: c157daa91442ac44fb7e9702cb64f334, type: 2}
   _moduleLibrary:
   - {fileID: 11400000, guid: 039f3717bbcdd70419e4483279fb1671, type: 2}
   - {fileID: 11400000, guid: 3c96e7cd2bbfa544d8a3cd7ad6f78731, type: 2}
   - {fileID: 11400000, guid: 91a8f6d44bf74e14a8b84d8d3498241c, type: 2}
   _itemLibrary: []
+  _prof:
+    _identity:
+      _name: 
+      _credits: 0
+      _seed: 
+    _currentShip: 
 --- !u!4 &1360123585
 Transform:
   m_ObjectHideFlags: 0

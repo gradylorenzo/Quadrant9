@@ -170,8 +170,6 @@ namespace Q9Core
 
                             XmlNodeList nl = reader.SelectNodes("PROFILE/SHIP");
 
-                            Debug.Log(nl.Count);
-
                             foreach(XmlNode node in nl)
                             {
                                 Q9Ship newShip = new Q9Ship();
@@ -216,7 +214,6 @@ namespace Q9Core
                                     newProfile._allShips.Add(newShip._guid, newShip);
                                 }
                             }
-
                         }
                         #region exception handling
                         catch(Exception e)

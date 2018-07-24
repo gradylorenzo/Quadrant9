@@ -43,34 +43,4 @@
     </FITTING>
     <CARGO />
   </SHIP>
-  <SHIP guid="da4074c3-8b77-448d-aa40-68fa9674077e">
-    <HULL>TARTARUS</HULL>
-    <NAME>Nyxton's Tartarus</NAME>
-    <FITTING>
-      <HIGH>
-        <s0>NULL</s0>
-        <s1>NULL</s1>
-        <s2>NULL</s2>
-        <s3>NULL</s3>
-      </HIGH>
-      <MID>
-        <s0>NULL</s0>
-        <s1>NULL</s1>
-        <s2>NULL</s2>
-        <s3>NULL</s3>
-      </MID>
-      <LOW>
-        <s0>NULL</s0>
-        <s1>NULL</s1>
-        <s2>NULL</s2>
-        <s3>NULL</s3>
-      </LOW>
-      <RIG>
-        <s0>NULL</s0>
-        <s1>NULL</s1>
-        <s2>NULL</s2>
-      </RIG>
-    </FITTING>
-    <CARGO />
-  </SHIP>
 </PROFILE>

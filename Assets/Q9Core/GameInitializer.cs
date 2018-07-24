@@ -17,12 +17,6 @@ public class GameInitializer : MonoBehaviour {
     {
         EventManager.OnGameInternalDataInitialize += OnGameInternalDataInitialize;
         EventManager.OnGameInternalDataInitialize();
-        //SaveManager.WriteNewProfile("Nyxton");
-        _prof = SaveManager.ReadProfile("Nyxton");
-        foreach(KeyValuePair<string, Q9Ship> kvp in _prof._allShips)
-        {
-            print(kvp.Key);
-        }
     }
 
     private void OnGameInternalDataInitialize()

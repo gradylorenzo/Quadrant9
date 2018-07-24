@@ -556,8 +556,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551736461358088}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.046, y: 0, z: 0.334}
-  m_LocalScale: {x: 1, y: 1.0000014, z: 1.0000014}
+  m_LocalPosition: {x: -0.046, y: 0, z: 0.3340001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4366357511623406}
   m_RootOrder: 11
@@ -1490,7 +1490,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 7
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1543,7 +1543,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1597,7 +1597,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.5333333, g: 1, b: 0.6454988, a: 0.5}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1659,7 +1659,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2053,7 +2053,7 @@ ParticleSystem:
     m_SpriteRenderer: {fileID: 0}
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
-    alignToDirection: 0
+    alignToDirection: 1
     m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
@@ -2061,7 +2061,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -2294,7 +2294,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 100
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -2358,18 +2358,18 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: -1
-          outSlope: -1
+          value: 0
+          inSlope: 1
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0
-          inSlope: -1
-          outSlope: -1
+          value: 1
+          inSlope: 1
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -2669,7 +2669,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 1
     gradient:
@@ -2680,7 +2680,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0.52609503, b: 0, a: 1}
+        key1: {r: 0, g: 0, b: 0, a: 0.5117647}
         key2: {r: 1, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2688,7 +2688,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 4241
+        ctime1: 65535
         ctime2: 65535
         ctime3: 0
         ctime4: 0
@@ -2696,16 +2696,16 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 25443
-        atime2: 65535
-        atime3: 0
+        atime1: 18890
+        atime2: 59174
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 3
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3940,7 +3940,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5076,8 +5076,8 @@ ParticleSystem:
       properties: 0
   LightsModule:
     enabled: 1
-    ratio: 0
-    light: {fileID: 0}
+    ratio: 1
+    light: {fileID: 108290647911797682, guid: d8a98ca011cf77c4b9640b2e79eae799, type: 2}
     randomDistribution: 1
     color: 1
     range: 1
@@ -6133,7 +6133,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6625,8 +6625,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -6651,7 +6651,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -6880,11 +6880,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 3.6
+      time: 3.75
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -6937,7 +6937,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -7271,7 +7271,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -7279,8 +7279,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -7294,7 +7294,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -7326,7 +7326,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -10670,7 +10670,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10723,7 +10723,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10839,7 +10839,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -11214,9 +11214,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 0
-    angle: 33.79
-    length: 0.07567004
+    type: 2
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -11241,7 +11241,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -11470,11 +11470,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 5
+      time: 4.5
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -11527,7 +11527,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -11861,7 +11861,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -11869,8 +11869,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -11884,7 +11884,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -11916,7 +11916,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -15260,7 +15260,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -15313,7 +15313,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -15429,7 +15429,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15804,9 +15804,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 0
-    angle: 33.79
-    length: 0.07567004
+    type: 2
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -15831,7 +15831,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -16064,7 +16064,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -16117,7 +16117,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -16451,7 +16451,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -16459,8 +16459,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -16474,7 +16474,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -16506,7 +16506,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -19903,7 +19903,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -20019,7 +20019,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -20395,8 +20395,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -20421,7 +20421,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -20650,11 +20650,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2
+      time: 0.25
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -20707,7 +20707,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -21041,7 +21041,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -21049,8 +21049,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -21064,7 +21064,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -21096,7 +21096,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -24493,7 +24493,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -24985,8 +24985,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -25011,7 +25011,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -25240,11 +25240,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 3
+      time: 3.3
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -25297,7 +25297,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -25631,7 +25631,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -25639,8 +25639,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -25654,7 +25654,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -25686,7 +25686,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -29083,7 +29083,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -29199,7 +29199,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -29575,8 +29575,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -29601,7 +29601,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -29830,11 +29830,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0.5
+      time: 0.1
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -29887,7 +29887,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -30221,7 +30221,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -30229,8 +30229,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -30244,7 +30244,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -30276,7 +30276,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -33673,7 +33673,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -34165,8 +34165,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -34191,7 +34191,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -34424,7 +34424,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -34477,7 +34477,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -34811,7 +34811,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -34819,8 +34819,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -34834,7 +34834,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -34866,7 +34866,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -38263,7 +38263,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -38755,8 +38755,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -38781,7 +38781,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -39010,11 +39010,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 3
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -39067,7 +39067,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -39401,7 +39401,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -39409,8 +39409,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -39424,7 +39424,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -39456,7 +39456,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -42853,7 +42853,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -42969,7 +42969,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -43604,7 +43604,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -43657,7 +43657,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -43991,7 +43991,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -43999,8 +43999,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -44014,7 +44014,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -44046,7 +44046,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -47443,7 +47443,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -47559,7 +47559,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -47935,8 +47935,8 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 2
-    angle: 33.79
-    length: 0.07567004
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -47961,7 +47961,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -48190,11 +48190,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.25
+      time: 2
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -48247,7 +48247,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -48581,7 +48581,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -48589,8 +48589,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -48604,7 +48604,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -48636,7 +48636,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -51980,7 +51980,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -52033,7 +52033,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -52149,7 +52149,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -52524,9 +52524,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 0
-    angle: 33.79
-    length: 0.07567004
+    type: 2
+    angle: 6
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -52551,7 +52551,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -52780,11 +52780,11 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 5.25
+      time: 4.75
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 1
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -52837,7 +52837,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -53171,7 +53171,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.52609503, b: 0, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 0.02316159, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -53179,8 +53179,8 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 4241
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 32575
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -53194,7 +53194,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -53226,7 +53226,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
@@ -56507,7 +56507,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56564,7 +56564,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56621,7 +56621,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56678,7 +56678,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56735,7 +56735,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56792,7 +56792,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: 6f3c0d441b18d95409e863b6f27b3303, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56849,7 +56849,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56906,7 +56906,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -56963,7 +56963,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -57020,7 +57020,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -57077,7 +57077,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -57134,7 +57134,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7a82c094783dc5c4d83f092b28b93303, type: 2}
+  - {fileID: 2100000, guid: dd8699a317d0eeb499b30a4b2090a2c5, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

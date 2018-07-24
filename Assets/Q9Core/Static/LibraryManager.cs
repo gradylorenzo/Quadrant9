@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Q9Core.CommonData;
@@ -19,6 +20,7 @@ public static class LibraryManager
         InitializeShipLibrary(shipArr);
         InitializeModuleLibrary(modArray);
         InitializeItemLibrary(itemArray);
+
         isInitialized = true;
     }
 

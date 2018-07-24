@@ -808,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cf9e8d34120394daf1471747ffb80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enableOverviewVisiblity: 0
   _overview:
     _name: Outpost
     _alliance: 6
@@ -819,7 +820,9 @@ MonoBehaviour:
   _isTargetable: 0
   _isDockable: 1
   _isMinable: 0
-  _isAlwaysVisible: 1
+  _canBridge: 0
+  _isBridging: 0
+  _isAlwaysVisibleInOverview: 0
   _cargo: []
 --- !u!122 &122090228404516760
 Halo:
