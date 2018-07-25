@@ -1,3 +1,34 @@
+7.25.2018
+
++1 Save Manager now has complete I/O methods:
+	string[] ReadProfiles(): This returns a list of XML files found in /Profiles/ who contain "PROFILE/NAME" nodes
+	with non-empty inner text.
+	
+	bool ReadProfile(string name): This returns true if a profile with a given name is successfuly loaded, which gives
+	the go ahead to begin loading into the game proper.
+	
+	void WriteNewProfile(string name): Writes a new XML file with a default player profile using the provided name.
+	
+	void OverwriteProfile(): NotYetImplemented.
+
++2 Functional, although not perfect, loading screen and main menu. This also has code to initialize the LibraryManager, which now
+	just takes a Q9InitialLibrary:ScriptableObject. The loading screen also has buttons to open the Discord, GitHub, and
+	WordPress pages before continuing to the main menu proper.
+	
++3 Rewrote ScaleSpaceObject to allow for placement in SS1 space, but scaling in SS0 space. Should make it easier to build systems.
++4 Wormhole effects for common, uncommon, rare, ultrarare, and legendary wormholes. Don't know how I'll use them.
++5 Writing methods for travel. Aligning needs some work. May need to separate it into separate Align and Approach methods.
+
+ 
+##############################################################################################################
+
+7.20.2018
+
++1 LibraryManager. This holds dictionaries for Q9Object lookups, will probably implement dedicated lookup functions later.
++2 SaveManager. WriteNewSave is being wirrten out. Output goes to /Profiles/_.xml
+
+##############################################################################################################
+
 7.17.2018
 
 7.16.2018!1 "Known issue with an invalid operation, too tired to track it down."

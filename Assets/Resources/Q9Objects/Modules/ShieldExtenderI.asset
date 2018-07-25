@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Name: ShieldExtenderI
   m_EditorClassIdentifier: 
   _name: Shield Extender I
-  _id: 0
+  _id: SHIELD_EXTENDER_L1
   _quantity: 0
   _value: 0
   _volume: 0
   _description: 
-  _tier: 0
+  _tier: 1
   _thumbnail: {fileID: 0}
+  _icon: {fileID: 0}
   _physical:
     _mass: 0
     _signature: 0
@@ -47,6 +48,7 @@ MonoBehaviour:
       _rechargeRate: 0
     _offensive:
       _laser:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
@@ -54,6 +56,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
       _projectile:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
@@ -61,6 +64,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
       _railgun:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0
@@ -68,6 +72,7 @@ MonoBehaviour:
         _flightSpeed: 0
         _tracking: 0
       _missile:
+        _chargeType: 0
         _damageType: 0
         _damage: 0
         _optimal: 0

@@ -9,6 +9,15 @@ using Q9Core.CommonData;
 [RequireComponent(typeof(Q9Entity))]
 public class ShipManager : MonoBehaviour {
 
+    [Serializable]
+    public enum ShipState
+    {
+        Idle,
+        Aligning,
+        Approaching,
+        Warping
+    }
+
     [Header("Attributes")]
     public bool isPlayerShip;
     public Q9Ship defaultShipData;
@@ -16,33 +25,171 @@ public class ShipManager : MonoBehaviour {
     public Attributes modifiedAttributes;
     public Attributes currentAttributes;
 
+    [Header("Travel")]
+    private ShipState state = ShipState.Idle;
+    private Quaternion currentRotation;
+    private Quaternion wantedRotation;
+    public DoubleVector3 targetPoint;
+    private bool wantToWarp;
+    private float currentThrottle = 0;
+    private float wantedThrottle = 0;
+    private bool aligned;
+    private float warpStartTime;
+
+    [NonSerialized]
+    public GameObject _activeTarget;
+    [NonSerialized]
+    public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
+
+
     public string guid;
     private GameObject shipModel;
     private GameObject ExplosionPrefab;
-    public GameObject _activeTarget;
-    public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
+    
 
     private Camera mainCamera;
+    private bool isReady = false;
 
     private void Awake()
     {
         guid = Guid.NewGuid().ToString();
         if (isPlayerShip)
         {
-            Q9GameManager._playerShip = this;
+            GameManager._playerShip = this;
+            EventManager.OnObjectSelectedAsAlignmentTarget += Align;
         }
         mainCamera = Camera.main;
-        LoadShip(defaultShipData);
-    }
-
-    private void Start()
-    {
+        if (!isPlayerShip)
+        {
+            LoadShip(defaultShipData);
+        }
+        else
+        {
+            if (SaveManager.profileLoaded)
+            {
+                LoadShip(SaveManager.currentPlayer._allShips[SaveManager.currentPlayer._currentShip]);
+            }
+            else
+            {
+                LoadShip(defaultShipData);
+            }
+        }
         EventManager.OnShipLocked += OnShipLocked;
         EventManager.OnShipSelected += OnShipSelected;
         EventManager.OnShipDamaged += TakeDamage;
         EventManager.OnShipUnlocked += OnShipUnlocked;
+        EventManager.OnGameInitializationComplete += OnGameInitializationComplete;
+
+        currentRotation = transform.rotation;
+        wantedRotation = transform.rotation;
     }
 
+    
+
+    public void FixedUpdate()
+    {
+        #region Standard ship loops. Passive Capacitor/Shield recharge. Integrity does not passively recharge.
+        if (currentAttributes._shield._capacity < modifiedAttributes._shield._capacity)
+            RepairShield(currentAttributes._shield._rechargeRate * Time.deltaTime);
+
+        if (currentAttributes._capacitor._capacity < modifiedAttributes._capacitor._capacity)
+            RechargeCapacitor(currentAttributes._capacitor._rechargeRate * Time.deltaTime);
+
+        foreach (Q9Module m in currentAttributes._fitting._highSlots)
+        {
+            if (m != null)
+                m.ModuleUpdate();
+        }
+        foreach (Q9Module m in currentAttributes._fitting._midSlots)
+        {
+            if (m != null)
+                m.ModuleUpdate();
+        }
+        foreach (Q9Module m in currentAttributes._fitting._lowSlots)
+        {
+            if (m != null)
+                m.ModuleUpdate();
+        }
+        
+
+        //This loop determines if a target lock should be finished based on when is started.
+        for (int i = 0; i < _lockedTargets.Count; i++)
+        {
+            if (!_lockedTargets[i]._lockComplete)
+            {
+                if (Time.time > _lockedTargets[i]._lockStart + _lockedTargets[i]._lockTime)
+                {
+                    TargetInfo newTI = new TargetInfo();
+                    newTI._lockComplete = true;
+                    newTI._target = _lockedTargets[i]._target;
+                    _lockedTargets[i] = newTI;
+                    if (_activeTarget == null)
+                    {
+                        SelectTarget(_lockedTargets[i]._target);
+                    }
+                    EventManager.OnTargetLockComplete();
+                }
+            }
+        }
+        #endregion
+
+        if (isPlayerShip)
+        {
+            DoLockingCheck();
+            ScaleSpace.Translate(DoubleVector3.FromVector3(transform.forward)* 0);
+        }
+
+        if(state != ShipState.Warping)
+        {
+            Move();
+            Rotate();
+            aligned = ((Quaternion.Angle(currentRotation, wantedRotation) <= 5) && (currentThrottle >= .75f));
+
+            if (aligned && wantToWarp)
+            {
+                if(DoubleVector3.Distance(ScaleSpace.apparentPosition, targetPoint) >= 150)
+                {
+                    warpStartTime = Time.time;
+                    state = ShipState.Warping;
+                }
+            }
+
+            if(state == ShipState.Approaching)
+            {
+                wantedRotation = Quaternion.LookRotation(DoubleVector3.ToVector3(pos) - DoubleVector3.ToVector3(ScaleSpace.apparentPosition));
+            }
+        }
+        else
+        {
+
+        }
+    }
+    public void OnMouseUpAsButton()
+    {
+        if (GetComponent<Q9Entity>()._isTargetable)
+        {
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                EventManager.OnShipLocked(gameObject);
+            }
+            else if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                EventManager.OnShipUnlocked(gameObject);
+            }
+            else
+            {
+                EventManager.OnShipSelected(gameObject);
+            }
+        }
+    }
+
+    private void OnGameInitializationComplete(Q9Ship s)
+    {
+        if (isPlayerShip)
+        {
+            LoadShip(s);
+        }
+    }
     public void LoadShip(Q9Ship s)
     {
         if(shipModel != null)
@@ -135,6 +282,11 @@ public class ShipManager : MonoBehaviour {
         GetComponent<Q9Entity>()._isDockable = false;
         GetComponent<Q9Entity>()._isMinable = false;
         GetComponent<Q9Entity>()._isAlwaysVisibleInOverview = false;
+        isReady = true;
+        if (isPlayerShip)
+        {
+            EventManager.OnGameIsReady();
+        }
     }
     private void CalculateModifiedAttributes(bool ResetCurrentAttributesAfterRecalculate)
     {
@@ -394,6 +546,38 @@ public class ShipManager : MonoBehaviour {
             currentAttributes = modifiedAttributes;
         }
     }
+    private void DoLockingCheck()
+    {
+        bool anythingLocking = false;
+        foreach (TargetInfo ti in _lockedTargets)
+        {
+            if (!ti._lockComplete)
+                anythingLocking = true;
+        }
+
+        EventManager.isPlayerLocking = anythingLocking;
+    }
+    public void Die()
+    {
+        EventManager.OnShipDestroyed(isPlayerShip, gameObject);
+        EventManager.OnShipLocked -= OnShipLocked;
+        EventManager.OnShipSelected -= OnShipSelected;
+        EventManager.OnShipDamaged -= TakeDamage;
+        if (!isPlayerShip)
+        {
+            GameManager._playerShip.UnlockTarget(gameObject);
+            print("NPC Died");
+            Destroy(gameObject);
+        }
+        else
+        {
+
+        }
+        if (ExplosionPrefab)
+        {
+            Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+        }
+    }
 
     #region repair methods
     public void RepairShield(float a)
@@ -424,7 +608,7 @@ public class ShipManager : MonoBehaviour {
     #region target management methods
     public void OnShipLocked(GameObject go)
     {
-        if (isPlayerShip)
+        if (isPlayerShip && isReady)
         {
             if (go != this.gameObject)
             {
@@ -435,13 +619,13 @@ public class ShipManager : MonoBehaviour {
 
     public void OnShipUnlocked(GameObject go)
     {
-        if(isPlayerShip)
+        if(isPlayerShip && isReady)
         UnlockTarget(go);
     }
 
     public void OnShipSelected(GameObject go)
     {
-        if (isPlayerShip)
+        if (isPlayerShip && isReady)
         {
             if (go != this.gameObject)
             {
@@ -616,111 +800,68 @@ public class ShipManager : MonoBehaviour {
     }
 
     #endregion
+    #region travel methods
 
-    public void FixedUpdate()
+    private void Align(DoubleVector3 pos, bool WarpAfterAlignment)
     {
-        #region Standard ship loops. Passive Capacitor/Shield recharge. Integrity does not passively recharge.
-        if (currentAttributes._shield._capacity < modifiedAttributes._shield._capacity)
-        RepairShield(currentAttributes._shield._rechargeRate * Time.deltaTime);
-
-        if(currentAttributes._capacitor._capacity < modifiedAttributes._capacitor._capacity)
-        RechargeCapacitor(currentAttributes._capacitor._rechargeRate * Time.deltaTime);
-
-        foreach(Q9Module m in currentAttributes._fitting._highSlots)
-        {
-            if(m != null)
-                m.ModuleUpdate();
-        }
-
-        foreach (Q9Module m in currentAttributes._fitting._midSlots)
-        {
-            if (m != null)
-                m.ModuleUpdate();
-        }
-
-        foreach (Q9Module m in currentAttributes._fitting._lowSlots)
-        {
-            if (m != null)
-                m.ModuleUpdate();
-        }
-        #endregion
-
-        //This loop determines if a target lock should be finished based on when is started.
-        for (int i = 0; i < _lockedTargets.Count; i++)
-        {
-            if (!_lockedTargets[i]._lockComplete)
-            {
-                if (Time.time > _lockedTargets[i]._lockStart + _lockedTargets[i]._lockTime)
-                {
-                    TargetInfo newTI = new TargetInfo();
-                    newTI._lockComplete = true;
-                    newTI._target = _lockedTargets[i]._target;
-                    _lockedTargets[i] = newTI;
-                    if (_activeTarget == null)
-                    {
-                        SelectTarget(_lockedTargets[i]._target);
-                    }
-                    EventManager.OnTargetLockComplete();
-                }
-            }
-        }
-
         if (isPlayerShip)
         {
-            DoLockingCheck();
-        }
-    }
-
-    private void DoLockingCheck()
-    {
-        bool anythingLocking = false;
-        foreach(TargetInfo ti in _lockedTargets)
-        {
-            if (!ti._lockComplete)
-                anythingLocking = true;
-        }
-
-        EventManager.isPlayerLocking = anythingLocking;
-    }
-
-    private void Die()
-    {
-        EventManager.onShipDestroyed(isPlayerShip, gameObject);
-        EventManager.OnShipLocked -= OnShipLocked;
-        EventManager.OnShipSelected -= OnShipSelected;
-        EventManager.OnShipDamaged -= TakeDamage;
-        if (!isPlayerShip)
-        {
-            Q9GameManager._playerShip.UnlockTarget(gameObject);
-            print("NPC Died");
-            Destroy(gameObject);
+            if (state != ShipState.Warping)
+            {
+                wantToWarp = WarpAfterAlignment;
+                targetPoint = pos;
+                wantedRotation = Quaternion.LookRotation(DoubleVector3.ToVector3(pos) - DoubleVector3.ToVector3(ScaleSpace.apparentPosition));
+                SetThrottle(1);
+                state = ShipState.Aligning;
+            }
         }
         else
         {
 
         }
-        if (ExplosionPrefab)
+    }
+    public void Approach(DoubleVector3 pos)
+    {
+        if (isPlayerShip)
         {
-            Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+            if (state != ShipState.Warping)
+            {
+                wantToWarp = false;
+                targetPoint = pos;
+                SetThrottle(1);
+                state = ShipState.Approaching;
+            }
+        }
+        else
+        {
+
         }
     }
-
-    public void OnMouseUpAsButton()
+    public void SetThrottle(float newThrottle)
     {
-        if (GetComponent<Q9Entity>()._isTargetable)
+        wantedThrottle = Mathf.Lerp(0, currentAttributes._travel._burnSpeed, Mathf.Clamp01(newThrottle));
+    }
+
+    private void Rotate()
+    {
+        currentRotation = Quaternion.Lerp(currentRotation, wantedRotation, currentAttributes._travel._torque);
+        transform.rotation = currentRotation;
+    }
+    private void Move()
+    {
+        if (state != ShipState.Warping)
         {
-            if (Input.GetKey(KeyCode.LeftControl))
+            print(wantedThrottle + "     |     " + currentThrottle);
+            currentThrottle = Mathf.Lerp(currentThrottle, wantedThrottle, currentAttributes._travel._power);
+            if (isPlayerShip)
             {
-                EventManager.OnShipLocked(gameObject);
-            }
-            else if (Input.GetKey(KeyCode.LeftAlt))
-            {
-                EventManager.OnShipUnlocked(gameObject);
+                ScaleSpace.Translate(DoubleVector3.FromVector3(transform.forward) * (currentThrottle * currentAttributes._travel._burnSpeed));
             }
             else
             {
-                EventManager.OnShipSelected(gameObject);
+                transform.Translate((transform.forward) * (currentThrottle * currentAttributes._travel._burnSpeed));
             }
         }
     }
+    #endregion
 }

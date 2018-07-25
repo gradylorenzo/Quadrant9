@@ -30,9 +30,9 @@ public class LockedTargetBoxController : MonoBehaviour
     {
         if (_playerShip == null)
         {
-            if (Q9GameManager._playerShip != null)
+            if (GameManager._playerShip != null)
             {
-                _playerShip = Q9GameManager._playerShip;
+                _playerShip = GameManager._playerShip;
             }
         }
 

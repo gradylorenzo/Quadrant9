@@ -35,7 +35,7 @@ public class Q9Announcer : MonoBehaviour {
 
     private void Awake()
     {
-        Q9GameManager._announcer = this;
+        GameManager._announcer = this;
         asource = GetComponent<AudioSource>();
     }
 
