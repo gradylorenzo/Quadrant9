@@ -107,6 +107,7 @@ public class MouseOrbit : MonoBehaviour
         {
             go.transform.rotation = this.transform.rotation;
         }
+        SSCameras[0].transform.position = transform.position / (int)ScaleSpaceObject.ScaleSpaceLevel.ScaleSpace1;
     }
 
     public static float ClampAngle(float angle, float min, float max)

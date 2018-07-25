@@ -15,11 +15,11 @@ public static class LibraryManager
     private static Dictionary<string, Q9Item> L_ITEMS = new Dictionary<string, Q9Item>();
 
     //use this class to initialize the libraries
-    public static void Initialize(Q9Ship[] shipArr, Q9Module[] modArray, Q9Item[] itemArray)
+    public static void Initialize(Q9InitialLibrary l)
     {
-        InitializeShipLibrary(shipArr);
-        InitializeModuleLibrary(modArray);
-        InitializeItemLibrary(itemArray);
+        InitializeShipLibrary(l._ships);
+        InitializeModuleLibrary(l._modules);
+        InitializeItemLibrary(l._items);
 
         isInitialized = true;
     }

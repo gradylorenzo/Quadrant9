@@ -43,4 +43,7 @@ public static class EventManager
 
     public delegate void _onGameIsReady();
     public static _onGameIsReady OnGameIsReady;
+
+    public delegate void _ObjectSelectedAsAlignmentTarget(DoubleVector3 position, bool WarpWhenReady);
+    public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsAlignmentTarget;
 }

@@ -210,6 +210,15 @@ namespace Q9Core.CommonData
     }
 
     [System.Serializable]
+    public struct Travel
+    {
+        public float _power;
+        public float _burnSpeed;
+        public float _warpStrength;
+        public float _torque;
+    }
+
+    [System.Serializable]
     public struct Bonuses
     {
         public Shields _shield;
@@ -231,6 +240,7 @@ namespace Q9Core.CommonData
         public Fitting _fitting;
         public Offensive _offensive;
         public Cargo _cargo;
+        public Travel _travel;
     }
     #endregion
     [System.Serializable]

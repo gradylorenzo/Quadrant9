@@ -5,22 +5,52 @@ using Q9Core;
 using Q9Core.CommonData;
 using Q9Core.PlayerData;
 using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameInitializer : MonoBehaviour {
 
-    public Q9Ship[] _shipLibrary;
-    public Q9Module[] _moduleLibrary;
-    public Q9Item[] _itemLibrary;
-    public PlayerProfile _prof;
+    public Text _loadingText;
+    public Button _start;
+    public Q9InitialLibrary _library;
+    public float delay;
 
-    public void Awake()
+    private bool loaded = false;
+
+    public void Update()
     {
-        EventManager.OnGameInternalDataInitialize += OnGameInternalDataInitialize;
-        EventManager.OnGameInternalDataInitialize();
+        if(Time.time > delay && !loaded)
+        {
+            _start.interactable = true;
+        }
+
+        if(LibraryManager.isInitialized && !loaded)
+        {
+            loaded = true;
+            _loadingText.text = "Starting..";
+            _start.interactable = false;
+            loaded = true;
+            SceneManager.LoadScene("main_menu");
+        }
     }
 
-    private void OnGameInternalDataInitialize()
+    public void LaunchDiscord()
     {
-        LibraryManager.Initialize(_shipLibrary, _moduleLibrary, _itemLibrary);
+        Application.OpenURL("https://discord.gg/nYnVzFU");
+    }
+
+    public void LaunchGitHub()
+    {
+        Application.OpenURL("https://github.com/gradylorenzo/Quadrant9");
+    }
+
+    public void LaunchBlog()
+    {
+        Application.OpenURL("https://q9dev.wordpress.com/");
+    }
+
+    public void StartGame()
+    {
+        LibraryManager.Initialize(_library);
     }
 }

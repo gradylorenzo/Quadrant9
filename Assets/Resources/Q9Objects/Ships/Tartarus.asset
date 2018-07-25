@@ -23,6 +23,7 @@ MonoBehaviour:
   _physical:
     _mass: 100
     _signature: 0
+  _guid: a7eb8913-375d-4ce4-aa15-f414b2d38b36
   _attributes:
     _alliance: 0
     _type: 11
@@ -105,6 +106,11 @@ MonoBehaviour:
     _cargo:
       _capacity: 0
       _cargo: []
+    _travel:
+      _power: 0.1
+      _burnSpeed: 0.1
+      _warpStrength: 0
+      _torque: 0.01
   _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}
   _minCameraDistance: 1.5
   _explosionPrefab: {fileID: 1124003806681086, guid: 5190a83ab9211384a807beb97ec75049,
