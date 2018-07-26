@@ -107,10 +107,10 @@ MonoBehaviour:
       _capacity: 0
       _cargo: []
     _travel:
-      _power: 0.1
-      _burnSpeed: 0.1
+      _power: 0.01
+      _burnSpeed: 0.03
       _warpStrength: 0
-      _torque: 0.01
+      _torque: 0.001
   _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}
   _minCameraDistance: 1.5
   _explosionPrefab: {fileID: 1124003806681086, guid: 5190a83ab9211384a807beb97ec75049,

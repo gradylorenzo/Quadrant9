@@ -14,6 +14,8 @@ public class LockedTargetBoxController : MonoBehaviour
     public Image IntegrityBar;
     public Image ActiveTargetSpinner;
     public GameObject graphic;
+    public Text ObjectName;
+    public Text ObjectDistance;
 
     private ShipManager _playerShip;
     private GameObject _target;
@@ -53,6 +55,9 @@ public class LockedTargetBoxController : MonoBehaviour
                         ActiveTargetSpinner.enabled = false;
                     }
                     Thumbnail.sprite = _playerShip._lockedTargets[LockedTargetSlot]._target.GetComponent<Q9Entity>()._overview._thumbnail;
+                    ObjectName.text = _playerShip._lockedTargets[LockedTargetSlot]._target.GetComponent<Q9Entity>()._overview._name;
+                    ObjectDistance.text =
+                        Vector3.Distance(_playerShip._lockedTargets[LockedTargetSlot]._target.transform.position, Vector3.zero).ToString("###") + " km";
 
                     //Health bars
                 }

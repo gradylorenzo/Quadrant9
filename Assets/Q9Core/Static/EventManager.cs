@@ -23,8 +23,9 @@ public static class EventManager
     public delegate void _onModuleInsufficientPower();
     public static _onModuleInsufficientPower OnModuleInsufficientPower;
 
-    public delegate void _onLockLimitReached();
-    public static _onLockLimitReached OnLockLimitReached;
+    public delegate void _CreateAnnouncement();
+    public static _CreateAnnouncement OnLockLimitReached;
+    public static _CreateAnnouncement OnShipStopped;
 
     public delegate void _onShipDestroyed(bool wasPlayerShip, GameObject go);
     public static _onShipDestroyed OnShipDestroyed;
@@ -46,4 +47,5 @@ public static class EventManager
 
     public delegate void _ObjectSelectedAsAlignmentTarget(DoubleVector3 position, bool WarpWhenReady);
     public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsAlignmentTarget;
+    public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsApproachTarget;
 }

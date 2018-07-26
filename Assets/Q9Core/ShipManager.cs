@@ -13,8 +13,8 @@ public class ShipManager : MonoBehaviour {
     public enum ShipState
     {
         Idle,
-        Aligning,
         Approaching,
+        Aligning,
         Warping
     }
 
@@ -53,11 +53,6 @@ public class ShipManager : MonoBehaviour {
     private void Awake()
     {
         guid = Guid.NewGuid().ToString();
-        if (isPlayerShip)
-        {
-            GameManager._playerShip = this;
-            EventManager.OnObjectSelectedAsAlignmentTarget += Align;
-        }
         mainCamera = Camera.main;
         if (!isPlayerShip)
         {
@@ -65,6 +60,9 @@ public class ShipManager : MonoBehaviour {
         }
         else
         {
+            GameManager._playerShip = this;
+            EventManager.OnObjectSelectedAsAlignmentTarget += Align;
+            EventManager.OnObjectSelectedAsApproachTarget += Approach;
             if (SaveManager.profileLoaded)
             {
                 LoadShip(SaveManager.currentPlayer._allShips[SaveManager.currentPlayer._currentShip]);
@@ -83,8 +81,6 @@ public class ShipManager : MonoBehaviour {
         currentRotation = transform.rotation;
         wantedRotation = transform.rotation;
     }
-
-    
 
     public void FixedUpdate()
     {
@@ -137,31 +133,40 @@ public class ShipManager : MonoBehaviour {
         {
             DoLockingCheck();
             ScaleSpace.Translate(DoubleVector3.FromVector3(transform.forward)* 0);
-        }
 
-        if(state != ShipState.Warping)
-        {
-            Move();
-            Rotate();
-            aligned = ((Quaternion.Angle(currentRotation, wantedRotation) <= 5) && (currentThrottle >= .75f));
-
-            if (aligned && wantToWarp)
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Space))
             {
-                if(DoubleVector3.Distance(ScaleSpace.apparentPosition, targetPoint) >= 150)
+                if(state != ShipState.Idle)
+                AllStop();
+            }
+
+            if (state != ShipState.Warping)
+            {
+                Move();
+                Rotate();
+
+                if (state == ShipState.Approaching)
                 {
-                    warpStartTime = Time.time;
-                    state = ShipState.Warping;
+                    wantedRotation = Quaternion.LookRotation(DoubleVector3.ToVector3(targetPoint) - DoubleVector3.ToVector3(ScaleSpace.apparentPosition));
+                }
+                else if (state == ShipState.Aligning)
+                {
+                    aligned = ((Quaternion.Angle(currentRotation, wantedRotation) <= 5) && (currentThrottle >= .75f));
+
+                    if (aligned && wantToWarp)
+                    {
+                        if (DoubleVector3.Distance(ScaleSpace.apparentPosition, targetPoint) >= 150)
+                        {
+                            warpStartTime = Time.time;
+                            state = ShipState.Warping;
+                        }
+                    }
                 }
             }
-
-            if(state == ShipState.Approaching)
+            else
             {
-                wantedRotation = Quaternion.LookRotation(DoubleVector3.ToVector3(pos) - DoubleVector3.ToVector3(ScaleSpace.apparentPosition));
-            }
-        }
-        else
-        {
 
+            }
         }
     }
     public void OnMouseUpAsButton()
@@ -802,6 +807,14 @@ public class ShipManager : MonoBehaviour {
     #endregion
     #region travel methods
 
+    private void AllStop()
+    {
+        EventManager.OnShipStopped();
+        SetThrottle(0);
+        wantedRotation = currentRotation;
+        wantToWarp = false;
+        state = ShipState.Idle;
+    }
     private void Align(DoubleVector3 pos, bool WarpAfterAlignment)
     {
         if (isPlayerShip)
@@ -820,8 +833,10 @@ public class ShipManager : MonoBehaviour {
 
         }
     }
-    public void Approach(DoubleVector3 pos)
+    public void Approach(DoubleVector3 pos, bool WarpAfterAlignment)
     {
+        //Ignore WarpAfterAlignment
+
         if (isPlayerShip)
         {
             if (state != ShipState.Warping)
@@ -831,10 +846,6 @@ public class ShipManager : MonoBehaviour {
                 SetThrottle(1);
                 state = ShipState.Approaching;
             }
-        }
-        else
-        {
-
         }
     }
     public void SetThrottle(float newThrottle)
@@ -851,7 +862,6 @@ public class ShipManager : MonoBehaviour {
     {
         if (state != ShipState.Warping)
         {
-            print(wantedThrottle + "     |     " + currentThrottle);
             currentThrottle = Mathf.Lerp(currentThrottle, wantedThrottle, currentAttributes._travel._power);
             if (isPlayerShip)
             {

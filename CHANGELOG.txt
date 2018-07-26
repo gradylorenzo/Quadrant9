@@ -1,3 +1,12 @@
+7.26.2018
+
++1 Align and Approach methods have been separated. Align should not be used if the target is <150km,
+	and Approach should not be used if target >150km.
++2 AllStop and associated notification are triggered when the player presses LeftCtrl + Space.
++3 Name and Distance readouts for LockedTargetBox
+
+##############################################################################################################
+
 7.25.2018
 
 +1 Save Manager now has complete I/O methods:
