@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Q9Core;
 using Q9Core.CommonData;
+using System;
 
 public class Q9GUIManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Q9GUIManager : MonoBehaviour
     public HotbarButton[] _hotbarButtons;
 
     private float nextUpdate = 0;
+
     private ShipManager _playerShip;
 
 
@@ -26,7 +28,6 @@ public class Q9GUIManager : MonoBehaviour
         EventManager.OnLockLimitReached += OnLockLimitReached;
         EventManager.OnShipStopped += OnShipStopped;
     }
-
     public void OnLockLimitReached()
     {
         CreateNotification(0);

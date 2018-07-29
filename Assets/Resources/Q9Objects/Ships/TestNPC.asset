@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4783b2d0cc6f9f94d854bad366447e76, type: 3}
-  m_Name: Tartarus
+  m_Name: TestNPC
   m_EditorClassIdentifier: 
-  _name: Tartarus
-  _id: TARTARUS
+  _name: Test NPC
+  _id: TARTARUS_TEST_NPC
   _quantity: 0
   _value: 0
   _volume: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     _signature: 0
   _guid: a7eb8913-375d-4ce4-aa15-f414b2d38b36
   _attributes:
-    _alliance: 0
+    _alliance: 4
     _type: 11
     _physical:
       _mass: 0

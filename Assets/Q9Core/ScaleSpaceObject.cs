@@ -17,7 +17,7 @@ public class ScaleSpaceObject : MonoBehaviour {
 
     private void Start()
     {
-        initialPosition = DoubleVector3.FromVector3(transform.position) * (int)PlacementScale;
+        initialPosition = (DoubleVector3.FromVector3(transform.position) + ScaleSpace.apparentPosition) * (int)PlacementScale;
     }
 
     private void Update()

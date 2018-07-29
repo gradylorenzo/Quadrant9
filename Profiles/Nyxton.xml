@@ -1,0 +1,46 @@
+﻿<PROFILE>
+  <NAME>Nyxton</NAME>
+  <SETTINGS>
+    <VOLUME>
+      <SFX>0.5</SFX>
+      <WORLD>0.5</WORLD>
+      <AMBIENCE>0.5</AMBIENCE>
+      <MUSIC>0.5</MUSIC>
+      <UI>0.5</UI>
+      <VOICE>0.5</VOICE>
+    </VOLUME>
+  </SETTINGS>
+  <SEED>1a88910dd03844208090dfc241181458</SEED>
+  <CREDITS>10000</CREDITS>
+  <CURRENTSHIP>b2d55f73-c97e-4de9-9e12-260134035e7a</CURRENTSHIP>
+  <SHIP guid="b2d55f73-c97e-4de9-9e12-260134035e7a">
+    <HULL>TARTARUS</HULL>
+    <NAME>Nyxton's Tartarus</NAME>
+    <FITTING>
+      <HIGH>
+        <s0>SHIELD_BOOSTER_L1</s0>
+        <s1>SHIELD_BOOSTER_L1</s1>
+        <s2>TEST_WEAPON_1</s2>
+        <s3>NULL</s3>
+      </HIGH>
+      <MID>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
+      </MID>
+      <LOW>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+        <s3>NULL</s3>
+      </LOW>
+      <RIG>
+        <s0>NULL</s0>
+        <s1>NULL</s1>
+        <s2>NULL</s2>
+      </RIG>
+    </FITTING>
+    <CARGO />
+  </SHIP>
+</PROFILE>

@@ -9,8 +9,10 @@ using UnityEngine.UI;
 public class Q9OverviewData {
 
     public string _name;
-    public Alliances _alliance;
-    public EntityTypes _type;
+    public string _alliance;
+    public string _type;
     public Sprite _thumbnail;
     public Sprite _icon;
+    public string _guid;
+    public GameObject _go;
 }

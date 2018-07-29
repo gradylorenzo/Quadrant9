@@ -1,9 +1,27 @@
+7.28.2018
+
++1 Recoded Overview, now uses EventManager.addOverviewData/removeOverviewData. Want to add background color animation.
++2 Added distances to Overview.
+
+-1 Removed SelectedItem panel pending rebuild.
+
+!1 Since the Overview has been rebuilt, issues have become apparent with icon sizes, so icons need to be resized.
+
+Notes: Don't know if it's terribly important, but at this point I switched from VS Community to VS Code, and
+I'm now editing all text files in VS Code including test profiles and Changelog.txt.
+
+##############################################################################################################
+
 7.26.2018
 
 +1 Align and Approach methods have been separated. Align should not be used if the target is <150km,
 	and Approach should not be used if target >150km.
 +2 AllStop and associated notification are triggered when the player presses LeftCtrl + Space.
 +3 Name and Distance readouts for LockedTargetBox
++4 DebugView. This can be toggled with the BackQuote/Tilde key to display origin grid,
+	ScaleSpace.apparentPosition, and system information, and (if any is loaded) SaveManager.currentPlayer
+	information.
++5 Speed meter and readout now work.
 
 ##############################################################################################################
 

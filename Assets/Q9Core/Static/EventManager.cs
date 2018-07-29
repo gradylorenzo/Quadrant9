@@ -48,4 +48,8 @@ public static class EventManager
     public delegate void _ObjectSelectedAsAlignmentTarget(DoubleVector3 position, bool WarpWhenReady);
     public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsAlignmentTarget;
     public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsApproachTarget;
+
+    public delegate void _OverviewDataChange(Q9OverviewData data);
+    public static _OverviewDataChange addOverviewData;
+    public static _OverviewDataChange removeOverviewData;
 }

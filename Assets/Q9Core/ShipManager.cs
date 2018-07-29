@@ -18,6 +18,7 @@ public class ShipManager : MonoBehaviour {
         Warping
     }
 
+    #region variables
     [Header("Attributes")]
     public bool isPlayerShip;
     public Q9Ship defaultShipData;
@@ -31,7 +32,8 @@ public class ShipManager : MonoBehaviour {
     private Quaternion wantedRotation;
     public DoubleVector3 targetPoint;
     private bool wantToWarp;
-    private float currentThrottle = 0;
+    [NonSerialized]
+    public float currentThrottle = 0;
     private float wantedThrottle = 0;
     private bool aligned;
     private float warpStartTime;
@@ -41,14 +43,14 @@ public class ShipManager : MonoBehaviour {
     [NonSerialized]
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
-
+    [NonSerialized]
     public string guid;
     private GameObject shipModel;
     private GameObject ExplosionPrefab;
-    
-
     private Camera mainCamera;
     private bool isReady = false;
+
+    #endregion
 
     private void Awake()
     {
@@ -278,16 +280,17 @@ public class ShipManager : MonoBehaviour {
 
         //Q9Entity
         GetComponent<Q9Entity>()._overview._name = s._name;
-        GetComponent<Q9Entity>()._overview._alliance = s._attributes._alliance;
-        GetComponent<Q9Entity>()._overview._type = s._attributes._type;
+        GetComponent<Q9Entity>()._overview._alliance = s._attributes._alliance.ToString();
+        GetComponent<Q9Entity>()._overview._type = s._attributes._type.ToString();
         GetComponent<Q9Entity>()._overview._thumbnail = s._thumbnail;
         GetComponent<Q9Entity>()._overview._icon = s._icon;
-        GetComponent<Q9Entity>()._id = guid;
+        GetComponent<Q9Entity>()._overview._guid = guid;
         GetComponent<Q9Entity>()._isTargetable = !isPlayerShip;
         GetComponent<Q9Entity>()._isDockable = false;
         GetComponent<Q9Entity>()._isMinable = false;
         GetComponent<Q9Entity>()._isAlwaysVisibleInOverview = false;
         isReady = true;
+
         if (isPlayerShip)
         {
             EventManager.OnGameIsReady();
@@ -573,6 +576,10 @@ public class ShipManager : MonoBehaviour {
             GameManager._playerShip.UnlockTarget(gameObject);
             print("NPC Died");
             Destroy(gameObject);
+            if(GetComponent<Q9Entity>())
+            {
+                GetComponent<Q9Entity>().Remove();
+            }
         }
         else
         {
@@ -865,7 +872,7 @@ public class ShipManager : MonoBehaviour {
             currentThrottle = Mathf.Lerp(currentThrottle, wantedThrottle, currentAttributes._travel._power);
             if (isPlayerShip)
             {
-                ScaleSpace.Translate(DoubleVector3.FromVector3(transform.forward) * (currentThrottle * currentAttributes._travel._burnSpeed));
+                ScaleSpace.Translate(DoubleVector3.FromVector3(transform.forward) * (currentThrottle * Time.deltaTime));
             }
             else
             {

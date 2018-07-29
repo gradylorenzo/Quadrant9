@@ -19,6 +19,7 @@ public class StatusRingController : MonoBehaviour {
     private float integrityFill = 1;
     private float capacitorFill = 1;
     private float nextUpdate = 0;
+    private float speedFill = 0;
 
     #region public methods
     public void Reset()
@@ -61,8 +62,44 @@ public class StatusRingController : MonoBehaviour {
         IntegrityBar.fillAmount = Mathf.MoveTowards(IntegrityBar.fillAmount, integrityFill * .75f, .01f);
         CapacitorBar.fillAmount = Mathf.MoveTowards(CapacitorBar.fillAmount, capacitorFill * .75f, .01f);
 
-        ShieldPercentage.text = (shieldFill * 100).ToString("###") + "%";
-        IntegrityPercentage.text = (integrityFill * 100).ToString("###") + "%";
-        CapacitorPercentage.text = (capacitorFill * 100).ToString("###") + "%";
+        //
+        if (shieldFill > 0)
+        {
+            ShieldPercentage.text = (Mathf.Clamp01(shieldFill) * 100).ToString("###") + "%";
+        }
+        else
+        {
+            ShieldPercentage.text = "0%";
+        }
+        //
+        if (integrityFill > 0)
+        {
+            IntegrityPercentage.text = (Mathf.Clamp01(integrityFill) * 100).ToString("###") + "%";
+        }
+        else
+        {
+            IntegrityPercentage.text = "0%";
+        }
+        //
+        if (capacitorFill > 0)
+        {
+            CapacitorPercentage.text = (Mathf.Clamp01(capacitorFill) * 100).ToString("###") + "%";
+        }
+        else
+        {
+            CapacitorPercentage.text = "0%";
+        }
+
+        //
+        speedFill = (GameManager._playerShip.GetComponent<ShipManager>().currentThrottle / GameManager._playerShip.GetComponent<ShipManager>().currentAttributes._travel._burnSpeed) * .22f;
+        SpeedBar.fillAmount = speedFill;
+        if (speedFill > 0)
+        {
+            SpeedRead.text = ((GameManager._playerShip.GetComponent<ShipManager>().currentThrottle) * 1000).ToString("###") + " m/s";
+        }
+        else
+        {
+            SpeedRead.text = "0 m/s";
+        }
     }
 }
