@@ -40,6 +40,15 @@ public class DebugView : MonoBehaviour {
             GUILayout.Label("Y= " + ScaleSpace.apparentPosition.y);
             GUILayout.Label("Z= " + ScaleSpace.apparentPosition.z);
             GUILayout.Space(10);
+            if (GameManager._playerShip)
+            {
+                ShipController sc = GameManager._playerShip.GetComponent<ShipController>();
+                GUILayout.Label("PlayerShipAngularVelocity");
+                GUILayout.Label("X= " + sc.rotationalVelocity.x);
+                GUILayout.Label("Y= " + sc.rotationalVelocity.y);
+                GUILayout.Label("Z= " + sc.rotationalVelocity.z);
+                GUILayout.Space(10);
+            }
             GUILayout.Label("No information is shared by this game with any party");
             GUILayout.Label("Nerds don't get invited to parties anyway.");
             GUILayout.Space(10);

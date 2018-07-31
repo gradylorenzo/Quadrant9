@@ -46,12 +46,20 @@ public class ShipController : MonoBehaviour {
     [NonSerialized]
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
+    [Header("Debug")]
+    private Quaternion lastFrameRotation;
+    private Quaternion thisFrameRotation;
+    public Vector3 rotationalVelocity;
+    public float wantedBank;
+    public float currentBank;
+
     [NonSerialized]
     public string guid;
     private GameObject shipModel;
     private GameObject ExplosionPrefab;
     private Camera mainCamera;
     private bool isReady = false;
+    public float bankMultiplier;
 
     #endregion
 
@@ -146,12 +154,12 @@ public class ShipController : MonoBehaviour {
                 }
             }
 
+            Move();
+            Rotate();
+            Bank();
             if (state != ShipState.Warping)
             {
-                Move();
-                Rotate();
-
-                if(Quaternion.Angle(transform.rotation, wantedRotation) <= 5 && CurrentThrottle >= .75f && wantToWarp)
+                if (Quaternion.Angle(transform.rotation, wantedRotation) <= 5 && CurrentThrottle >= .75f && wantToWarp)
                 {
                     warpStartTime = Time.time;
                     state = ShipState.Warping;
@@ -163,6 +171,12 @@ public class ShipController : MonoBehaviour {
 
             }
         }
+
+        #region calculate rotation speed
+        lastFrameRotation = thisFrameRotation;
+        thisFrameRotation = transform.rotation;
+        rotationalVelocity = Quaternion.ToEulerAngles(thisFrameRotation) - Quaternion.ToEulerAngles(lastFrameRotation);
+        #endregion
     }
 
     #region general methods
@@ -846,6 +860,21 @@ public class ShipController : MonoBehaviour {
             {
                 transform.Translate((transform.forward) * (currentThrottle * currentAttributes._travel._burnSpeed));
             }
+        }
+        else
+        {
+            //Warp instead
+        }
+    }
+    private void Bank()
+    {
+        wantedBank = Mathf.Clamp(-rotationalVelocity.y * bankMultiplier, -30, 30);
+
+        currentBank = Mathf.Lerp(currentBank, wantedBank, currentAttributes._travel._torque * 10);
+        Vector3 rot = new Vector3(0, 0, currentBank);
+        if (shipModel)
+        {
+            shipModel.transform.localRotation = Quaternion.Euler(rot);
         }
     }
     #endregion
