@@ -26,7 +26,7 @@ public class SelectedItemController : MonoBehaviour {
 		SetData(defaultData);
 	}
 
-	private void OnObjectSelected(GameObject go)
+	private void OnObjectSelected(GameObject go, bool forceLock)
 	{
 		if(go != currentData._go && go != GameManager._playerShip.gameObject)
 		{
@@ -85,7 +85,7 @@ public class SelectedItemController : MonoBehaviour {
 	public void OnTargetClicked()
 	{
 		print("Target Button Clicked");
-        EventManager.OnObjectLocked(currentData._go);
+        EventManager.OnObjectSelected(currentData._go, true);
 	}
 
 	public void OnLootClicked()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,9 @@ public class Q9Announcer : MonoBehaviour {
         TheCapacitorIsEmpty = 6,
         WarpingToJumpgate = 7,
         WelcomeBackCommander = 8,
-        LockLimitReached = 9
+        LockLimitReached = 9,
+        TargetDestroyed = 10,
+        TargetInvulnerable = 11
     }
 
     public AudioClip[] _clips;
@@ -41,11 +44,16 @@ public class Q9Announcer : MonoBehaviour {
 
     public void Start()
     {
-        EventManager.OnModuleInsufficientPower  += INSUFFICIENT_POWER;
-        EventManager.OnLockLimitReached         += LOCK_LIMIT_REACHED;
+        EventManager.NotifyModuleInsufficientPower  += INSUFFICIENT_POWER;
+        EventManager.NotifyLockLimitReached         += LOCK_LIMIT_REACHED;
+        EventManager.NotifyTargetInvulnerable       += TARGET_INVULNERABLE;
+    }
+    #region clip queues
+    private void TARGET_INVULNERABLE()
+    {
+        QueueClip(VoicePrompts.TargetInvulnerable);
     }
 
-    #region clip queues
     public void LOCK_LIMIT_REACHED()
     {
         QueueClip(VoicePrompts.LockLimitReached);

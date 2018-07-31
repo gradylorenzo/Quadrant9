@@ -25,15 +25,28 @@ public class Q9GUIManager : MonoBehaviour
         {
             hbb.ResetTargetModule();
         }
-        EventManager.OnLockLimitReached += OnLockLimitReached;
-        EventManager.OnShipStopped += OnShipStopped;
+        EventManager.NotifyLockLimitReached += NotifyLockLimitReached;
+        EventManager.NotifyShipStopped += NotifyShipStopped;
+        EventManager.NotifyTargetInvulnerable += NotifyTargetInvulnerable;
+        EventManager.NotifyModuleRequiresActiveTarget += NotifyModuleRequiresActiveTarget;
     }
-    public void OnLockLimitReached()
+
+    private void NotifyModuleRequiresActiveTarget()
+    {
+        CreateNotification(3);
+    }
+
+    private void NotifyTargetInvulnerable()
+    {
+        CreateNotification(2);
+    }
+
+    public void NotifyLockLimitReached()
     {
         CreateNotification(0);
     }
 
-    public void OnShipStopped()
+    public void NotifyShipStopped()
     {
         CreateNotification(1);
     }

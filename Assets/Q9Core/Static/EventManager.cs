@@ -18,22 +18,25 @@ public static class EventManager
     public static _onObjectLocked OnObjectLocked;
 
     public delegate void _onObjectUnlocked(GameObject go);
-    public static _onObjectUnlocked OnObjectUnlocked;
+    //public static _onObjectUnlocked OnObjectUnlocked;
 
     public delegate void _onObjectDestroyed(bool wasPlayerShip, GameObject go);
     public static _onObjectDestroyed OnObjectDestroyed;
 
-    public delegate void _onObjectSelected(GameObject go);
+    public delegate void _onObjectSelected(GameObject go, bool forceLock);
     public static _onObjectSelected OnObjectSelected;
 
     public delegate void _onObjectDamaged(GameObject go, float damage, DamageTypes type);
     public static _onObjectDamaged OnObjectDamaged;
+
     public delegate void _onModuleInsufficientPower();
-    public static _onModuleInsufficientPower OnModuleInsufficientPower;
 
     public delegate void _CreateAnnouncement();
-    public static _CreateAnnouncement OnLockLimitReached;
-    public static _CreateAnnouncement OnShipStopped;
+    public static _CreateAnnouncement NotifyLockLimitReached;
+    public static _CreateAnnouncement NotifyShipStopped;
+    public static _CreateAnnouncement NotifyModuleInsufficientPower;
+    public static _CreateAnnouncement NotifyModuleRequiresActiveTarget;
+    public static _CreateAnnouncement NotifyTargetInvulnerable;
 
     public delegate void _onGameInitialize();
     public static _onGameInitialize OnGameInternalDataInitialize;

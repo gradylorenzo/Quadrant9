@@ -87,19 +87,7 @@ namespace Q9Core
 
         public void OnPlayerClicked()
         {
-            if (_isTargetable)
-            {
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    EventManager.OnObjectLocked(gameObject);
-                }
-                else if (Input.GetKey(KeyCode.LeftAlt))
-                {
-                    EventManager.OnObjectUnlocked(gameObject);
-                }
-            }
-
-            EventManager.OnObjectSelected(gameObject);
+            EventManager.OnObjectSelected(gameObject, false);
 
             print("Object " + _overview._name + " clicked. _isTargetable = " + _isTargetable.ToString());
         }

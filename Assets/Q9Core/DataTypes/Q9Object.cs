@@ -134,20 +134,29 @@ namespace Q9Core
 
                                 if (_target != null)
                                 {
-                                    doEffect();
-                                    _user.GetComponent<ShipController>().ConsumeCapacitor(_capacitorUse);
+                                    if (_target.GetComponent<ShipController>() != null)
+                                    {
+                                        doEffect();
+                                        _user.GetComponent<ShipController>().ConsumeCapacitor(_capacitorUse);
+                                        _lc = Time.time;
+                                    }
+                                    else
+                                    {
+                                        EventManager.NotifyTargetInvulnerable();
+                                        Deactivate();
+                                    }
                                 }
                                 else
                                 {
+                                    EventManager.NotifyModuleRequiresActiveTarget();
                                     Deactivate();
                                 }
                             }
                             else
                             {
-                                EventManager.OnModuleInsufficientPower();
+                                EventManager.NotifyModuleInsufficientPower();
                                 Deactivate();
                             }
-                            _lc = Time.time;
                         }
                     }
                 }

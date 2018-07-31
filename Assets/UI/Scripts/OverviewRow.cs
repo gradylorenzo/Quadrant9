@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class OverviewRow : MonoBehaviour {
 
     public Image icon;
+    public Image lockIndicator;
+    public Image lockingIndicator;
     public Text name;
     public Text type;
     public Text alliance;

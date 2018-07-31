@@ -1,9 +1,17 @@
+7.31.2018
+Is it August yet?
+
++1 Ships now bank when turning. Huzzah!
+>2 Player ship now does LeftControl and LeftAlt checks when the OnObjectSelected event is called. This will prevent the need
+	to make every object check these on their own. Unlock and lock can therefore now easily be done from the overview.
+
+##############################################################################################################
+
 7.30.2018
 
-> Consolidated Align and Approach methods into Align. Method checks to make sure the target is at least
-	150km away before setting the warp flag.
-
-> Renamed "ShipManager" to "ShipController".
+>1 Consolidated Align and Approach methods into Align. Method checks to make sure the target is at least
+	150km away before setting the warp flag. This is a redundant check.
+>2 Renamed "ShipManager" to "ShipController".
 	
 +1 Targeting can now be done from the Overview.
 +2 Target, Align, and Warp buttons are functional on the overview, although the underlying code
@@ -11,6 +19,7 @@
 	These if statements will be moved to the OnObjectSelected methods,
 +3 TestLoot object added, far enough away to be warped to, also contains items in the cargo for testing
 	looting interface later.
+
 
 ##############################################################################################################
 

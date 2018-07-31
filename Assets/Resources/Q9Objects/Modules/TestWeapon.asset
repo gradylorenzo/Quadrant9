@@ -88,7 +88,7 @@ MonoBehaviour:
   _attributes:
     _chargeType: 1
     _damageType: 0
-    _damage: 10000000
+    _damage: 1000000
     _optimal: 0
     _range: 0
     _flightSpeed: 0

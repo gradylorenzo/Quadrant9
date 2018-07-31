@@ -84,10 +84,10 @@ public class ShipController : MonoBehaviour {
                 LoadShip(defaultShipData);
             }
         }
-        EventManager.OnObjectLocked += OnObjectLocked;
+        //EventManager.OnObjectLocked += OnObjectLocked;
         EventManager.OnObjectSelected += OnObjectSelected;
         EventManager.OnObjectDamaged += TakeDamage;
-        EventManager.OnObjectUnlocked += OnObjectUnlocked;
+        //EventManager.OnObjectUnlocked += OnObjectUnlocked;
         EventManager.OnGameInitializationComplete += OnGameInitializationComplete;
 
         currentRotation = transform.rotation;
@@ -159,7 +159,7 @@ public class ShipController : MonoBehaviour {
             Bank();
             if (state != ShipState.Warping)
             {
-                if (Quaternion.Angle(transform.rotation, wantedRotation) <= 5 && CurrentThrottle >= .75f && wantToWarp)
+                if (Quaternion.Angle(transform.rotation, wantedRotation) <= 2.5f && CurrentThrottle >= .75f && wantToWarp)
                 {
                     warpStartTime = Time.time;
                     state = ShipState.Warping;
@@ -629,10 +629,18 @@ public class ShipController : MonoBehaviour {
         UnlockTarget(go);
     }
 
-    public void OnObjectSelected(GameObject go)
+    public void OnObjectSelected(GameObject go, bool forceLock)
     {
         if (isPlayerShip && isReady)
         {
+            if ((Input.GetKey(KeyCode.LeftControl) || forceLock) && go.GetComponent<Q9Entity>()._isTargetable)
+            {
+                LockTarget(go);
+            }
+            else if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                UnlockTarget(go);
+            }
             if (go != this.gameObject)
             {
                 SelectTarget(go);
@@ -664,7 +672,7 @@ public class ShipController : MonoBehaviour {
             }
             else
             {
-                EventManager.OnLockLimitReached();
+                EventManager.NotifyLockLimitReached();
             }
         }
         else
@@ -703,8 +711,12 @@ public class ShipController : MonoBehaviour {
                     _activeTarget = null;
                 }
             }
+            print("Unlocked");
         }
-        print("Unlocked");
+        else
+        {
+            print("Object either not locked or lock incomplete");
+        }
     }
 
     public void SelectTarget(GameObject t)
@@ -810,7 +822,7 @@ public class ShipController : MonoBehaviour {
 
     private void AllStop()
     {
-        EventManager.OnShipStopped();
+        EventManager.NotifyShipStopped();
         SetThrottle(0);
         wantToWarp = false;
         state = ShipState.Idle;
@@ -870,7 +882,7 @@ public class ShipController : MonoBehaviour {
     {
         wantedBank = Mathf.Clamp(-rotationalVelocity.y * bankMultiplier, -30, 30);
 
-        currentBank = Mathf.Lerp(currentBank, wantedBank, currentAttributes._travel._torque * 10);
+        currentBank = Mathf.Lerp(currentBank, wantedBank, currentAttributes._travel._torque * 4);
         Vector3 rot = new Vector3(0, 0, currentBank);
         if (shipModel)
         {

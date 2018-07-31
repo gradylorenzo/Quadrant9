@@ -24,7 +24,7 @@ public class LockedTargetBoxController : MonoBehaviour
     {
         if(LockedTargetSlot < _playerShip._lockedTargets.Count)
         {
-            EventManager.OnObjectLocked(_playerShip._lockedTargets[LockedTargetSlot]._target);
+            EventManager.OnObjectSelected(_playerShip._lockedTargets[LockedTargetSlot]._target, false);
         }
     }
 
@@ -75,13 +75,16 @@ public class LockedTargetBoxController : MonoBehaviour
         //Meter updates
         if (_target != null)
         {
+            float shieldFill = 1;
+            float integrityFill = 1;
             if (_target.GetComponent<ShipController>())
             {
-                float shieldFill = (1 / (_target.GetComponent<ShipController>().modifiedAttributes._shield._capacity / _target.GetComponent<ShipController>().currentAttributes._shield._capacity));
-                float integrityFill = (1 / (_target.GetComponent<ShipController>().modifiedAttributes._integrity._capacity / _target.GetComponent<ShipController>().currentAttributes._integrity._capacity));
-                ShieldBar.fillAmount = shieldFill * .75f;
-                IntegrityBar.fillAmount = integrityFill * .75f;
+                shieldFill = (1 / (_target.GetComponent<ShipController>().modifiedAttributes._shield._capacity / _target.GetComponent<ShipController>().currentAttributes._shield._capacity));
+                integrityFill = (1 / (_target.GetComponent<ShipController>().modifiedAttributes._integrity._capacity / _target.GetComponent<ShipController>().currentAttributes._integrity._capacity));
+                
             }
+            ShieldBar.fillAmount = shieldFill * .75f;
+            IntegrityBar.fillAmount = integrityFill * .75f;
         }
     }
 }
