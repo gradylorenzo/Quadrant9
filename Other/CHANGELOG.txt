@@ -1,3 +1,19 @@
+7.30.2018
+
+> Consolidated Align and Approach methods into Align. Method checks to make sure the target is at least
+	150km away before setting the warp flag.
+
+> Renamed "ShipManager" to "ShipController".
+	
++1 Targeting can now be done from the Overview.
++2 Target, Align, and Warp buttons are functional on the overview, although the underlying code
+	for warping needs to be written. Unlock functionality is still only possible by alt-clicking directly on the object.
+	These if statements will be moved to the OnObjectSelected methods,
++3 TestLoot object added, far enough away to be warped to, also contains items in the cargo for testing
+	looting interface later.
+
+##############################################################################################################
+
 7.28.2018
 
 +1 Recoded Overview, now uses EventManager.addOverviewData/removeOverviewData. Want to add background color animation.

@@ -14,27 +14,26 @@ public static class EventManager
     public delegate void _onTargetLockComplete();
     public static _onTargetLockComplete OnTargetLockComplete;
 
-    public delegate void _onShipLocked(GameObject go);
-    public static _onShipLocked OnShipLocked;
+    public delegate void _onObjectLocked(GameObject go);
+    public static _onObjectLocked OnObjectLocked;
 
-    public delegate void _onShipUnlocked(GameObject go);
-    public static _onShipUnlocked OnShipUnlocked;
+    public delegate void _onObjectUnlocked(GameObject go);
+    public static _onObjectUnlocked OnObjectUnlocked;
 
+    public delegate void _onObjectDestroyed(bool wasPlayerShip, GameObject go);
+    public static _onObjectDestroyed OnObjectDestroyed;
+
+    public delegate void _onObjectSelected(GameObject go);
+    public static _onObjectSelected OnObjectSelected;
+
+    public delegate void _onObjectDamaged(GameObject go, float damage, DamageTypes type);
+    public static _onObjectDamaged OnObjectDamaged;
     public delegate void _onModuleInsufficientPower();
     public static _onModuleInsufficientPower OnModuleInsufficientPower;
 
     public delegate void _CreateAnnouncement();
     public static _CreateAnnouncement OnLockLimitReached;
     public static _CreateAnnouncement OnShipStopped;
-
-    public delegate void _onShipDestroyed(bool wasPlayerShip, GameObject go);
-    public static _onShipDestroyed OnShipDestroyed;
-
-    public delegate void _onShipSelected(GameObject go);
-    public static _onShipSelected OnShipSelected;
-
-    public delegate void _onShipDamaged(GameObject go, float damage, DamageTypes type);
-    public static _onShipDamaged OnShipDamaged;
 
     public delegate void _onGameInitialize();
     public static _onGameInitialize OnGameInternalDataInitialize;
@@ -45,11 +44,13 @@ public static class EventManager
     public delegate void _onGameIsReady();
     public static _onGameIsReady OnGameIsReady;
 
-    public delegate void _ObjectSelectedAsAlignmentTarget(DoubleVector3 position, bool WarpWhenReady);
+    public delegate void _ObjectSelectedAsAlignmentTarget(GameObject targetGO, bool WarpWhenReady);
     public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsAlignmentTarget;
-    public static _ObjectSelectedAsAlignmentTarget OnObjectSelectedAsApproachTarget;
 
     public delegate void _OverviewDataChange(Q9OverviewData data);
     public static _OverviewDataChange addOverviewData;
     public static _OverviewDataChange removeOverviewData;
+
+    public delegate void _OnOverviewRowClicked(int i);
+    public static _OnOverviewRowClicked OnOverviewRowClicked;
 }

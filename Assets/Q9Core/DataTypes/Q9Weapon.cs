@@ -17,9 +17,9 @@ public class Q9Weapon : Q9Module
         {
             if (_target)
             {
-                if (_user.GetComponent<ShipManager>() && _target != _user)
+                if (_user.GetComponent<ShipController>() && _target != _user)
                 {
-                    _target.GetComponent<ShipManager>().TakeDamage(_target, _attributes._damage, _attributes._damageType);
+                    _target.GetComponent<ShipController>().TakeDamage(_target, _attributes._damage, _attributes._damageType);
                     Debug.Log("Target Hit");
                 }
             }

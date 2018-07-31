@@ -19,7 +19,7 @@ MonoBehaviour:
   _description: Tartarus-Class Supercarrier
   _tier: 1
   _thumbnail: {fileID: 21300000, guid: fc3294b1c4a5bf34c82c400ce09d4e55, type: 3}
-  _icon: {fileID: 21300000, guid: 474b689c830939e48a5afbdf1adef6a9, type: 3}
+  _icon: {fileID: 21300000, guid: 58a4e2832bcc03f4f996227b4aab5f65, type: 3}
   _physical:
     _mass: 100
     _signature: 0

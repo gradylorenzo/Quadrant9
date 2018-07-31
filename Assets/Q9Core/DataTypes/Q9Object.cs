@@ -129,13 +129,13 @@ namespace Q9Core
                         }
                         else
                         {
-                            if (_user.GetComponent<ShipManager>().currentAttributes._capacitor._capacity > _capacitorUse)
+                            if (_user.GetComponent<ShipController>().currentAttributes._capacitor._capacity > _capacitorUse)
                             {
 
                                 if (_target != null)
                                 {
                                     doEffect();
-                                    _user.GetComponent<ShipManager>().ConsumeCapacitor(_capacitorUse);
+                                    _user.GetComponent<ShipController>().ConsumeCapacitor(_capacitorUse);
                                 }
                                 else
                                 {
@@ -157,7 +157,7 @@ namespace Q9Core
         private void Start()
         {
             initialized = true;
-            EventManager.OnShipDestroyed += CheckIfTargetDestroyed;
+            EventManager.OnObjectDestroyed += CheckIfTargetDestroyed;
         }
 
         private void CheckIfTargetDestroyed(bool wasPlayerShip, GameObject go)

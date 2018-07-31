@@ -18,7 +18,7 @@ public class HotbarButton : MonoBehaviour
     public Q9Module _targetModule;
 
 
-    public ShipManager _playerShip;
+    public ShipController _playerShip;
 
     public void OnClick()
     {

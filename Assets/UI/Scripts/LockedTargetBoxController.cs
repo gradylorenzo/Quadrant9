@@ -17,14 +17,14 @@ public class LockedTargetBoxController : MonoBehaviour
     public Text ObjectName;
     public Text ObjectDistance;
 
-    private ShipManager _playerShip;
+    private ShipController _playerShip;
     private GameObject _target;
 
     public void OnClick()
     {
         if(LockedTargetSlot < _playerShip._lockedTargets.Count)
         {
-            EventManager.OnShipLocked(_playerShip._lockedTargets[LockedTargetSlot]._target);
+            EventManager.OnObjectLocked(_playerShip._lockedTargets[LockedTargetSlot]._target);
         }
     }
 
@@ -75,10 +75,13 @@ public class LockedTargetBoxController : MonoBehaviour
         //Meter updates
         if (_target != null)
         {
-            float shieldFill = (1 / (_target.GetComponent<ShipManager>().modifiedAttributes._shield._capacity / _target.GetComponent<ShipManager>().currentAttributes._shield._capacity));
-            float integrityFill = (1 / (_target.GetComponent<ShipManager>().modifiedAttributes._integrity._capacity / _target.GetComponent<ShipManager>().currentAttributes._integrity._capacity));
-            ShieldBar.fillAmount = shieldFill * .75f;
-            IntegrityBar.fillAmount = integrityFill * .75f;
+            if (_target.GetComponent<ShipController>())
+            {
+                float shieldFill = (1 / (_target.GetComponent<ShipController>().modifiedAttributes._shield._capacity / _target.GetComponent<ShipController>().currentAttributes._shield._capacity));
+                float integrityFill = (1 / (_target.GetComponent<ShipController>().modifiedAttributes._integrity._capacity / _target.GetComponent<ShipController>().currentAttributes._integrity._capacity));
+                ShieldBar.fillAmount = shieldFill * .75f;
+                IntegrityBar.fillAmount = integrityFill * .75f;
+            }
         }
     }
 }

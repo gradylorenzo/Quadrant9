@@ -15,7 +15,7 @@ public class Q9GUIManager : MonoBehaviour
 
     private float nextUpdate = 0;
 
-    private ShipManager _playerShip;
+    private ShipController _playerShip;
 
 
     private void Start()

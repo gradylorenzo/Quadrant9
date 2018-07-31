@@ -91,11 +91,11 @@ public class StatusRingController : MonoBehaviour {
         }
 
         //
-        speedFill = (GameManager._playerShip.GetComponent<ShipManager>().currentThrottle / GameManager._playerShip.GetComponent<ShipManager>().currentAttributes._travel._burnSpeed) * .22f;
+        speedFill = (GameManager._playerShip.GetComponent<ShipController>().CurrentThrottle) * .22f;
         SpeedBar.fillAmount = speedFill;
         if (speedFill > 0)
         {
-            SpeedRead.text = ((GameManager._playerShip.GetComponent<ShipManager>().currentThrottle) * 1000).ToString("###") + " m/s";
+            SpeedRead.text = ((GameManager._playerShip.GetComponent<ShipController>().CurrentThrottle * GameManager._playerShip.GetComponent<ShipController>().currentAttributes._travel._burnSpeed) * 1000).ToString("###") + " m/s";
         }
         else
         {

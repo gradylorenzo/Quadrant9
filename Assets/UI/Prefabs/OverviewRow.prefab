@@ -311,6 +311,7 @@ MonoBehaviour:
   type: {fileID: 114038188024182756}
   alliance: {fileID: 114816603053841816}
   distance: {fileID: 114409793142542642}
+  rowNumber: 0
 --- !u!114 &114887338382669588
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,4 +10,10 @@ public class OverviewRow : MonoBehaviour {
     public Text type;
     public Text alliance;
     public Text distance;
+    public int rowNumber;
+
+    public void OnClick()
+    {
+        EventManager.OnOverviewRowClicked(rowNumber);
+    }
 }

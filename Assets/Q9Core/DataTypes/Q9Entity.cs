@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Q9Core;
@@ -14,6 +15,7 @@ namespace Q9Core
         public bool _isTargetable;
         public bool _isDockable;
         public bool _isMinable;
+        public bool _isLootable;
         public bool _canBridge;
         public bool _isBridging;
         public bool _isAlwaysVisibleInOverview;
@@ -64,14 +66,42 @@ namespace Q9Core
                         }
                     }
                 }
+
+                if(_overview._guid == "" || _overview._guid == null)
+                {
+                    _overview._guid = Guid.NewGuid().ToString();
+                }
                 _started = true;
             }
         }
 
         public void Remove()
         {
-            print("Removing Overview Data");
             EventManager.removeOverviewData(_overview);
+        }
+
+        public void OnMouseUpAsButton()
+        {
+            OnPlayerClicked();
+        }
+
+        public void OnPlayerClicked()
+        {
+            if (_isTargetable)
+            {
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    EventManager.OnObjectLocked(gameObject);
+                }
+                else if (Input.GetKey(KeyCode.LeftAlt))
+                {
+                    EventManager.OnObjectUnlocked(gameObject);
+                }
+            }
+
+            EventManager.OnObjectSelected(gameObject);
+
+            print("Object " + _overview._name + " clicked. _isTargetable = " + _isTargetable.ToString());
         }
     }
 }

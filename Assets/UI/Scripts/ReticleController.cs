@@ -20,7 +20,7 @@ public class ReticleController : MonoBehaviour {
     public Reticle _reticle;
     public int LockedTargetSlot;
 
-    private ShipManager playerShip;
+    private ShipController playerShip;
     private GameObject Target;
     private Camera cam;
 

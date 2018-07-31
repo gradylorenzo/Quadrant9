@@ -12,9 +12,9 @@ public class Q9ShieldBooster : Q9Module {
     {
         if (_user)
         {
-            if (_user.GetComponent<ShipManager>())
+            if (_user.GetComponent<ShipController>())
             {
-                _user.GetComponent<ShipManager>().RepairShield(_boostAmount);
+                _user.GetComponent<ShipController>().RepairShield(_boostAmount);
             }
             else
             {

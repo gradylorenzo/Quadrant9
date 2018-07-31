@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Q9Core;
 
 public class OverviewController : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class OverviewController : MonoBehaviour {
 	{
 		EventManager.addOverviewData += addOverviewData;
 		EventManager.removeOverviewData += removeOverviewData;
+        EventManager.OnOverviewRowClicked += OnOverviewRowClicked;
 	}
 
     private void addOverviewData(Q9OverviewData data)
@@ -37,6 +39,7 @@ public class OverviewController : MonoBehaviour {
             GameObject newOR = Instantiate(_overviewRowPrefab, _overviewRowPrefab.transform.position, _overviewRowPrefab.transform.rotation);
             newOR.transform.parent = this.transform;
 			newOR.transform.localPosition = pos;
+            newOR.GetComponent<OverviewRow>().rowNumber = _overviewRows.Count;
             _overviewRows.Add(newOR.GetComponent<OverviewRow>());
         }
         else
@@ -61,12 +64,27 @@ public class OverviewController : MonoBehaviour {
 			int ind = _overviewData.IndexOf(data);
 			Destroy(_overviewRows[ind].gameObject);
 			_overviewRows.RemoveAt(ind);
+            List<OverviewRow> rowsToShift = new List<OverviewRow>();
+            foreach(OverviewRow r in _overviewRows)
+            {
+                if(_overviewRows.IndexOf(r) >= ind)
+                {
+                    Vector3 newPos = new Vector3(r.gameObject.transform.localPosition.x, r.gameObject.transform.localPosition.y + 20, r.gameObject.transform.localPosition.z);
+                    r.gameObject.transform.localPosition = newPos;
+                    r.rowNumber -= 1;
+                }
+            }
             _overviewData.Remove(data);
         }
         else
         {
             print("Overview data not found, cannot remove from list");
         }
+    }
+
+    private void OnOverviewRowClicked (int i)
+    {
+        _overviewData[i]._go.GetComponent<Q9Entity>().OnPlayerClicked();
     }
 
 	public void FixedUpdate()
