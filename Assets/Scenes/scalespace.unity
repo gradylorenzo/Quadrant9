@@ -743,6 +743,353 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 66896238}
   m_CullTransparentMesh: 0
+--- !u!1 &91494436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1804853280643090, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91494443}
+  - component: {fileID: 91494442}
+  - component: {fileID: 91494441}
+  - component: {fileID: 91494440}
+  - component: {fileID: 91494439}
+  - component: {fileID: 91494438}
+  - component: {fileID: 91494437}
+  m_Layer: 0
+  m_Name: TestNPC (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &91494437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114290934433871326, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84553e6f8277f644aacfdbb54aa6b832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlacementScale: 1
+  ActualScale: 1
+--- !u!114 &91494438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114780670062759718, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cf9e8d34120394daf1471747ffb80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overview:
+    _name: Test NPC
+    _alliance: 
+    _type: 
+    _thumbnail: {fileID: 0}
+    _icon: {fileID: 0}
+    _guid: 
+    _go: {fileID: 0}
+  _description: 
+  _isTargetable: 0
+  _isDockable: 0
+  _isMinable: 0
+  _isLootable: 0
+  _canBridge: 0
+  _isBridging: 0
+  _isAlwaysVisibleInOverview: 0
+  _hideInOverview: 0
+  _started: 0
+  _cargo: []
+--- !u!54 &91494439
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 54179831363739508, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &91494440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114046869350042044, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab97081c7d3c8d4193d6417106913ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerShip: 0
+  defaultShipData: {fileID: 11400000, guid: d1cb05cd14b40064f91b204217355d6b, type: 2}
+  baseAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  modifiedAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  currentAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+--- !u!114 &91494441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114140429521164958, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1992a1efe1cb7424f8c3304ce1b84d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!33 &91494442
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33207813992990920, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &91494443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4671121755313264, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91494436}
+  m_LocalRotation: {x: -0, y: -0.9043806, z: -0, w: 0.4267269}
+  m_LocalPosition: {x: 5.29, y: 0.17, z: 3.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: -129.48001, z: 0}
 --- !u!1 &98396306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +2316,353 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 201865835}
   m_CullTransparentMesh: 0
+--- !u!1 &213070070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1804853280643090, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 213070077}
+  - component: {fileID: 213070076}
+  - component: {fileID: 213070075}
+  - component: {fileID: 213070074}
+  - component: {fileID: 213070073}
+  - component: {fileID: 213070072}
+  - component: {fileID: 213070071}
+  m_Layer: 0
+  m_Name: TestNPC (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &213070071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114290934433871326, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84553e6f8277f644aacfdbb54aa6b832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlacementScale: 1
+  ActualScale: 1
+--- !u!114 &213070072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114780670062759718, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cf9e8d34120394daf1471747ffb80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overview:
+    _name: Test NPC
+    _alliance: 
+    _type: 
+    _thumbnail: {fileID: 0}
+    _icon: {fileID: 0}
+    _guid: 
+    _go: {fileID: 0}
+  _description: 
+  _isTargetable: 0
+  _isDockable: 0
+  _isMinable: 0
+  _isLootable: 0
+  _canBridge: 0
+  _isBridging: 0
+  _isAlwaysVisibleInOverview: 0
+  _hideInOverview: 0
+  _started: 0
+  _cargo: []
+--- !u!54 &213070073
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 54179831363739508, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &213070074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114046869350042044, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab97081c7d3c8d4193d6417106913ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerShip: 0
+  defaultShipData: {fileID: 11400000, guid: d1cb05cd14b40064f91b204217355d6b, type: 2}
+  baseAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  modifiedAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  currentAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+--- !u!114 &213070075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114140429521164958, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1992a1efe1cb7424f8c3304ce1b84d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!33 &213070076
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33207813992990920, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &213070077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4671121755313264, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213070070}
+  m_LocalRotation: {x: -0, y: -0.9043806, z: -0, w: 0.4267269}
+  m_LocalPosition: {x: 5.29, y: 0.17000008, z: 6.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: -129.48001, z: 0}
 --- !u!1 &213695061
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,11 +5445,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 509495979}
   m_LocalRotation: {x: -0, y: -0.9043806, z: -0, w: 0.4267269}
-  m_LocalPosition: {x: 5.29, y: 5.17, z: 12.06}
+  m_LocalPosition: {x: 5.29, y: 0.17000008, z: 12.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -129.48001, z: 0}
 --- !u!1 &521168337
 GameObject:
@@ -13231,7 +13925,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4691407991204238, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
@@ -13770,7 +14464,7 @@ Light:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1490868372}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16212,6 +16906,353 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1742457348}
   m_CullTransparentMesh: 0
+--- !u!1 &1747263724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1804853280643090, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747263731}
+  - component: {fileID: 1747263730}
+  - component: {fileID: 1747263729}
+  - component: {fileID: 1747263728}
+  - component: {fileID: 1747263727}
+  - component: {fileID: 1747263726}
+  - component: {fileID: 1747263725}
+  m_Layer: 0
+  m_Name: TestNPC (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1747263725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114290934433871326, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84553e6f8277f644aacfdbb54aa6b832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlacementScale: 1
+  ActualScale: 1
+--- !u!114 &1747263726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114780670062759718, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cf9e8d34120394daf1471747ffb80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overview:
+    _name: Test NPC
+    _alliance: 
+    _type: 
+    _thumbnail: {fileID: 0}
+    _icon: {fileID: 0}
+    _guid: 
+    _go: {fileID: 0}
+  _description: 
+  _isTargetable: 0
+  _isDockable: 0
+  _isMinable: 0
+  _isLootable: 0
+  _canBridge: 0
+  _isBridging: 0
+  _isAlwaysVisibleInOverview: 0
+  _hideInOverview: 0
+  _started: 0
+  _cargo: []
+--- !u!54 &1747263727
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 54179831363739508, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &1747263728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114046869350042044, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab97081c7d3c8d4193d6417106913ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerShip: 0
+  defaultShipData: {fileID: 11400000, guid: d1cb05cd14b40064f91b204217355d6b, type: 2}
+  baseAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  modifiedAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  currentAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+--- !u!114 &1747263729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114140429521164958, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1992a1efe1cb7424f8c3304ce1b84d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!33 &1747263730
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33207813992990920, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1747263731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4671121755313264, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747263724}
+  m_LocalRotation: {x: -0, y: -0.9043806, z: -0, w: 0.4267269}
+  m_LocalPosition: {x: 5.29, y: 0.17000008, z: 0.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: -129.48001, z: 0}
 --- !u!1001 &1765841996
 Prefab:
   m_ObjectHideFlags: 0
@@ -16249,7 +17290,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114224530476390006, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7,
         type: 2}
@@ -17153,6 +18194,353 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865181115}
   m_Mesh: {fileID: 4300000, guid: 9ae98077e7fef8c43a5dc62d1f0398e5, type: 3}
+--- !u!1 &1886800720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1804853280643090, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1886800727}
+  - component: {fileID: 1886800726}
+  - component: {fileID: 1886800725}
+  - component: {fileID: 1886800724}
+  - component: {fileID: 1886800723}
+  - component: {fileID: 1886800722}
+  - component: {fileID: 1886800721}
+  m_Layer: 0
+  m_Name: TestNPC (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1886800721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114290934433871326, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84553e6f8277f644aacfdbb54aa6b832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlacementScale: 1
+  ActualScale: 1
+--- !u!114 &1886800722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114780670062759718, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cf9e8d34120394daf1471747ffb80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overview:
+    _name: Test NPC
+    _alliance: 
+    _type: 
+    _thumbnail: {fileID: 0}
+    _icon: {fileID: 0}
+    _guid: 
+    _go: {fileID: 0}
+  _description: 
+  _isTargetable: 0
+  _isDockable: 0
+  _isMinable: 0
+  _isLootable: 0
+  _canBridge: 0
+  _isBridging: 0
+  _isAlwaysVisibleInOverview: 0
+  _hideInOverview: 0
+  _started: 0
+  _cargo: []
+--- !u!54 &1886800723
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 54179831363739508, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &1886800724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114046869350042044, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab97081c7d3c8d4193d6417106913ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerShip: 0
+  defaultShipData: {fileID: 11400000, guid: d1cb05cd14b40064f91b204217355d6b, type: 2}
+  baseAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  modifiedAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+  currentAttributes:
+    _alliance: 0
+    _type: 0
+    _physical:
+      _mass: 0
+      _signature: 0
+    _shield:
+      _capacity: 0
+      _rechargeRate: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _integrity:
+      _capacity: 0
+      _resistances:
+        _thermal: 0
+        _kinetic: 0
+        _electro: 0
+        _explosive: 0
+    _capacitor:
+      _capacity: 0
+      _rechargeRate: 0
+    _fitting:
+      _teraflops: 0
+      _terawatts: 0
+      _highSlots: []
+      _midSlots: []
+      _lowSlots: []
+      _rigSlots: []
+    _offensive:
+      _laser:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _projectile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _railgun:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+      _missile:
+        _chargeType: 0
+        _damageType: 0
+        _damage: 0
+        _optimal: 0
+        _range: 0
+        _flightSpeed: 0
+        _tracking: 0
+    _cargo:
+      _capacity: 0
+      _cargo: []
+    _travel:
+      _power: 0
+      _burnSpeed: 0
+      _warpStrength: 0
+      _torque: 0
+--- !u!114 &1886800725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114140429521164958, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1992a1efe1cb7424f8c3304ce1b84d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!33 &1886800726
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33207813992990920, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1886800727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4671121755313264, guid: 13ff8280903885648ab51091d563bdae,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886800720}
+  m_LocalRotation: {x: -0, y: -0.9043806, z: -0, w: 0.4267269}
+  m_LocalPosition: {x: 5.29, y: 0.17000008, z: 9.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: -129.48001, z: 0}
 --- !u!1 &1898194867
 GameObject:
   m_ObjectHideFlags: 0
