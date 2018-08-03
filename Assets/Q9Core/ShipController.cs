@@ -38,8 +38,23 @@ public class ShipController : MonoBehaviour {
     private Quaternion wantedRotation;
     private GameObject alignmentTarget;
     private bool aligned;
+    //Warping
     private float warpStartTime;
+    private float wantedWarpSpeed;
+    private float currentWarpSpeed;
+    public AnimationCurve warpAccelerationCurve = new AnimationCurve(new Keyframe(0, 0),
+                                                                     new Keyframe(.1f, .000000001f),
+                                                                     new Keyframe(.2f, .00000001f),
+                                                                     new Keyframe(.3f, .0000001f),
+                                                                     new Keyframe(.4f, .000001f),
+                                                                     new Keyframe(.5f, .00001f),
+                                                                     new Keyframe(.6f, .0001f),
+                                                                     new Keyframe(.7f, .001f),
+                                                                     new Keyframe(.8f, .01f),
+                                                                     new Keyframe(.9f, .1f),
+                                                                     new Keyframe(1, 1));
 
+    #region
     [Header("Combat")]
     [NonSerialized]
     public GameObject _activeTarget;
@@ -60,7 +75,7 @@ public class ShipController : MonoBehaviour {
     private Camera mainCamera;
     private bool isReady = false;
     public float bankMultiplier;
-
+    #endregion
     #endregion
 
     private void Awake()
@@ -162,13 +177,14 @@ public class ShipController : MonoBehaviour {
                 if (Quaternion.Angle(transform.rotation, wantedRotation) <= 2.5f && CurrentThrottle >= .75f && wantToWarp)
                 {
                     warpStartTime = Time.time;
+                    
                     state = ShipState.Warping;
                     print("Warping");
                 }
             }
             else
             {
-
+                Warp();
             }
         }
 
@@ -880,7 +896,7 @@ public class ShipController : MonoBehaviour {
     }
     private void Bank()
     {
-        wantedBank = Mathf.Clamp(-rotationalVelocity.y * bankMultiplier, -30, 30);
+        wantedBank = Mathf.Clamp(-rotationalVelocity.y * bankMultiplier, -70, 70);
 
         currentBank = Mathf.Lerp(currentBank, wantedBank, currentAttributes._travel._torque * 4);
         Vector3 rot = new Vector3(0, 0, currentBank);
@@ -888,6 +904,40 @@ public class ShipController : MonoBehaviour {
         {
             shipModel.transform.localRotation = Quaternion.Euler(rot);
         }
+    }
+    private void Warp()
+    {
+        if (state == ShipState.Warping)
+        {
+            DoubleVector3 warpTarget = alignmentTarget.GetComponent<ScaleSpaceObject>().initialPosition;
+            double wantedWarpSpeed = warpAccelerationCurve.Evaluate((Time.time - warpStartTime) * (float)currentAttributes._travel._warpStrength);
+            //warpTarget = ScaleSpace.apparentPosition + (DoubleVector3.FromVector3(alignmentTarget.transform.position));
+            double warpSpeedLimiter = warpAccelerationCurve.Evaluate(((float)DoubleVector3.Distance(warpTarget, ScaleSpace.apparentPosition) / (149597870700 / 10)));
+            double actualWarpSpeed;
+            if(warpSpeedLimiter < wantedWarpSpeed)
+            {
+                actualWarpSpeed = warpSpeedLimiter;
+            }
+            else
+            {
+                actualWarpSpeed = wantedWarpSpeed;
+            }
+            ScaleSpace.Warp(warpTarget, wantedWarpSpeed * currentAttributes._travel._warpSpeed);
+
+            if (DoubleVector3.Distance(ScaleSpace.apparentPosition, warpTarget) <= 1)
+            {
+                state = ShipState.Idle;
+                currentThrottle = 0;
+                wantedThrottle = 0;
+                print("warp complete");
+            }
+        }
+    }
+
+    private double WarpSpeedAtTime()
+    {
+        float time = Time.time - warpStartTime;
+        return (currentAttributes._travel._warpStrength * (1 - Mathf.Exp((-time * Mathf.Pow(10, 6)) / (currentAttributes._physical._intertia * currentAttributes._physical._mass))));
     }
     #endregion
 }

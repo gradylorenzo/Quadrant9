@@ -81,6 +81,7 @@ namespace Q9Core.CommonData
     public struct Physical
     {
         public float _mass;
+        public float _intertia;
         public float _signature;
     }
 
@@ -214,7 +215,8 @@ namespace Q9Core.CommonData
     {
         public float _power;
         public float _burnSpeed;
-        public float _warpStrength;
+        public double _warpStrength;
+        public double _warpSpeed;
         public float _torque;
     }
 

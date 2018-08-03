@@ -101,7 +101,7 @@ public class SelectedItemController : MonoBehaviour {
 
 	public void OnWarpClicked()
 	{
-		print("Warp Button Clicked, internal method not yet implemented");
+		print("Warp Button Clicked, internal method is work in progress.");
         EventManager.OnObjectSelectedAsAlignmentTarget(currentData._go, true);
     }
 

@@ -779,6 +779,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &91494438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +804,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -810,6 +815,10 @@ MonoBehaviour:
   _hideInOverview: 0
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!54 &91494439
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -845,6 +854,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -911,12 +921,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -983,12 +995,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -1055,7 +1069,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -2356,6 +2476,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &213070072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,6 +2501,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -2387,6 +2512,10 @@ MonoBehaviour:
   _hideInOverview: 0
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!54 &213070073
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2422,6 +2551,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -2488,12 +2618,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -2560,12 +2692,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -2632,7 +2766,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -2842,6 +3082,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 100000000
   ActualScale: 100000000
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!33 &235764661
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5148,6 +5392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &509495981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5169,6 +5417,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -5179,6 +5428,10 @@ MonoBehaviour:
   _hideInOverview: 0
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!54 &509495982
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5214,6 +5467,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -5280,12 +5534,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -5352,12 +5608,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -5424,7 +5682,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -5517,7 +5881,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 550
+  far clip plane: 2000
   field of view: 35
   orthographic: 0
   orthographic size: 5
@@ -6322,6 +6686,22 @@ Prefab:
     - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
       propertyPath: m_Name
       value: TestLoot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240353333862666, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105176013013172, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436413837941586, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
@@ -7553,6 +7933,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 100000000
   ActualScale: 100000000
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!135 &716382344
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8326,6 +8710,74 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808346603}
   m_CullTransparentMesh: 0
+--- !u!1001 &822879113
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 14784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488891149931382, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_Name
+      value: Station_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114224530476390006, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7,
+        type: 2}
+      propertyPath: _overview._name
+      value: Outpost 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114197381627130730, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7,
+        type: 2}
+      propertyPath: PlacementScale
+      value: 100000000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &823054547
 GameObject:
   m_ObjectHideFlags: 0
@@ -10240,6 +10692,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &1008088698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10261,6 +10717,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -10271,6 +10728,10 @@ MonoBehaviour:
   _hideInOverview: 0
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!54 &1008088699
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10306,6 +10767,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -10372,12 +10834,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -10444,12 +10908,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -10516,7 +10982,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -11911,6 +12483,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -11977,12 +12550,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -12049,12 +12624,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -12121,7 +12698,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0.00000001
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0.00000001
+      outSlope: 0.00000009
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0.00000009
+      outSlope: 0.0000008999999
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0.0000008999999
+      outSlope: 0.000009
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0.000009
+      outSlope: 0.00009
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0.00009
+      outSlope: 0.0008999998
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0.0008999998
+      outSlope: 0.009000003
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0.009000003
+      outSlope: 0.089999974
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0.089999974
+      outSlope: 0.90000033
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0.90000033
+      outSlope: 8.999998
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 8.999998
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -12146,6 +12829,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -12156,6 +12840,10 @@ MonoBehaviour:
   _hideInOverview: 1
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &1178107307
 GameObject:
   m_ObjectHideFlags: 0
@@ -13139,6 +13827,60 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1273244075}
   m_CullTransparentMesh: 0
+--- !u!1001 &1273653348
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 21.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.79
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1282160479
 GameObject:
   m_ObjectHideFlags: 0
@@ -13256,8 +13998,92 @@ Prefab:
       propertyPath: m_Name
       value: TestLoot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240353333862666, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105176013013172, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436413837941586, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1315698796
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1536
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550562148982406, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488891149931382, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
+      propertyPath: m_Name
+      value: Station_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114224530476390006, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7,
+        type: 2}
+      propertyPath: _overview._name
+      value: Outpost 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114197381627130730, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7,
+        type: 2}
+      propertyPath: PlacementScale
+      value: 100000000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1328336038
 GameObject:
@@ -14612,6 +15438,22 @@ Prefab:
     - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
       propertyPath: m_Name
       value: TestLoot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240353333862666, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105176013013172, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436413837941586, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
@@ -16674,6 +17516,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 100000000
   ActualScale: 100000000
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!23 &1662433248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17451,6 +18297,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &1747263726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17472,6 +18322,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -17482,6 +18333,10 @@ MonoBehaviour:
   _hideInOverview: 0
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!54 &1747263727
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17517,6 +18372,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -17583,12 +18439,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -17655,12 +18513,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -17727,7 +18587,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -17766,70 +18732,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -129.48001, z: 0}
---- !u!1001 &1765841996
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 4.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 21.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665497733993790, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224530476390006, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7,
-        type: 2}
-      propertyPath: _overview._icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 58a4e2832bcc03f4f996227b4aab5f65,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 23643990900998958, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23812356830514654, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23995803342060568, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23720271575686304, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23179810349253676, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23117243773550316, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23470977714350222, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23707286847658580, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23283649306069110, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23103465223751296, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23125567915738826, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23388111658970254, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23065174419026522, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23483644181692764, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 23812467454328916, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-    - {fileID: 135660178215518810, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-  m_SourcePrefab: {fileID: 100100000, guid: 6f9eda5cc289ffd4cbcbc00b041b4eb7, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1766106845
 GameObject:
   m_ObjectHideFlags: 0
@@ -18456,6 +19358,22 @@ Prefab:
       propertyPath: m_Name
       value: TestLoot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240353333862666, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105176013013172, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436413837941586, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
   m_IsPrefabAsset: 0
@@ -18697,6 +19615,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 100000000
   ActualScale: 100000000
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!23 &1865181118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18789,6 +19711,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &1886800722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18810,6 +19736,7 @@ MonoBehaviour:
     _guid: 
     _go: {fileID: 0}
   _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
   _isMinable: 0
@@ -18820,6 +19747,10 @@ MonoBehaviour:
   _hideInOverview: 0
   _started: 0
   _cargo: []
+  ScaleSpacePosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!54 &1886800723
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18855,6 +19786,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -18921,12 +19853,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -18993,12 +19927,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -19065,7 +20001,113 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationalVelocity: {x: 0, y: 0, z: 0}
   wantedBank: 0
   currentBank: 0
@@ -20124,6 +21166,22 @@ Prefab:
     - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
       propertyPath: m_Name
       value: TestLoot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538219576462602, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240353333862666, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105176013013172, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436413837941586, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ffd4b8eb2b5a43b871abef9a7abc2, type: 2}

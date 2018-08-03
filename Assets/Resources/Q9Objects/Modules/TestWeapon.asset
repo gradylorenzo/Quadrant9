@@ -22,6 +22,7 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 77d5bfd7ef16bab469dfc8578a900aba, type: 3}
   _physical:
     _mass: 0
+    _intertia: 0
     _signature: 0
   _teraflops: 0
   _terawatts: 0
@@ -88,7 +89,7 @@ MonoBehaviour:
   _attributes:
     _chargeType: 1
     _damageType: 0
-    _damage: 1000000
+    _damage: 10000000
     _optimal: 0
     _range: 0
     _flightSpeed: 0

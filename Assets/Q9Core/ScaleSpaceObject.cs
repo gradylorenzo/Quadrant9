@@ -13,7 +13,7 @@ public class ScaleSpaceObject : MonoBehaviour {
 
     public ScaleSpaceLevel PlacementScale = ScaleSpaceLevel.ScaleSpace0;
     public ScaleSpaceLevel ActualScale = ScaleSpaceLevel.ScaleSpace0;
-    private DoubleVector3 initialPosition;
+    public DoubleVector3 initialPosition;
 
     private void Start()
     {

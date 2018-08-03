@@ -39,6 +39,7 @@ public class DebugView : MonoBehaviour {
             GUILayout.Label("X= " + ScaleSpace.apparentPosition.x);
             GUILayout.Label("Y= " + ScaleSpace.apparentPosition.y);
             GUILayout.Label("Z= " + ScaleSpace.apparentPosition.z);
+            GUILayout.Label("Warp Target Distance= ");
             GUILayout.Space(10);
             if (GameManager._playerShip)
             {

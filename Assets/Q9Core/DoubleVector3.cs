@@ -68,7 +68,7 @@ namespace Q9Core
         }
 
         //MoveTowards
-        public static DoubleVector3 MoveTowards(DoubleVector3 a, DoubleVector3 b, float c)
+        public static DoubleVector3 MoveTowards(DoubleVector3 a, DoubleVector3 b, double c)
         {
             DoubleVector3 newPos = b - a;
             double magnitude = newPos.magnitude;
@@ -119,6 +119,12 @@ namespace Q9Core
             return v;
         }
         public static DoubleVector3 operator *(DoubleVector3 a, float b)
+        {
+            DoubleVector3 v = new DoubleVector3(a.x * b, a.y * b, a.z * b);
+            return v;
+        }
+
+        public static DoubleVector3 operator *(DoubleVector3 a, double b)
         {
             DoubleVector3 v = new DoubleVector3(a.x * b, a.y * b, a.z * b);
             return v;

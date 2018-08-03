@@ -12,6 +12,7 @@ namespace Q9Core
     {
         public Q9OverviewData _overview = new Q9OverviewData();
         public string _description;
+        public bool _canWarpTo;
         public bool _isTargetable;
         public bool _isDockable;
         public bool _isMinable;
@@ -23,6 +24,8 @@ namespace Q9Core
         public bool _started;
 
         public Q9Object[] _cargo;
+
+        public DoubleVector3 ScaleSpacePosition;
 
         private float DistanceAtLastFrame;
         private float DistanceAtThisFrame;
@@ -70,6 +73,10 @@ namespace Q9Core
                 if(_overview._guid == "" || _overview._guid == null)
                 {
                     _overview._guid = Guid.NewGuid().ToString();
+                }
+                if (GetComponent<ScaleSpaceObject>())
+                {
+
                 }
                 _started = true;
             }

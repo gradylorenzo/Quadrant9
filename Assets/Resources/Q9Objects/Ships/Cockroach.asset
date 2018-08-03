@@ -9,17 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4783b2d0cc6f9f94d854bad366447e76, type: 3}
-  m_Name: Tartarus
+  m_Name: Cockroach
   m_EditorClassIdentifier: 
-  _name: Tartarus
-  _id: TARTARUS
+  _name: Cockroach
+  _id: COCKROACH
   _quantity: 0
   _value: 0
   _volume: 0
-  _description: Tartarus-Class Supercarrier
+  _description: Cockroach Test Ship
   _tier: 1
-  _thumbnail: {fileID: 21300000, guid: fc3294b1c4a5bf34c82c400ce09d4e55, type: 3}
-  _icon: {fileID: 21300000, guid: 58a4e2832bcc03f4f996227b4aab5f65, type: 3}
+  _thumbnail: {fileID: 21300000, guid: f079d688b676fc643aeecf5431836a0a, type: 3}
+  _icon: {fileID: 21300000, guid: b6b1c96256337e742a2759167ef272e3, type: 3}
   _physical:
     _mass: 100
     _intertia: 0
@@ -29,8 +29,8 @@ MonoBehaviour:
     _alliance: 0
     _type: 11
     _physical:
-      _mass: 0
-      _intertia: 0
+      _mass: 100
+      _intertia: 100
       _signature: 0
     _shield:
       _capacity: 10000000
@@ -109,12 +109,11 @@ MonoBehaviour:
       _capacity: 0
       _cargo: []
     _travel:
-      _power: 0.003
-      _burnSpeed: 0.112
-      _warpStrength: 0.1
-      _warpSpeed: 0.1
-      _torque: 0.002
-  _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}
+      _power: 0.01
+      _burnSpeed: 5
+      _warpStrength: 0.001
+      _torque: 0.01
+  _model: {fileID: 1005956852471160, guid: 959fb3026b9a2e848a04cf36663d5618, type: 2}
   _minCameraDistance: 1.5
   _explosionPrefab: {fileID: 1124003806681086, guid: 5190a83ab9211384a807beb97ec75049,
     type: 2}

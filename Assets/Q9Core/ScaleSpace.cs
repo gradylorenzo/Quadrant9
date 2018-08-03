@@ -37,7 +37,7 @@ namespace Q9Core
 
         }
 
-        public static void Warp(DoubleVector3 d, float s)
+        public static void Warp(DoubleVector3 d, double s)
         {
             SetApparentPosition(DoubleVector3.MoveTowards(apparentPosition, d, s * 149597870700));
         }
