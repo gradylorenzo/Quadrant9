@@ -1,3 +1,14 @@
+8.3.2018
+
++1 Warp is now available, although it's kind of bad. But still available.
++2 NavigationManager, which now holds data regarding navigation within the galaxy.
++3 GameInitializer now initializes NavigationManager with system information.
+	This data is pseudo-random and is indentical every time as long as the texture
+	map being sampled does not change.
++4 SaveManager.WriteNewProfile and SaveManager.ReadProfile now handles active system handling.
+
+##############################################################################################################
+
 7.31.2018
 Is it August yet?
 

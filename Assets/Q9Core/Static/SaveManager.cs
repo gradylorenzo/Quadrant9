@@ -123,7 +123,10 @@ namespace Q9Core
                         xw.WriteElementString("VOICE", "0.5");
                     xw.WriteEndElement();
                 xw.WriteEndElement();
-                xw.WriteElementString("SEED", Guid.NewGuid().ToString("N"));
+                xw.WriteStartElement("ACTIVE_SYSTEM");
+                    xw.WriteElementString("X", 16.ToString());
+                    xw.WriteElementString("Y", 16.ToString());
+                xw.WriteEndElement();
                 xw.WriteElementString("CREDITS", profile._identity._credits.ToString());
                 xw.WriteElementString("CURRENTSHIP", profile._currentShip);
                 foreach (KeyValuePair<string, Q9Ship> s in profile._allShips)
@@ -236,8 +239,12 @@ namespace Q9Core
                         {
                             newProfile._identity._name = reader.SelectSingleNode("PROFILE/NAME").InnerText;
                             newProfile._identity._credits = Convert.ToInt32(reader.SelectSingleNode("PROFILE/CREDITS").InnerText);
-                            newProfile._identity._seed = reader.SelectSingleNode("PROFILE/SEED").InnerText;
                             newProfile._currentShip = reader.SelectSingleNode("PROFILE/CURRENTSHIP").InnerText;
+                            Vector2 pos = new Vector2(
+                                Convert.ToSingle(reader.SelectSingleNode("PROFILE/ACTIVE_SYSTEM/X").InnerText),
+                                Convert.ToSingle(reader.SelectSingleNode("PROFILE/ACTIVE_SYSTEM/Y").InnerText));
+                            newProfile._activeSystem = pos;
+                            NavigationManager.SetActiveSystem((int)pos.x, (int)pos.y);
 
                             XmlNodeList nl = reader.SelectNodes("PROFILE/SHIP");
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
+[AddComponentMenu("Camera-Control/Mouse Orbit with Zoom")]
 public class MouseOrbit : MonoBehaviour
 {
 
@@ -10,6 +10,9 @@ public class MouseOrbit : MonoBehaviour
     public float zoomSpeed = 0.1f;
     private float wantedDistance = 5.0f;
     private float currentDistance = 5.0f;
+    public float panSpeed = 0.1f;
+    private Vector3 wantedPosition = new Vector3();
+    private Vector3 currentPosition = new Vector3();
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
     public float zSpeed = 20.0f;
@@ -92,7 +95,12 @@ public class MouseOrbit : MonoBehaviour
 
 
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -currentDistance);
-            Vector3 position = rotation * negDistance + target.position;
+
+            wantedPosition = target.position;
+            currentPosition = Vector3.Lerp(currentPosition, wantedPosition, panSpeed);
+
+            Vector3 position = rotation * negDistance + currentPosition;
+            
 
             transform.rotation = rotation;
             transform.position = position;
@@ -107,7 +115,10 @@ public class MouseOrbit : MonoBehaviour
         {
             go.transform.rotation = this.transform.rotation;
         }
-        SSCameras[0].transform.position = transform.position / (int)ScaleSpaceObject.ScaleSpaceLevel.ScaleSpace1;
+        if (SSCameras.Length > 0)
+        {
+            SSCameras[0].transform.position = transform.position / (int)ScaleSpaceObject.ScaleSpaceLevel.ScaleSpace1;
+        }
     }
 
     public static float ClampAngle(float angle, float min, float max)

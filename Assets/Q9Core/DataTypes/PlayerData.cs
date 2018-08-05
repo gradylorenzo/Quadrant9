@@ -11,7 +11,6 @@ namespace Q9Core.PlayerData
     {
         public string _name;
         public int _credits;
-        public string _seed;
     }
 
     [System.Serializable]
@@ -26,6 +25,7 @@ namespace Q9Core.PlayerData
     {
         public Identity _identity;
         public string _currentShip;
+        public Vector2 _activeSystem;
         public Dictionary<string, Q9Ship> _allShips = new Dictionary<string, Q9Ship>();
 
         public PlayerProfile()

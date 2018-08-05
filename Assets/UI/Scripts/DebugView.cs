@@ -28,8 +28,6 @@ public class DebugView : MonoBehaviour {
             {
                 GUILayout.Label(SaveManager.currentPlayer._identity._name + "   CR= " + SaveManager.currentPlayer._identity._credits);
                 GUILayout.Label(GameManager._playerShip.GetComponent<Q9Entity>()._overview._name);
-                GUILayout.Label("Seed");
-                GUILayout.TextField(SaveManager.currentPlayer._identity._seed);
             }
             else
             {

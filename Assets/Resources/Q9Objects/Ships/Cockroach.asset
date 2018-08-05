@@ -111,9 +111,10 @@ MonoBehaviour:
     _travel:
       _power: 0.01
       _burnSpeed: 5
-      _warpStrength: 0.001
+      _warpStrength: 0.1
+      _warpSpeed: 0.0025
       _torque: 0.01
   _model: {fileID: 1005956852471160, guid: 959fb3026b9a2e848a04cf36663d5618, type: 2}
-  _minCameraDistance: 1.5
+  _minCameraDistance: 0.5
   _explosionPrefab: {fileID: 1124003806681086, guid: 5190a83ab9211384a807beb97ec75049,
     type: 2}

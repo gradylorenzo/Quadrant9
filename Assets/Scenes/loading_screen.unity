@@ -1050,6 +1050,7 @@ MonoBehaviour:
   _start: {fileID: 1597113266}
   _library: {fileID: 11400000, guid: b7f4749627b9cdd4f82cb325c7c93b5c, type: 2}
   delay: 0
+  noise: {fileID: 2800000, guid: aa1243367e4b1e24297d326960e8b1f0, type: 3}
 --- !u!4 &1737181606
 Transform:
   m_ObjectHideFlags: 0

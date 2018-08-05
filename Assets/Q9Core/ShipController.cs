@@ -177,7 +177,7 @@ public class ShipController : MonoBehaviour {
                 if (Quaternion.Angle(transform.rotation, wantedRotation) <= 2.5f && CurrentThrottle >= .75f && wantToWarp)
                 {
                     warpStartTime = Time.time;
-                    
+                    ClearTargets();
                     state = ShipState.Warping;
                     print("Warping");
                 }
@@ -216,7 +216,7 @@ public class ShipController : MonoBehaviour {
 
         if (mainCamera)
         {
-            mainCamera.GetComponent<MouseOrbit>().distanceMin = s._minCameraDistance;
+            mainCamera.gameObject.GetComponent<MouseOrbit>().distanceMin = s._minCameraDistance;
         }
         GameObject newShip;
         newShip = Instantiate(s._model, transform.position, transform.rotation);
