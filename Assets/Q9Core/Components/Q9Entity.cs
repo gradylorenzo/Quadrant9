@@ -10,22 +10,24 @@ namespace Q9Core
 {
     public class Q9Entity : MonoBehaviour
     {
+        [Header("Overview Data")]
         public Q9OverviewData _overview = new Q9OverviewData();
-        public string _description;
+        [Header("Interaction Flags")]
         public bool _canWarpTo;
         public bool _isTargetable;
         public bool _isDockable;
+        public bool _isJumpable;
         public bool _isMinable;
         public bool _isLootable;
         public bool _canBridge;
         public bool _isBridging;
+        public Q9Object[] _cargo;
+        [Header("Visibility Flags")]
         public bool _isAlwaysVisibleInOverview;
         public bool _hideInOverview;
-        public bool _started;
+        private bool _started;
 
-        public Q9Object[] _cargo;
-
-        public DoubleVector3 ScaleSpacePosition;
+        //public DoubleVector3 ScaleSpacePosition;
 
         private float DistanceAtLastFrame;
         private float DistanceAtThisFrame;

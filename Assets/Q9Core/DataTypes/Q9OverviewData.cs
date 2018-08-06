@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Q9OverviewData {
 
     public string _name;
+    public string _description;
     public string _alliance;
     public string _type;
     public Sprite _thumbnail;
