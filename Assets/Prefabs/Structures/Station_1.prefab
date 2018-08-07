@@ -926,7 +926,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1732300494049384}
   m_LocalRotation: {x: -0, y: 0.94449806, z: -0, w: 0.3285171}
-  m_LocalPosition: {x: 0, y: -1.98, z: 0}
+  m_LocalPosition: {x: -3.83, y: -4.79, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4595797519287224}
@@ -981,8 +981,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488891149931382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6, y: 0, z: 21.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -65, y: 0, z: 1536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4550562148982406}
@@ -1647,6 +1647,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &114224530476390006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1659,24 +1663,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _overview:
-    _name: Outpost 1
+    _name: Outpost 2
+    _description: 
     _alliance: Morophim Union
     _type: Outpost
     _thumbnail: {fileID: 21300000, guid: f079d688b676fc643aeecf5431836a0a, type: 3}
     _icon: {fileID: 21300000, guid: 58a4e2832bcc03f4f996227b4aab5f65, type: 3}
     _guid: 
     _go: {fileID: 0}
-  _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 1
+  _isJumpable: 0
   _isMinable: 0
   _isLootable: 0
   _canBridge: 0
   _isBridging: 0
-  _isAlwaysVisibleInOverview: 1
-  _hideInOverview: 0
-  _started: 0
   _cargo: []
+  _visibility: 0
 --- !u!122 &122090228404516760
 Halo:
   m_ObjectHideFlags: 1

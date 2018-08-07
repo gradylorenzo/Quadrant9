@@ -5,6 +5,8 @@ using UnityEngine;
 
 public static class NavigationManager
 {
+    
+
     public static StarSystem[] _starSystems;
     public static StarSystem _activeSystem;
 

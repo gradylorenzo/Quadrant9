@@ -9,7 +9,14 @@ using UnityEngine.UI;
 namespace Q9Core
 {
     public class Q9Entity : MonoBehaviour
-    {
+    {   
+        [Serializable]
+        public enum VisibilityFlag
+        {
+            Always,
+            Never,
+            ProximityOnly
+        }
         [Header("Overview Data")]
         public Q9OverviewData _overview = new Q9OverviewData();
         [Header("Interaction Flags")]
@@ -23,8 +30,9 @@ namespace Q9Core
         public bool _isBridging;
         public Q9Object[] _cargo;
         [Header("Visibility Flags")]
-        public bool _isAlwaysVisibleInOverview;
-        public bool _hideInOverview;
+        
+        
+        public VisibilityFlag _visibility;
         private bool _started;
 
         //public DoubleVector3 ScaleSpacePosition;
@@ -36,7 +44,7 @@ namespace Q9Core
         {
             if (_started)
             {
-                if (!_isAlwaysVisibleInOverview && !_hideInOverview)
+                if (_visibility == VisibilityFlag.ProximityOnly)
                 {
                     DistanceAtLastFrame = DistanceAtThisFrame;
                     DistanceAtThisFrame = Vector3.Distance(transform.position, Vector3.zero);
@@ -57,18 +65,15 @@ namespace Q9Core
                 DistanceAtLastFrame = DistanceAtThisFrame;
                 DistanceAtThisFrame = Vector3.Distance(transform.position, Vector3.zero);
                 _overview._go = this.gameObject;
-                if (!_hideInOverview)
+                if (_visibility == VisibilityFlag.Always)
                 {
-                    if (_isAlwaysVisibleInOverview)
+                    EventManager.addOverviewData(_overview);
+                }
+                else if(_visibility == VisibilityFlag.ProximityOnly)
+                {
+                    if (DistanceAtLastFrame < 1000 && DistanceAtThisFrame < 1000)
                     {
                         EventManager.addOverviewData(_overview);
-                    }
-                    else
-                    {
-                        if (DistanceAtLastFrame < 1000 && DistanceAtThisFrame < 1000)
-                        {
-                            EventManager.addOverviewData(_overview);
-                        }
                     }
                 }
 

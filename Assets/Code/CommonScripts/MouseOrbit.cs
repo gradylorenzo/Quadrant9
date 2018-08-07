@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Q9Core;
 
 [AddComponentMenu("Camera-Control/Mouse Orbit with Zoom")]
 public class MouseOrbit : MonoBehaviour
@@ -117,7 +118,7 @@ public class MouseOrbit : MonoBehaviour
         }
         if (SSCameras.Length > 0)
         {
-            SSCameras[0].transform.position = transform.position / (int)ScaleSpaceObject.ScaleSpaceLevel.ScaleSpace1;
+            SSCameras[0].transform.position = transform.position / (int)ScaleSpace.ScaleSpaceLevel.ScaleSpace1;
         }
     }
 

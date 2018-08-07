@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804853280643090}
   m_LocalRotation: {x: -0, y: -0.9043806, z: -0, w: 0.4267269}
-  m_LocalPosition: {x: 2.3354602, y: 0.8200002, z: -11.958907}
+  m_LocalPosition: {x: 5.29, y: 0.17000008, z: 12.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804853280643090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1e080e7cc53f0a4d885f1510867615a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ab97081c7d3c8d4193d6417106913ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerShip: 0
@@ -85,6 +85,7 @@ MonoBehaviour:
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -151,12 +152,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   modifiedAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -223,12 +226,14 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
   currentAttributes:
     _alliance: 0
     _type: 0
     _physical:
       _mass: 0
+      _intertia: 0
       _signature: 0
     _shield:
       _capacity: 0
@@ -295,11 +300,117 @@ MonoBehaviour:
       _power: 0
       _burnSpeed: 0
       _warpStrength: 0
+      _warpSpeed: 0
       _torque: 0
-  targetPoint:
-    x: 0
-    y: 0
-    z: 0
+  warpAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.000000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.00000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.0000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.00001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.0001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationalVelocity: {x: 0, y: 0, z: 0}
+  wantedBank: 0
+  currentBank: 0
+  bankMultiplier: 0
 --- !u!114 &114140429521164958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,6 +435,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementScale: 1
   ActualScale: 1
+  initialPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &114780670062759718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,19 +452,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _overview:
     _name: Test NPC
+    _description: 
     _alliance: 
     _type: 
     _thumbnail: {fileID: 0}
     _icon: {fileID: 0}
     _guid: 
     _go: {fileID: 0}
-  _description: 
+  _canWarpTo: 0
   _isTargetable: 0
   _isDockable: 0
+  _isJumpable: 0
   _isMinable: 0
+  _isLootable: 0
   _canBridge: 0
   _isBridging: 0
-  _isAlwaysVisibleInOverview: 0
-  _hideInOverview: 0
-  _started: 0
   _cargo: []
+  _visibility: 2

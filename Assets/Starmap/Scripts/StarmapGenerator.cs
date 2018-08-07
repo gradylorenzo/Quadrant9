@@ -8,16 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class StarSystem
-{
-    public string name = "NEW_SYSTEM";
-    public float xCoord = 0;
-    public float yCoord = 0;
-    public float starSize = 0;
-    public float starMass = 0;
-    public float starDensity;
-}
+
 
 [System.Serializable]
 public class Starmap

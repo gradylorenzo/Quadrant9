@@ -1,3 +1,13 @@
+8.6.2018
+
++1 Added SystemInitializer. For now, all this does is query NavigationManager for the names of adjacent systems and name the stargates accordingly.
+
+TODO:
+>Change NavigationManager._starSystems into a Dictionary that uses Vector2 keys.
+>Add CurrentPosition, CurrentRotation data to save file and NavigationManager for storing the player's position within a system
+
+##############################################################################################################
+
 8.3.2018
 
 +1 Warp is now available, although it's kind of bad. But still available.

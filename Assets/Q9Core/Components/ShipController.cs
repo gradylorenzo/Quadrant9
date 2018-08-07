@@ -296,7 +296,14 @@ public class ShipController : MonoBehaviour {
         GetComponent<Q9Entity>()._isTargetable = !isPlayerShip;
         GetComponent<Q9Entity>()._isDockable = false;
         GetComponent<Q9Entity>()._isMinable = false;
-        GetComponent<Q9Entity>()._isAlwaysVisibleInOverview = false;
+        if(isPlayerShip)
+        {
+            GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.Never;
+        }
+        else
+        {
+            GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.ProximityOnly; 
+        }
         isReady = true;
 
         if (isPlayerShip)

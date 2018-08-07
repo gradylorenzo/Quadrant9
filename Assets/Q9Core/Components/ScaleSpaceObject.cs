@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Q9Core;
+
 public class ScaleSpaceObject : MonoBehaviour {
     
-    [System.Serializable]
-    public enum ScaleSpaceLevel
-    {
-        ScaleSpace0 = 1,
-        ScaleSpace1 = 100000000
-    }
-
-    public ScaleSpaceLevel PlacementScale = ScaleSpaceLevel.ScaleSpace0;
-    public ScaleSpaceLevel ActualScale = ScaleSpaceLevel.ScaleSpace0;
+    public ScaleSpace.ScaleSpaceLevel PlacementScale = ScaleSpace.ScaleSpaceLevel.ScaleSpace0;
+    public ScaleSpace.ScaleSpaceLevel ActualScale = ScaleSpace.ScaleSpaceLevel.ScaleSpace0;
     public DoubleVector3 initialPosition;
 
     private void Start()

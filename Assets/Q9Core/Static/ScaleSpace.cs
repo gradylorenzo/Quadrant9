@@ -42,11 +42,11 @@ namespace Q9Core
             SetApparentPosition(DoubleVector3.MoveTowards(apparentPosition, d, s * 149597870700));
         }
 
-        [Serializable]
-        public enum Scale
+        [System.Serializable]
+        public enum ScaleSpaceLevel
         {
-            SS0,
-            SS1
+            ScaleSpace0 = 1,
+            ScaleSpace1 = 100000000
         }
     }
 }
