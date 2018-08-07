@@ -1,3 +1,11 @@
+8.7.2018
+
+>1 NavigationManager._starSystems  is now a Dictionary with Vector2 keys, this allows for faster lookups.
+>2 NavigationManager._activeSystem is now a Vector2.
+
+
+##############################################################################################################
+
 8.6.2018
 
 +1 Added SystemInitializer. For now, all this does is query NavigationManager for the names of adjacent systems and name the stargates accordingly.

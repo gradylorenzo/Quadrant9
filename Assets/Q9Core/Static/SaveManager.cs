@@ -33,6 +33,7 @@ namespace Q9Core
         {
             _player = pp;
             _profileLoaded = true;
+            NavigationManager._activeSystem = pp._activeSystem;
         }
         public static void ClearPlayerProfile()
         {
@@ -70,18 +71,16 @@ namespace Q9Core
                             FoundProfiles.Add(name);
                         }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Debug.Log(e.Message);
                     }
                 }
-
+                foreach (string s in FoundProfiles)
+                {
+                    Debug.Log("Found " + s);
+                }
                 return FoundProfiles.ToArray();
-            }
-
-            foreach (string s in FoundProfiles)
-            {
-                Debug.Log("Found " + s);
             }
         }
 
@@ -244,7 +243,6 @@ namespace Q9Core
                                 Convert.ToSingle(reader.SelectSingleNode("PROFILE/ACTIVE_SYSTEM/X").InnerText),
                                 Convert.ToSingle(reader.SelectSingleNode("PROFILE/ACTIVE_SYSTEM/Y").InnerText));
                             newProfile._activeSystem = pos;
-                            NavigationManager.SetActiveSystem((int)pos.x, (int)pos.y);
 
                             XmlNodeList nl = reader.SelectNodes("PROFILE/SHIP");
 

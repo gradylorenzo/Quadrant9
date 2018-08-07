@@ -6,8 +6,7 @@ using UnityEngine;
 public class StarSystem
 {
     public string name = "NEW_SYSTEM";
-    public int xCoord = 0;
-    public int yCoord = 0;
+    public Vector2 position = new Vector2();
     public float starSize = 0;
     public float starMass = 0;
     public float starDensity;

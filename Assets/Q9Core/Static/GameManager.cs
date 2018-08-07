@@ -10,4 +10,5 @@ public static class GameManager{
     public static ShipController _playerShip;
     public static Q9GUIManager _guiManager;
     public static Q9Announcer _announcer;
+    public static SystemInitializer _sysInitializer;
 }

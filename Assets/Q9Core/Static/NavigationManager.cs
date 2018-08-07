@@ -2,57 +2,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Q9Core;
 
 public static class NavigationManager
 {
-    
+    public static Dictionary<Vector2, StarSystem> _starSystems = new Dictionary<Vector2, StarSystem>();
+    public static Vector2 _activeSystem;
 
-    public static StarSystem[] _starSystems;
-    public static StarSystem _activeSystem;
-
-    public static void InitializeMapData(StarSystem[] sys)
+    public static void InitializeMapData(Texture2D noise)
     {
-        _starSystems = sys;
-        foreach(StarSystem ss in _starSystems)
+        List<StarSystem> sys = new List<StarSystem>();
+        for (int x = 0; x <= 32; x++)
         {
-            Debug.Log("System " + ss.name + " added to NavigationManager");
+            for (int y = 0; y < 32; y++)
+            {
+                if (noise.GetPixel(x, y).r >= .6f)
+                {
+                    StarSystem newSystem = new StarSystem();
+                    newSystem.position = new Vector2(x, y);
+                    newSystem.starSize = Mathf.Clamp(noise.GetPixel(x, y).g, .1f, 1f);
+                    newSystem.starMass = Mathf.Clamp(noise.GetPixel(x, y).b, .1f, 1f);
+                    newSystem.starDensity = (newSystem.starMass / newSystem.starSize);
+                    newSystem.name = GenerateSystemName(x, y);
+                    sys.Add(newSystem);
+                }
+            }
+        }
+
+        int i = 0;
+        foreach(StarSystem ss in sys)
+        {
+            Vector2 pos = ss.position;
+            _starSystems.Add(pos, ss);
+            i++;
+        }
+        Debug.Log(i + " Systems Initialized");
+    }
+
+    public static void SetActiveSystem (Vector2 pos)
+    {
+        if (_starSystems.ContainsKey(pos))
+        {
+            _activeSystem = _starSystems[pos].position;
+            SaveManager.currentPlayer._activeSystem = _activeSystem;
+        }
+        else
+        {
+            Debug.Log("No system found at position " + pos.x + " , " + pos.y);
         }
     }
 
-    public static void SetActiveSystem (int x, int y)
+    public static string GetSystemName(Vector2 pos)
     {
-        bool found = false;
-        foreach (StarSystem ss in _starSystems)
+        if (_starSystems.ContainsKey(pos))
         {
-            if (ss.xCoord == x && ss.yCoord == y)
-            {
-                _activeSystem = ss;
-                Debug.Log("Active System set to " + ss.name);
-                found = true;
-            }
+            return _starSystems[pos].name;
         }
-        if (!found)
+        else
         {
-            Debug.Log("System not found at coordinates " + x + ", " + y);
+            return null;
         }
     }
 
-    public static string GetSystemName(int x, int y)
+    private static string GenerateSystemName(int x, int y)
     {
-        string name = "";
-        bool found = false;
-        foreach(StarSystem ss in _starSystems)
+        const string allChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        string systemName = "";
+        int tacPosition = Convert.ToInt32(Mathf.PingPong(x, 3)) + 1;
+
+        for (int i = 0; i < 6; i++)
         {
-            if(ss.xCoord == x && ss.yCoord == y)
+            if (i == tacPosition)
             {
-                name = ss.name;
-                found = true;
+                systemName += "-";
+            }
+            else
+            {
+                int r = Convert.ToInt32(Mathf.Repeat((x + 1) + (y + 5) + i ^ 2 + 20, 36));
+                char newChar = allChars[r];
+                systemName += newChar;
             }
         }
-        if (!found)
-        {
-            Debug.Log("System not found at coordinates " + x + ", " + y);
-        }
-        return name;
+        return systemName;
     }
 }

@@ -34,9 +34,9 @@ public class DebugView : MonoBehaviour {
                 GUILayout.Label("No Profile Loaded");
             }
             GUILayout.Label("ScaleSpace.apparentPosition");
-            GUILayout.Label("X= " + ScaleSpace.apparentPosition.x);
-            GUILayout.Label("Y= " + ScaleSpace.apparentPosition.y);
-            GUILayout.Label("Z= " + ScaleSpace.apparentPosition.z);
+            GUILayout.Label("X= " + ScaleSpaceManager.apparentPosition.x);
+            GUILayout.Label("Y= " + ScaleSpaceManager.apparentPosition.y);
+            GUILayout.Label("Z= " + ScaleSpaceManager.apparentPosition.z);
             GUILayout.Label("Warp Target Distance= ");
             GUILayout.Space(10);
             if (GameManager._playerShip)

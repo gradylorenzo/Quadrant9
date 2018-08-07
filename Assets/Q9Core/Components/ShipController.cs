@@ -159,7 +159,7 @@ public class ShipController : MonoBehaviour {
         if (isPlayerShip)
         {
             DoLockingCheck();
-            ScaleSpace.Translate(DoubleVector3.FromVector3(transform.forward)* 0);
+            ScaleSpaceManager.Translate(DoubleVector3.FromVector3(transform.forward)* 0);
 
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Space))
             {
@@ -889,7 +889,7 @@ public class ShipController : MonoBehaviour {
             currentThrottle = Mathf.Lerp(currentThrottle, wantedThrottle, currentAttributes._travel._power);
             if (isPlayerShip)
             {
-                ScaleSpace.Translate((DoubleVector3.FromVector3(transform.forward) * (currentAttributes._travel._burnSpeed * currentThrottle)) * Time.deltaTime);
+                ScaleSpaceManager.Translate((DoubleVector3.FromVector3(transform.forward) * (currentAttributes._travel._burnSpeed * currentThrottle)) * Time.deltaTime);
             }
             else
             {
@@ -919,7 +919,7 @@ public class ShipController : MonoBehaviour {
             DoubleVector3 warpTarget = alignmentTarget.GetComponent<ScaleSpaceObject>().initialPosition;
             double wantedWarpSpeed = warpAccelerationCurve.Evaluate((Time.time - warpStartTime) * (float)currentAttributes._travel._warpStrength);
             //warpTarget = ScaleSpace.apparentPosition + (DoubleVector3.FromVector3(alignmentTarget.transform.position));
-            double warpSpeedLimiter = warpAccelerationCurve.Evaluate(((float)DoubleVector3.Distance(warpTarget, ScaleSpace.apparentPosition) / (149597870700 / 10)));
+            double warpSpeedLimiter = warpAccelerationCurve.Evaluate(((float)DoubleVector3.Distance(warpTarget, ScaleSpaceManager.apparentPosition) / (149597870700 / 10)));
             double actualWarpSpeed;
             if(warpSpeedLimiter < wantedWarpSpeed)
             {
@@ -929,9 +929,9 @@ public class ShipController : MonoBehaviour {
             {
                 actualWarpSpeed = wantedWarpSpeed;
             }
-            ScaleSpace.Warp(warpTarget, wantedWarpSpeed * currentAttributes._travel._warpSpeed);
+            ScaleSpaceManager.Warp(warpTarget, wantedWarpSpeed * currentAttributes._travel._warpSpeed);
 
-            if (DoubleVector3.Distance(ScaleSpace.apparentPosition, warpTarget) <= 1)
+            if (DoubleVector3.Distance(ScaleSpaceManager.apparentPosition, warpTarget) <= 1)
             {
                 state = ShipState.Idle;
                 currentThrottle = 0;

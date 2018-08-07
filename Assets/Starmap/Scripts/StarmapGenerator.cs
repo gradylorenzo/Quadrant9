@@ -35,12 +35,12 @@ public class StarmapGenerator : MonoBehaviour {
     {
         foreach(StarSystem ss in _starSystems)
         {
-            Vector3 newPos = new Vector3(ss.xCoord, 0, ss.yCoord);
+            Vector3 newPos = new Vector3(ss.position.x, 0, ss.position.y);
             GameObject newBlock = Instantiate(blockPrefab, newPos, transform.rotation);
             newBlock.GetComponent<StarmapBlock>().camera = Camera.main;
             newBlock.GetComponent<StarmapBlock>().system = ss;
             newBlock.transform.parent = this.transform;
-            if(ss.xCoord == mapSize.x/2 && ss.yCoord == mapSize.y / 2)
+            if(ss.position.x == mapSize.x/2 && ss.position.y == mapSize.y / 2)
             {
                 newBlock.GetComponent<StarmapBlock>().OnClick();
             }

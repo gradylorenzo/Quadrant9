@@ -118,8 +118,7 @@ public class MainMenuController : MonoBehaviour {
 
     private void GetProfileList()
     {
-        foundProfiles = SaveManager.GetProfiles();
-        print(foundProfiles.Length);
+        foundProfiles = SaveManager.GetProfiles();;
         if (foundProfiles.Length == 0)
         {
             _menuState = States.new_profile;

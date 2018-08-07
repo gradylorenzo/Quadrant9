@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Q9Core
 {
-    public static class ScaleSpace
+    public static class ScaleSpaceManager
     {
         private static DoubleVector3 _apparentPosition;
         

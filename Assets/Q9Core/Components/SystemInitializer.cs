@@ -16,16 +16,22 @@ public class SystemInitializer : MonoBehaviour {
 
     public void Awake()
     {
+        GameManager._sysInitializer = this;
+        InitializeAll();
+    }
+
+    private void InitializeAll()
+    {
         InitializeJumpgates();
     }
 
     private void InitializeJumpgates()
     {
         #region north gate
-        if (NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord, NavigationManager._activeSystem.yCoord + 1) != "")
+        if (NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(0, 1)) != null)
         {
             JumpbridgePositiveZ.GetComponent<Q9Entity>()._overview._name = 
-                NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord, NavigationManager._activeSystem.yCoord + 1);
+                NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(0, 1));
             JumpbridgePositiveZ.GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.Always;
             JumpbridgePositiveZ.GetComponent<Q9Entity>()._canWarpTo = true;
             JumpbridgePositiveZ.SetActive(true);
@@ -38,10 +44,10 @@ public class SystemInitializer : MonoBehaviour {
         }
         #endregion
         #region south gate
-        if (NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord, NavigationManager._activeSystem.yCoord - 1) != "")
+        if (NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(0, -1)) != null)
         {
             JumpbridgeNegativeZ.GetComponent<Q9Entity>()._overview._name =
-                NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord, NavigationManager._activeSystem.yCoord - 1);
+                NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(0, -1));
             JumpbridgeNegativeZ.GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.Always;
             JumpbridgeNegativeZ.GetComponent<Q9Entity>()._canWarpTo = true;
             JumpbridgeNegativeZ.SetActive(true);
@@ -54,10 +60,10 @@ public class SystemInitializer : MonoBehaviour {
         }
         #endregion
         #region east gate
-        if (NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord + 1, NavigationManager._activeSystem.yCoord) != "")
+        if (NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(-1, 0)) != null)
         {
             JumpbridgePositiveX.GetComponent<Q9Entity>()._overview._name =
-                NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord + 1, NavigationManager._activeSystem.yCoord);
+                NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(-1, 0));
             JumpbridgePositiveX.GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.Always;
             JumpbridgePositiveX.GetComponent<Q9Entity>()._canWarpTo = true;
             JumpbridgePositiveX.SetActive(true);
@@ -70,10 +76,10 @@ public class SystemInitializer : MonoBehaviour {
         }
         #endregion
         #region west gate
-        if (NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord - 1, NavigationManager._activeSystem.yCoord) != "")
+        if (NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(1, 0)) != null)
         {
             JumpbridgeNegativeX.GetComponent<Q9Entity>()._overview._name =
-                NavigationManager.GetSystemName(NavigationManager._activeSystem.xCoord - 1, NavigationManager._activeSystem.yCoord);
+                NavigationManager.GetSystemName(NavigationManager._activeSystem + new Vector2(1, 0));
             JumpbridgeNegativeX.GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.Always;
             JumpbridgeNegativeX.GetComponent<Q9Entity>()._canWarpTo = true;
             JumpbridgeNegativeX.SetActive(true);

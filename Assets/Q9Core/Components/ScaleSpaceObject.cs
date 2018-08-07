@@ -5,17 +5,17 @@ using Q9Core;
 
 public class ScaleSpaceObject : MonoBehaviour {
     
-    public ScaleSpace.ScaleSpaceLevel PlacementScale = ScaleSpace.ScaleSpaceLevel.ScaleSpace0;
-    public ScaleSpace.ScaleSpaceLevel ActualScale = ScaleSpace.ScaleSpaceLevel.ScaleSpace0;
+    public ScaleSpaceManager.ScaleSpaceLevel PlacementScale = ScaleSpaceManager.ScaleSpaceLevel.ScaleSpace0;
+    public ScaleSpaceManager.ScaleSpaceLevel ActualScale = ScaleSpaceManager.ScaleSpaceLevel.ScaleSpace0;
     public DoubleVector3 initialPosition;
 
     private void Start()
     {
-        initialPosition = (DoubleVector3.FromVector3(transform.position) + ScaleSpace.apparentPosition) * (int)PlacementScale;
+        initialPosition = (DoubleVector3.FromVector3(transform.position) + ScaleSpaceManager.apparentPosition) * (int)PlacementScale;
     }
 
     private void Update()
 	{
-        transform.position = DoubleVector3.ToVector3(initialPosition - ScaleSpace.apparentPosition) / (int)ActualScale;
+        transform.position = DoubleVector3.ToVector3(initialPosition - ScaleSpaceManager.apparentPosition) / (int)ActualScale;
 	}
 }
