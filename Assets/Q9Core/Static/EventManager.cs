@@ -56,4 +56,9 @@ public static class EventManager
 
     public delegate void _OnOverviewRowClicked(int i);
     public static _OnOverviewRowClicked OnOverviewRowClicked;
+
+    public delegate void _OnTravelStateChanged();
+    public static _OnTravelStateChanged OnWarpEntered;
+    public static _OnTravelStateChanged OnWarpComplete;
+    public static _OnTravelStateChanged OnSystemChanged;
 }

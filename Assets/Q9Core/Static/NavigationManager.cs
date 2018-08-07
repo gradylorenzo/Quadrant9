@@ -52,6 +52,8 @@ public static class NavigationManager
         }
     }
 
+    public static void 
+
     public static string GetSystemName(Vector2 pos)
     {
         if (_starSystems.ContainsKey(pos))
@@ -85,4 +87,6 @@ public static class NavigationManager
         }
         return systemName;
     }
+
+
 }
