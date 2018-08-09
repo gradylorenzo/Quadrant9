@@ -22,7 +22,7 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: b6b1c96256337e742a2759167ef272e3, type: 3}
   _physical:
     _mass: 100
-    _intertia: 0
+    _inertia: 1
     _signature: 0
   _guid: a7eb8913-375d-4ce4-aa15-f414b2d38b36
   _attributes:
@@ -30,7 +30,7 @@ MonoBehaviour:
     _type: 11
     _physical:
       _mass: 100
-      _intertia: 100
+      _inertia: 0
       _signature: 0
     _shield:
       _capacity: 10000000

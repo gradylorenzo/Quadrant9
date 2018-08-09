@@ -22,7 +22,7 @@ public class DebugView : MonoBehaviour {
     {
         if (showDebugView)
         {
-            GUILayout.BeginArea(new Rect(5, 5, 400, 400));
+            GUILayout.BeginArea(new Rect(5, 5, 400, Screen.height));
             GUILayout.BeginVertical();
             if (SaveManager.profileLoaded)
             {
@@ -41,11 +41,11 @@ public class DebugView : MonoBehaviour {
             GUILayout.Space(10);
             if (GameManager._playerShip)
             {
-                ShipController sc = GameManager._playerShip.GetComponent<ShipController>();
+                ShipTransform st = GameManager._playerShip.GetComponent<ShipTransform>();
                 GUILayout.Label("PlayerShipAngularVelocity");
-                GUILayout.Label("X= " + sc.rotationalVelocity.x);
-                GUILayout.Label("Y= " + sc.rotationalVelocity.y);
-                GUILayout.Label("Z= " + sc.rotationalVelocity.z);
+                GUILayout.Label("X= " + st.rotationalVelocity.x);
+                GUILayout.Label("Y= " + st.rotationalVelocity.y);
+                GUILayout.Label("Z= " + st.rotationalVelocity.z);
                 GUILayout.Space(10);
             }
             GUILayout.Label("No information is shared by this game with any party");

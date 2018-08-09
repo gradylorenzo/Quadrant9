@@ -7,15 +7,10 @@ using Q9Core.CommonData;
 
 [RequireComponent(typeof(ShipMotionController))]
 [RequireComponent(typeof(Q9Entity))]
+[RequireComponent(typeof(ShipTransform))]
 public class ShipController : MonoBehaviour {
 
-    [Serializable]
-    public enum ShipState
-    {
-        Idle,
-        Aligning,
-        Warping
-    }
+    private ShipTransform sTrans;
 
     #region variables
     [Header("Attributes")]
@@ -25,34 +20,7 @@ public class ShipController : MonoBehaviour {
     public Attributes modifiedAttributes;
     public Attributes currentAttributes;
 
-    [Header("Travel")]
-    private ShipState state = ShipState.Idle;
-    private bool wantToWarp;
-    private float currentThrottle = 0;
-    public float CurrentThrottle
-    {
-        get { return currentThrottle; }
-    }
-    private float wantedThrottle = 0;
-    private Quaternion currentRotation;
-    private Quaternion wantedRotation;
-    private GameObject alignmentTarget;
-    private bool aligned;
-    //Warping
-    private float warpStartTime;
-    private float wantedWarpSpeed;
-    private float currentWarpSpeed;
-    public AnimationCurve warpAccelerationCurve = new AnimationCurve(new Keyframe(0, 0),
-                                                                     new Keyframe(.1f, .000000001f),
-                                                                     new Keyframe(.2f, .00000001f),
-                                                                     new Keyframe(.3f, .0000001f),
-                                                                     new Keyframe(.4f, .000001f),
-                                                                     new Keyframe(.5f, .00001f),
-                                                                     new Keyframe(.6f, .0001f),
-                                                                     new Keyframe(.7f, .001f),
-                                                                     new Keyframe(.8f, .01f),
-                                                                     new Keyframe(.9f, .1f),
-                                                                     new Keyframe(1, 1));
+    
 
     #region
     [Header("Combat")]
@@ -61,12 +29,7 @@ public class ShipController : MonoBehaviour {
     [NonSerialized]
     public List<TargetInfo> _lockedTargets = new List<TargetInfo>();
 
-    [Header("Debug")]
-    private Quaternion lastFrameRotation;
-    private Quaternion thisFrameRotation;
-    public Vector3 rotationalVelocity;
-    public float wantedBank;
-    public float currentBank;
+    
 
     [NonSerialized]
     public string guid;
@@ -74,12 +37,14 @@ public class ShipController : MonoBehaviour {
     private GameObject ExplosionPrefab;
     private Camera mainCamera;
     private bool isReady = false;
-    public float bankMultiplier;
+    
     #endregion
     #endregion
 
     private void Awake()
     {
+        sTrans = GetComponent<ShipTransform>();
+        sTrans.isPlayerShip = isPlayerShip;
         guid = Guid.NewGuid().ToString();
         mainCamera = Camera.main;
         if (!isPlayerShip)
@@ -89,7 +54,7 @@ public class ShipController : MonoBehaviour {
         else
         {
             GameManager._playerShip = this;
-            EventManager.OnObjectSelectedAsAlignmentTarget += Align;
+            
             if (SaveManager.profileLoaded)
             {
                 LoadShip(SaveManager.currentPlayer._allShips[SaveManager.currentPlayer._currentShip]);
@@ -104,10 +69,10 @@ public class ShipController : MonoBehaviour {
         EventManager.OnObjectDamaged += TakeDamage;
         //EventManager.OnObjectUnlocked += OnObjectUnlocked;
         EventManager.OnGameInitializationComplete += OnGameInitializationComplete;
-
-        currentRotation = transform.rotation;
-        wantedRotation = transform.rotation;
+        EventManager.OnWarpEntered += OnWarpEntered;
     }
+
+    
 
     public void FixedUpdate()
     {
@@ -159,40 +124,7 @@ public class ShipController : MonoBehaviour {
         if (isPlayerShip)
         {
             DoLockingCheck();
-            ScaleSpaceManager.Translate(DoubleVector3.FromVector3(transform.forward)* 0);
-
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Space))
-            {
-                if (state != ShipState.Idle)
-                {
-                    AllStop();
-                }
-            }
-
-            Move();
-            Rotate();
-            Bank();
-            if (state != ShipState.Warping)
-            {
-                if (Quaternion.Angle(transform.rotation, wantedRotation) <= 2.5f && CurrentThrottle >= .75f && wantToWarp)
-                {
-                    warpStartTime = Time.time;
-                    ClearTargets();
-                    state = ShipState.Warping;
-                    print("Warping");
-                }
-            }
-            else
-            {
-                Warp();
-            }
         }
-
-        #region calculate rotation speed
-        lastFrameRotation = thisFrameRotation;
-        thisFrameRotation = transform.rotation;
-        rotationalVelocity = Quaternion.ToEulerAngles(thisFrameRotation) - Quaternion.ToEulerAngles(lastFrameRotation);
-        #endregion
     }
 
     #region general methods
@@ -203,6 +135,7 @@ public class ShipController : MonoBehaviour {
             LoadShip(s);
         }
     }
+
     public void LoadShip(Q9Ship s)
     {
         if(shipModel != null)
@@ -222,6 +155,7 @@ public class ShipController : MonoBehaviour {
         newShip = Instantiate(s._model, transform.position, transform.rotation);
         newShip.transform.SetParent(gameObject.transform);
         shipModel = newShip;
+        sTrans.shipModel = shipModel;
         baseAttributes = s._attributes;
         
         //Copy Fitting
@@ -304,6 +238,15 @@ public class ShipController : MonoBehaviour {
         {
             GetComponent<Q9Entity>()._visibility = Q9Entity.VisibilityFlag.ProximityOnly; 
         }
+
+        sTrans._torque = currentAttributes._travel._torque;
+        sTrans._power = currentAttributes._travel._power;
+        sTrans._burnSpeed = currentAttributes._travel._burnSpeed;
+        sTrans._warpStrength = currentAttributes._travel._warpStrength;
+        sTrans._warpSpeed = currentAttributes._travel._warpSpeed;
+        sTrans._inertia = currentAttributes._physical._inertia;
+        sTrans._mass = currentAttributes._physical._mass;
+
         isReady = true;
 
         if (isPlayerShip)
@@ -311,6 +254,7 @@ public class ShipController : MonoBehaviour {
             EventManager.OnGameIsReady();
         }
     }
+
     private void CalculateModifiedAttributes(bool ResetCurrentAttributesAfterRecalculate)
     {
         //Mirror base stats
@@ -569,6 +513,7 @@ public class ShipController : MonoBehaviour {
             currentAttributes = modifiedAttributes;
         }
     }
+
     private void DoLockingCheck()
     {
         bool anythingLocking = false;
@@ -580,6 +525,7 @@ public class ShipController : MonoBehaviour {
 
         EventManager.isPlayerLocking = anythingLocking;
     }
+
     public void Die()
     {
         EventManager.OnObjectDestroyed(isPlayerShip, gameObject);
@@ -608,6 +554,7 @@ public class ShipController : MonoBehaviour {
     #endregion
 
     #region repair methods
+
     public void RepairShield(float a)
     {
         currentAttributes._shield._capacity = Mathf.Clamp(currentAttributes._shield._capacity + a, 0, modifiedAttributes._shield._capacity);
@@ -632,8 +579,15 @@ public class ShipController : MonoBehaviour {
     {
 
     }
+
     #endregion
+
     #region target management methods
+
+    private void OnWarpEntered()
+    {
+        ClearTargets();
+    }
 
     public void OnObjectLocked(GameObject go)
     {
@@ -762,6 +716,7 @@ public class ShipController : MonoBehaviour {
         _lockedTargets.Clear();
     }
     #endregion
+
     #region damage methods
     public void TakeDamage(GameObject go, float d, DamageTypes t)
     {
@@ -840,111 +795,5 @@ public class ShipController : MonoBehaviour {
         currentAttributes._shield._capacity -= d;
     }
 
-    #endregion
-    #region travel methods
-
-    private void AllStop()
-    {
-        EventManager.NotifyShipStopped();
-        SetThrottle(0);
-        wantToWarp = false;
-        state = ShipState.Idle;
-    }
-
-    private void Align(GameObject target, bool warpWhenReady)
-    {
-        wantToWarp = (Vector3.Distance(target.transform.position, Vector3.zero) > 150 && warpWhenReady);
-
-        alignmentTarget = target;
-        SetThrottle(1);
-        state = ShipState.Aligning;
-    }
-    public void SetThrottle(float newThrottle)
-    {
-        wantedThrottle = Mathf.Clamp01(newThrottle);
-    }
-
-    private void Rotate()
-    {
-        if (state == ShipState.Aligning)
-        {
-            if (alignmentTarget)
-            {
-                wantedRotation = Quaternion.LookRotation(alignmentTarget.transform.position);
-            }
-            else
-            {
-                print("Error: no target for alignment");
-                state = ShipState.Idle;
-            }
-        }
-
-        currentRotation = Quaternion.Lerp(currentRotation, wantedRotation, currentAttributes._travel._torque);
-        transform.rotation = currentRotation;
-    }
-    private void Move()
-    {
-        if (state != ShipState.Warping)
-        {
-            currentThrottle = Mathf.Lerp(currentThrottle, wantedThrottle, currentAttributes._travel._power);
-            if (isPlayerShip)
-            {
-                ScaleSpaceManager.Translate((DoubleVector3.FromVector3(transform.forward) * (currentAttributes._travel._burnSpeed * currentThrottle)) * Time.deltaTime);
-            }
-            else
-            {
-                transform.Translate((transform.forward) * (currentThrottle * currentAttributes._travel._burnSpeed));
-            }
-        }
-        else
-        {
-            //Warp instead
-        }
-    }
-    private void Bank()
-    {
-        wantedBank = Mathf.Clamp(-rotationalVelocity.y * bankMultiplier, -70, 70);
-
-        currentBank = Mathf.Lerp(currentBank, wantedBank, currentAttributes._travel._torque * 4);
-        Vector3 rot = new Vector3(0, 0, currentBank);
-        if (shipModel)
-        {
-            shipModel.transform.localRotation = Quaternion.Euler(rot);
-        }
-    }
-    private void Warp()
-    {
-        if (state == ShipState.Warping)
-        {
-            DoubleVector3 warpTarget = alignmentTarget.GetComponent<ScaleSpaceObject>().initialPosition;
-            double wantedWarpSpeed = warpAccelerationCurve.Evaluate((Time.time - warpStartTime) * (float)currentAttributes._travel._warpStrength);
-            //warpTarget = ScaleSpace.apparentPosition + (DoubleVector3.FromVector3(alignmentTarget.transform.position));
-            double warpSpeedLimiter = warpAccelerationCurve.Evaluate(((float)DoubleVector3.Distance(warpTarget, ScaleSpaceManager.apparentPosition) / (149597870700 / 10)));
-            double actualWarpSpeed;
-            if(warpSpeedLimiter < wantedWarpSpeed)
-            {
-                actualWarpSpeed = warpSpeedLimiter;
-            }
-            else
-            {
-                actualWarpSpeed = wantedWarpSpeed;
-            }
-            ScaleSpaceManager.Warp(warpTarget, wantedWarpSpeed * currentAttributes._travel._warpSpeed);
-
-            if (DoubleVector3.Distance(ScaleSpaceManager.apparentPosition, warpTarget) <= 1)
-            {
-                state = ShipState.Idle;
-                currentThrottle = 0;
-                wantedThrottle = 0;
-                print("warp complete");
-            }
-        }
-    }
-
-    private double WarpSpeedAtTime()
-    {
-        float time = Time.time - warpStartTime;
-        return (currentAttributes._travel._warpStrength * (1 - Mathf.Exp((-time * Mathf.Pow(10, 6)) / (currentAttributes._physical._intertia * currentAttributes._physical._mass))));
-    }
     #endregion
 }

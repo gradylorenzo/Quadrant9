@@ -8,7 +8,13 @@ public class NavigationController : MonoBehaviour {
 
     public Text active_system;
 
-    private void Start()
+    private void Awake()
+    {
+        EventManager.OnSystemChanged += OnSystemChanged;
+        RefreshSystemName();
+    }
+
+    private void OnSystemChanged(Vector2 dir)
     {
         RefreshSystemName();
     }

@@ -10,4 +10,5 @@ public class StarSystem
     public float starSize = 0;
     public float starMass = 0;
     public float starDensity;
+    public Color starColor;
 }

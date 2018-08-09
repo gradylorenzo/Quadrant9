@@ -81,7 +81,7 @@ namespace Q9Core.CommonData
     public struct Physical
     {
         public float _mass;
-        public float _intertia;
+        public float _inertia;
         public float _signature;
     }
 

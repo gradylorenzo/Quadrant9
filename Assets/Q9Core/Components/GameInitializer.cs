@@ -15,6 +15,7 @@ public class GameInitializer : MonoBehaviour {
     public Q9InitialLibrary _library;
     public float delay;
     public Texture2D noise;
+    public Gradient gradient;
 
     private bool loaded = false;
 
@@ -53,6 +54,6 @@ public class GameInitializer : MonoBehaviour {
     public void StartGame()
     {
         LibraryManager.Initialize(_library);
-        NavigationManager.InitializeMapData(noise);
+        NavigationManager.InitializeMapData(noise, gradient);
     }
 }

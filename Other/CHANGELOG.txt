@@ -1,3 +1,16 @@
+8.8.2018
+
++1 Inter-system travel now possible through jumpgates.
++2 SystemInitializer sets the color of the star to the appropriate
+	color for any given system
++3 System name readout in top corner
+
+TODO:
+Write planets and POI generators into the NavigationManager generation methods.
+Add NavigationManager._activeSystem readout to DebugView.
+
+##############################################################################################################
+
 8.7.2018
 
 >1 NavigationManager._starSystems  is now a Dictionary with Vector2 keys, this allows for faster lookups.

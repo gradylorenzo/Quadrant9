@@ -24,6 +24,7 @@ namespace Q9Core
         public bool _isTargetable;
         public bool _isDockable;
         public bool _isJumpable;
+        public Vector2 jumpDirection;
         public bool _isMinable;
         public bool _isLootable;
         public bool _canBridge;
@@ -51,12 +52,12 @@ namespace Q9Core
 
                     if (DistanceAtLastFrame > 1000 && DistanceAtThisFrame < 1000)
                     {
-                        EventManager.addOverviewData(_overview);
+                        Add();
                     }
 
                     if (DistanceAtLastFrame < 1000 && DistanceAtThisFrame > 1000)
                     {
-                        EventManager.removeOverviewData(_overview);
+                        Remove();
                     }
                 }
             }
@@ -67,13 +68,13 @@ namespace Q9Core
                 _overview._go = this.gameObject;
                 if (_visibility == VisibilityFlag.Always)
                 {
-                    EventManager.addOverviewData(_overview);
+                    Add();
                 }
                 else if(_visibility == VisibilityFlag.ProximityOnly)
                 {
                     if (DistanceAtLastFrame < 1000 && DistanceAtThisFrame < 1000)
                     {
-                        EventManager.addOverviewData(_overview);
+                        Add();
                     }
                 }
 
@@ -81,17 +82,23 @@ namespace Q9Core
                 {
                     _overview._guid = Guid.NewGuid().ToString();
                 }
-                if (GetComponent<ScaleSpaceObject>())
-                {
-
-                }
                 _started = true;
             }
+        }
+
+        public void Refesh()
+        {
+            _started = false;
         }
 
         public void Remove()
         {
             EventManager.removeOverviewData(_overview);
+        }
+
+        public void Add()
+        {
+            EventManager.addOverviewData(_overview);
         }
 
         public void OnMouseUpAsButton()

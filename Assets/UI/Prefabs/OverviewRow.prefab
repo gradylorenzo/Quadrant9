@@ -181,7 +181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Type
+  m_Text: 
 --- !u!114 &114052183770352656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,7 +320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Distance
+  m_Text: 
 --- !u!114 &114512809136996160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -380,9 +380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Alliance
-
-'
+  m_Text: 
 --- !u!114 &114845050633745870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,9 +432,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Name
-
-'
+  m_Text: 
 --- !u!114 &114969377270134932
 MonoBehaviour:
   m_ObjectHideFlags: 1

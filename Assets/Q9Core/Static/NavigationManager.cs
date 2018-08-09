@@ -9,7 +9,7 @@ public static class NavigationManager
     public static Dictionary<Vector2, StarSystem> _starSystems = new Dictionary<Vector2, StarSystem>();
     public static Vector2 _activeSystem;
 
-    public static void InitializeMapData(Texture2D noise)
+    public static void InitializeMapData(Texture2D noise, Gradient gradient)
     {
         List<StarSystem> sys = new List<StarSystem>();
         for (int x = 0; x <= 32; x++)
@@ -23,6 +23,7 @@ public static class NavigationManager
                     newSystem.starSize = Mathf.Clamp(noise.GetPixel(x, y).g, .1f, 1f);
                     newSystem.starMass = Mathf.Clamp(noise.GetPixel(x, y).b, .1f, 1f);
                     newSystem.starDensity = (newSystem.starMass / newSystem.starSize);
+                    newSystem.starColor = gradient.Evaluate(newSystem.starDensity);
                     newSystem.name = GenerateSystemName(x, y);
                     sys.Add(newSystem);
                 }
@@ -39,6 +40,12 @@ public static class NavigationManager
         Debug.Log(i + " Systems Initialized");
     }
 
+    public static void ShiftActiveSystem(Vector2 pos)
+    {
+        _activeSystem += pos;
+        EventManager.OnSystemChanged(pos);
+    }
+
     public static void SetActiveSystem (Vector2 pos)
     {
         if (_starSystems.ContainsKey(pos))
@@ -51,8 +58,6 @@ public static class NavigationManager
             Debug.Log("No system found at position " + pos.x + " , " + pos.y);
         }
     }
-
-    public static void 
 
     public static string GetSystemName(Vector2 pos)
     {
@@ -70,7 +75,7 @@ public static class NavigationManager
     {
         const string allChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         string systemName = "";
-        int tacPosition = Convert.ToInt32(Mathf.PingPong(x, 3)) + 1;
+        int tacPosition = Convert.ToInt32(Mathf.PingPong(x^2, 3)) + 1;
 
         for (int i = 0; i < 6; i++)
         {
@@ -80,13 +85,11 @@ public static class NavigationManager
             }
             else
             {
-                int r = Convert.ToInt32(Mathf.Repeat((x + 1) + (y + 5) + i ^ 2 + 20, 36));
+                int r = Convert.ToInt32(Mathf.Repeat(20 ^ ((x + y) ^ (2 * i)) * (x^3 + 1) + (y^2 + 5) + i ^ 2 + 20^((x + y)^ (2*i)), 36));
                 char newChar = allChars[r];
                 systemName += newChar;
             }
         }
         return systemName;
     }
-
-
 }

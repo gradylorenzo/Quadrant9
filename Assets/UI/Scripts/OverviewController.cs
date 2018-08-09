@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Q9Core;
 using Q9Core.CommonData;
+using System;
 
 public class OverviewController : MonoBehaviour {
 
@@ -14,12 +15,22 @@ public class OverviewController : MonoBehaviour {
 
 	private float nextUpdate = 0;
 
-	private void Start()
+	private void Awake()
 	{
 		EventManager.addOverviewData += addOverviewData;
 		EventManager.removeOverviewData += removeOverviewData;
+        EventManager.OnClearOverviewData += clearOverviewData;
         EventManager.OnOverviewRowClicked += OnOverviewRowClicked;
 	}
+
+    private void clearOverviewData()
+    {
+        for(int i = 0; i < _overviewData.Count; i++)
+        {
+            removeOverviewData(_overviewData[i]);
+        }
+        print("OverviewCleared");
+    }
 
     private void addOverviewData(Q9OverviewData data)
     {

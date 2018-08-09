@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Q9Core;
 using Q9Core.CommonData;
+using System;
 
 public static class EventManager
 {
@@ -17,10 +18,8 @@ public static class EventManager
     public delegate void _onObjectLocked(GameObject go);
     public static _onObjectLocked OnObjectLocked;
 
-    public delegate void _onObjectUnlocked(GameObject go);
-    //public static _onObjectUnlocked OnObjectUnlocked;
-
     public delegate void _onObjectDestroyed(bool wasPlayerShip, GameObject go);
+
     public static _onObjectDestroyed OnObjectDestroyed;
 
     public delegate void _onObjectSelected(GameObject go, bool forceLock);
@@ -54,11 +53,16 @@ public static class EventManager
     public static _OverviewDataChange addOverviewData;
     public static _OverviewDataChange removeOverviewData;
 
+    public delegate void _ClearOverviewData();
+    public static _ClearOverviewData OnClearOverviewData;
+
     public delegate void _OnOverviewRowClicked(int i);
     public static _OnOverviewRowClicked OnOverviewRowClicked;
 
     public delegate void _OnTravelStateChanged();
     public static _OnTravelStateChanged OnWarpEntered;
     public static _OnTravelStateChanged OnWarpComplete;
-    public static _OnTravelStateChanged OnSystemChanged;
+
+    public delegate void _OnSystemChanged(Vector2 dir);
+    public static _OnSystemChanged OnSystemChanged;
 }

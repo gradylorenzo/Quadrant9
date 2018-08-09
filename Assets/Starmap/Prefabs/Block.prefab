@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4572387831552296}
   - component: {fileID: 212733744508869410}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114704722198403150}
   - component: {fileID: 114580034485576028}
   - component: {fileID: 114128630820410182}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,11 +74,11 @@ MonoBehaviour:
   star: {fileID: 1913269056181180}
   system:
     name: NEW_SYSTEM
-    xCoord: 0
-    yCoord: 0
+    position: {x: 0, y: 0}
     starSize: 0
     starMass: 0
     starDensity: 0
+    starColor: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
     key0: {r: 0.4433962, g: 0, b: 0, a: 1}
@@ -246,14 +246,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964202787832712}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0.0000016391275}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4572387831552296}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: -0.000015258789, z: -0.000015258789}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}

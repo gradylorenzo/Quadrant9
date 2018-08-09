@@ -58,11 +58,6 @@ public static class LibraryManager
             {
                 L_SHIPS.Add(s._id, s);
             }
-
-            foreach (KeyValuePair<string, Q9Ship> kvp in L_SHIPS)
-            {
-                Debug.Log("Loaded data for Q9Ship " + kvp.Key);
-            }
         }
         else
         {
@@ -79,11 +74,6 @@ public static class LibraryManager
             {
                 L_MODULES.Add(m._id, m);
             }
-
-            foreach(KeyValuePair<string, Q9Module> kvp in L_MODULES)
-            {
-                Debug.Log("Loaded data for Q9Module " + kvp.Key);
-            }
         }
         else
         {
@@ -99,11 +89,6 @@ public static class LibraryManager
             foreach (Q9Item i in itemArray)
             {
                 L_ITEMS.Add(i._id, i);
-            }
-
-            foreach (KeyValuePair<string, Q9Item> kvp in L_ITEMS)
-            {
-                Debug.Log("Loaded data for Q9Item " + kvp.Key);
             }
         }
         else

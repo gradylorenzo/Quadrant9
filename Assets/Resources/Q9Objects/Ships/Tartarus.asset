@@ -22,7 +22,7 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 58a4e2832bcc03f4f996227b4aab5f65, type: 3}
   _physical:
     _mass: 100
-    _intertia: 0
+    _inertia: 5
     _signature: 0
   _guid: a7eb8913-375d-4ce4-aa15-f414b2d38b36
   _attributes:
@@ -30,7 +30,7 @@ MonoBehaviour:
     _type: 11
     _physical:
       _mass: 0
-      _intertia: 0
+      _inertia: 0
       _signature: 0
     _shield:
       _capacity: 10000000
@@ -112,7 +112,7 @@ MonoBehaviour:
       _power: 0.003
       _burnSpeed: 0.112
       _warpStrength: 0.1
-      _warpSpeed: 0.0025
+      _warpSpeed: 0.0075
       _torque: 0.002
   _model: {fileID: 1753250207479532, guid: e0e09e0e5ee219f40a419d7073db5d00, type: 2}
   _minCameraDistance: 1.5
