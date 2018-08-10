@@ -4912,7 +4912,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 2000
+  far clip plane: 10000
   field of view: 35
   orthographic: 0
   orthographic size: 5
@@ -14992,7 +14992,7 @@ GameObject:
   - component: {fileID: 1499489356}
   - component: {fileID: 1499489358}
   - component: {fileID: 1499489357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15006,7 +15006,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1499489355}
   m_LocalRotation: {x: -0.50000143, y: -0.5, z: 0.49999854, w: 0.5}
-  m_LocalPosition: {x: 0.081, y: -0.046, z: 0}
+  m_LocalPosition: {x: -0.729, y: -0.046, z: -0}
   m_LocalScale: {x: 0.24050002, y: 0.24050005, z: 0.24050002}
   m_Children: []
   m_Father: {fileID: 268978071}
@@ -15148,7 +15148,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -15255,7 +15255,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0.7088356, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15317,7 +15317,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 49.5
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15723,7 +15723,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 13
+      value: 16.559208
       mode: 0
       spread: 0
       speed:
@@ -15842,7 +15842,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 1000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -16282,7 +16282,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 1, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -16290,14 +16290,14 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 65535
-        ctime2: 0
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 46072
+        atime1: 32844
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -17209,7 +17209,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 1000
       minScalar: 0
       maxCurve:
         serializedVersion: 2
