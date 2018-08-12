@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84553e6f8277f644aacfdbb54aa6b832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlacementScale: 1
+  PlacementScale: 100000000
   ActualScale: 1
   initialPosition:
     x: 0
@@ -1675,6 +1675,7 @@ MonoBehaviour:
   _isTargetable: 0
   _isDockable: 1
   _isJumpable: 0
+  jumpDirection: {x: 0, y: 0}
   _isMinable: 0
   _isLootable: 0
   _canBridge: 0

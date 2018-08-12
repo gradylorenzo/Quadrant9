@@ -9,7 +9,7 @@ public class ScaleSpaceObject : MonoBehaviour {
     public ScaleSpaceManager.ScaleSpaceLevel ActualScale = ScaleSpaceManager.ScaleSpaceLevel.ScaleSpace0;
     public DoubleVector3 initialPosition;
 
-    private void Awake()
+    private void Start()
     {
         initialPosition = (DoubleVector3.FromVector3(transform.position) + ScaleSpaceManager.apparentPosition) * (int)PlacementScale;
     }

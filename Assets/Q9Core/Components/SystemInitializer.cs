@@ -11,24 +11,55 @@ public class SystemInitializer : MonoBehaviour {
     [Header("Jumpgates")]
     public GameObject[] Jumpgate;
     public GameObject Star;
+    public GameObject SS1;
+    public GameObject[] PlanetPrefabs;
+    public GameObject[] MoonPrefabs;
+    public GameObject[] StationPrefabs;
+
+    private List<GameObject> SystemObjects = new List<GameObject>();
+
+    public void Awake()
+    {
+        EventManager.OnSystemChanged += OnSystemChanged;
+    }
 
     public void Start()
     {
-        EventManager.OnSystemChanged += OnSystemChanged;
         GameManager._sysInitializer = this;
         InitializeAll();
     }
 
     private void OnSystemChanged(Vector2 dir)
     {
+        ClearAll();
         InitializeAll();
+    }
+
+    private void ClearAll()
+    {
+        EventManager.OnClearOverviewData();
+        foreach(GameObject go in SystemObjects)
+        {
+            Destroy(go);
+        }
+        SystemObjects.Clear();
     }
 
     private void InitializeAll()
     {
-        EventManager.OnClearOverviewData();
+        int i = 0;
         InitializeStar();
         InitializeJumpgates();
+        foreach(Planet p in NavigationManager._starSystems[NavigationManager._activeSystem]._planets)
+        {
+            int pIndex = p._planetType;
+            Vector3 pos = /*(DoubleVector3.ToVector3(ScaleSpaceManager.apparentPosition) / (int)ScaleSpaceManager.ScaleSpaceLevel.ScaleSpace1) + */p._position;
+            Quaternion rot = PlanetPrefabs[pIndex].transform.rotation;
+            GameObject newPlanet = Instantiate(PlanetPrefabs[pIndex], pos, rot);
+            SystemObjects.Add(newPlanet);
+            i++;
+        }
+        print(i);
     }
 
     private void InitializeStar()
