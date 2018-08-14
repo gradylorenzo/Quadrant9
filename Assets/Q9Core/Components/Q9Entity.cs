@@ -31,12 +31,8 @@ namespace Q9Core
         public bool _isBridging;
         public Q9Object[] _cargo;
         [Header("Visibility Flags")]
-        
-        
         public VisibilityFlag _visibility;
         private bool _started;
-
-        //public DoubleVector3 ScaleSpacePosition;
 
         private float DistanceAtLastFrame;
         private float DistanceAtThisFrame;
@@ -88,6 +84,7 @@ namespace Q9Core
 
         public void Refesh()
         {
+            Remove();
             _started = false;
         }
 

@@ -69,7 +69,6 @@ public class ShipTransform : MonoBehaviour {
 
     private void Awake()
     {
-        EventManager.OnSystemChanged += OnSystemChanged;
         EventManager.OnObjectSelectedAsAlignmentTarget += Align;
 
         currentRotation = transform.rotation;
@@ -113,11 +112,6 @@ public class ShipTransform : MonoBehaviour {
         Move();
         Rotate();
         Bank();
-    }
-
-    private void OnSystemChanged(Vector2 dir)
-    {
-        Flip(dir);
     }
 
     private void Flip(Vector2 dir)

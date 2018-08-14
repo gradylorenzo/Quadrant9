@@ -33,7 +33,7 @@ namespace Q9Core
         {
             _player = pp;
             _profileLoaded = true;
-            NavigationManager._activeSystem = pp._activeSystem;
+            NavigationManager.activeSystem = pp._activeSystem;
         }
         public static void ClearPlayerProfile()
         {

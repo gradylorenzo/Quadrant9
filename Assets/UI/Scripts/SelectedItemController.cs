@@ -118,7 +118,7 @@ public class SelectedItemController : MonoBehaviour {
 	}
 	public void OnJumpClicked()
 	{
-        NavigationManager.ShiftActiveSystem(currentData._go.GetComponent<Q9Entity>().jumpDirection);
+        GameManager._syscon.Jump(currentData._go.GetComponent<Q9Entity>().jumpDirection);
 	}
     #endregion
 }

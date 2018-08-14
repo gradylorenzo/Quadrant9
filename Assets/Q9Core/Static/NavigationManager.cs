@@ -7,7 +7,7 @@ using Q9Core;
 public static class NavigationManager
 {
     public static Dictionary<Vector2, StarSystem> _starSystems = new Dictionary<Vector2, StarSystem>();
-    public static Vector2 _activeSystem;
+    public static Vector2 activeSystem;
 
     public static void InitializeMapData(Texture2D noise, Gradient gradient)
     {
@@ -111,18 +111,12 @@ public static class NavigationManager
         return _moons.ToArray();
     }
 
-    public static void ShiftActiveSystem(Vector2 pos)
-    {
-        _activeSystem += pos;
-        EventManager.OnSystemChanged(pos);
-    }
-
     public static void SetActiveSystem (Vector2 pos)
     {
         if (_starSystems.ContainsKey(pos))
         {
-            _activeSystem = _starSystems[pos].position;
-            SaveManager.currentPlayer._activeSystem = _activeSystem;
+            activeSystem = _starSystems[pos].position;
+            SaveManager.currentPlayer._activeSystem = activeSystem;
         }
         else
         {

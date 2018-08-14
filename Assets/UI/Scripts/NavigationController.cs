@@ -21,9 +21,9 @@ public class NavigationController : MonoBehaviour {
 
     private void RefreshSystemName()
     {
-        if(NavigationManager._activeSystem != null)
+        if(NavigationManager.activeSystem != null)
         {
-            active_system.text = NavigationManager.GetSystemName(NavigationManager._activeSystem);
+            active_system.text = NavigationManager.GetSystemName(NavigationManager.activeSystem);
         }
     }
 }
